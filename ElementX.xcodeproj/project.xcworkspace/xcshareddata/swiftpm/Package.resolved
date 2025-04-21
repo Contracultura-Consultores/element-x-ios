@@ -158,8 +158,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/element-hq/matrix-rust-components-swift",
       "state" : {
-        "revision" : "895ba54c171859cace965e77b6fe2f64919ecb27",
-        "version" : "25.4.16"
+        "revision" : "7437bbf102fb5dafb4e61aad6b9aa43dc34db0cc",
+        "version" : "1.0.0"
       }
     },
     {
@@ -299,7 +299,7 @@
     {
       "identity" : "xctest-dynamic-overlay",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Contracultura-Consultores/swift-issue-reporting",
+      "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
       "state" : {
         "branch" : "test-traits",
         "revision" : "ccc75ae935e2fee1b2c7d8040c21538def4310d8"

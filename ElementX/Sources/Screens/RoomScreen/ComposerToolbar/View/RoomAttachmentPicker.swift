@@ -11,16 +11,17 @@ import WysiwygComposer
 
 struct RoomAttachmentPicker: View {
     @ObservedObject var context: ComposerToolbarViewModel.Context
-    
+
     @Environment(\.isEnabled) private var isEnabled
-    
+
     var body: some View {
         // Use a menu instead of the popover/sheet shown in Figma because overriding the colour scheme
-        // results in a rendering bug on 17.1: https://github.com/element-hq/element-x-ios/issues/2157
+        // results in a rendering bug on 17.1: https://github.com/Contracultura-Consultores/element-x-ios/issues/2157
         Menu {
             menuContent
         } label: {
-            CompoundIcon(asset: Asset.Images.composerAttachment, size: .custom(30), relativeTo: .compound.headingLG)
+            CompoundIcon(asset: Asset.Images.composerAttachment, size: .custom(30),
+                         relativeTo: .compound.headingLG)
                 .scaledPadding(7, relativeTo: .compound.headingLG)
                 .foregroundColor(
                     isEnabled ? .compound.iconPrimary : .compound.iconDisabled
@@ -30,7 +31,7 @@ struct RoomAttachmentPicker: View {
         .accessibilityLabel(L10n.actionAddToTimeline)
         .accessibilityIdentifier(A11yIdentifiers.roomScreen.composerToolbar.openComposeOptions)
     }
-    
+
     var menuContent: some View {
         VStack(alignment: .leading, spacing: 0.0) {
             Button {
@@ -39,14 +40,14 @@ struct RoomAttachmentPicker: View {
                 Label(L10n.screenRoomAttachmentTextFormatting, icon: \.textFormatting)
             }
             .accessibilityIdentifier(A11yIdentifiers.roomScreen.attachmentPickerTextFormatting)
-            
+
             Button {
                 context.send(viewAction: .attach(.poll))
             } label: {
                 Label(L10n.screenRoomAttachmentSourcePoll, icon: \.polls)
             }
             .accessibilityIdentifier(A11yIdentifiers.roomScreen.attachmentPickerPoll)
-            
+
             if context.viewState.isLocationSharingEnabled {
                 Button {
                     context.send(viewAction: .attach(.location))
@@ -55,21 +56,21 @@ struct RoomAttachmentPicker: View {
                 }
                 .accessibilityIdentifier(A11yIdentifiers.roomScreen.attachmentPickerLocation)
             }
-            
+
             Button {
                 context.send(viewAction: .attach(.file))
             } label: {
                 Label(L10n.screenRoomAttachmentSourceFiles, icon: \.attachment)
             }
             .accessibilityIdentifier(A11yIdentifiers.roomScreen.attachmentPickerDocuments)
-            
+
             Button {
                 context.send(viewAction: .attach(.photoLibrary))
             } label: {
                 Label(L10n.screenRoomAttachmentSourceGallery, icon: \.image)
             }
             .accessibilityIdentifier(A11yIdentifiers.roomScreen.attachmentPickerPhotoLibrary)
-            
+
             Button {
                 context.send(viewAction: .attach(.camera))
             } label: {
@@ -83,7 +84,9 @@ struct RoomAttachmentPicker: View {
 private struct RoomAttachmentPickerButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .foregroundStyle(configuration.isPressed ? .compound.bgActionPrimaryPressed : .compound.bgActionPrimaryRest)
+            .foregroundStyle(
+                configuration.isPressed
+                    ? .compound.bgActionPrimaryPressed : .compound.bgActionPrimaryRest)
     }
 }
 

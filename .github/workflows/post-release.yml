@@ -3,13 +3,13 @@ name: Post-release
 on:
   push:
     tags:
-      - 'release/**'
+      - "release/**"
 
 jobs:
   post-release:
     runs-on: ubuntu-latest
     # Skip in forks
-    if: github.repository == 'element-hq/element-x-ios'
+    if: github.repository == 'Contracultura-Consultores/element-x-ios'
 
     steps:
       - name: Trigger pipeline

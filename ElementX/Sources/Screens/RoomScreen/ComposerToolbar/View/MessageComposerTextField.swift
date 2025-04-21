@@ -39,7 +39,7 @@ struct MessageComposerTextField: View {
                 .accessibilityHidden(true)
         }
     }
-    
+
     private var keyboardShortcuts: some View {
         Group {
             Button("") {
@@ -69,7 +69,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
         // Need to use TextKit 1 for mentions
         let textView = ElementTextView(timelineContext: timelineContext,
                                        presendCallback: $presendCallback)
-        
+
         textView.delegate = context.coordinator
         textView.elementDelegate = context.coordinator
         textView.textColor = .compound.textPrimary
@@ -82,22 +82,23 @@ private struct UITextViewWrapper: UIViewRepresentable {
         textView.textContainer.lineFragmentPadding = 0.0
         textView.textContainerInset = .zero
         textView.keyboardType = .default
-        
+
         // AutoCorrection doesn't work properly when running on the Mac
-        // https://github.com/element-hq/element-x-ios/issues/1786
+        // https://github.com/Contracultura-Consultores/element-x-ios/issues/1786
         if ProcessInfo.processInfo.isiOSAppOnMac {
             textView.autocorrectionType = .no
         }
 
         textView.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        
+
         return textView
     }
 
     func sizeThatFits(_ proposal: ProposedViewSize, uiView: UITextView, context: Context) -> CGSize? {
         // Note: Coalescing a width of zero here returns a size for the view with 1 line of text visible.
-        let newSize = uiView.sizeThatFits(CGSize(width: proposal.width ?? .zero,
-                                                 height: CGFloat.greatestFiniteMagnitude))
+        let newSize = uiView.sizeThatFits(
+            CGSize(width: proposal.width ?? .zero,
+                   height: CGFloat.greatestFiniteMagnitude))
         let width = proposal.width ?? newSize.width
         let height = min(maxHeight, newSize.height)
 
@@ -106,24 +107,27 @@ private struct UITextViewWrapper: UIViewRepresentable {
 
     func updateUIView(_ textView: UITextView, context: UIViewRepresentableContext<UITextViewWrapper>) {
         // Prevent the textView from inheriting attributes from mention pills
-        textView.typingAttributes = [.font: font,
-                                     .foregroundColor: UIColor.compound.textPrimary]
-        
+        textView.typingAttributes = [
+            .font: font,
+            .foregroundColor: UIColor.compound.textPrimary
+        ]
+
         if textView.attributedText != text {
             // Remember the selection if only the attributes have changed.
-            let selection = textView.attributedText.string == text.string ? textView.selectedTextRange : nil
-            
+            let selection =
+                textView.attributedText.string == text.string ? textView.selectedTextRange : nil
+
             // Fixes pill views not loading on the first attempt on iOS 18
             // because the textContainers's superview comes in as nil
-            // https://github.com/element-hq/element-x-ios/issues/3369
+            // https://github.com/Contracultura-Consultores/element-x-ios/issues/3369
             _ = textView.layoutManager
-            
+
             textView.attributedText = text
-            
+
             // Re-apply the default font when setting text for e.g. edits.
             textView.font = font
             textView.textColor = .compound.textPrimary
-            
+
             if text.string.isEmpty {
                 // text cleared, probably because the written text is sent
                 // reload keyboard type
@@ -136,13 +140,13 @@ private struct UITextViewWrapper: UIViewRepresentable {
             } else if let selection {
                 // Fixes a bug where pressing Return in the middle of two paragraphs
                 // moves the caret back to the bottom of the composer.
-                // https://github.com/element-hq/element-x-ios/issues/3104
+                // https://github.com/Contracultura-Consultores/element-x-ios/issues/3104
                 textView.selectedTextRange = selection
             } else {
                 // Re-setting the selected range is important when inserting pills
                 // but we need to not do that when entering edit mode, where the
                 // cursor needs to stay at the end of the text
-                // https://github.com/element-hq/element-x-ios/issues/3830
+                // https://github.com/Contracultura-Consultores/element-x-ios/issues/3830
                 if textView.selectedRange.location != text.length {
                     textView.selectedRange = selectedRange
                 }
@@ -186,7 +190,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
         func textViewDidReceiveKeyPress(_ textView: UITextView, key: UIKeyboardHIDUsage) {
             keyHandler(key)
         }
-        
+
         func textViewDidReceiveShiftEnterKeyPress(_ textView: UITextView) {
             textView.insertText("\n")
         }
@@ -194,7 +198,7 @@ private struct UITextViewWrapper: UIViewRepresentable {
         func textView(_ textView: UITextView, didReceivePasteWith provider: NSItemProvider) {
             pasteHandler(provider)
         }
-        
+
         func textViewDidChangeSelection(_ textView: UITextView) {
             DispatchQueue.main.async {
                 if self.selectedRange.wrappedValue != textView.selectedRange {
@@ -215,16 +219,16 @@ private class ElementTextView: UITextView, PillAttachmentViewProviderDelegate {
     private(set) var timelineContext: TimelineViewModel.Context?
     private var presendCallback: Binding<(() -> Void)?>
     private var pillViews = NSHashTable<UIView>.weakObjects()
-    
+
     weak var elementDelegate: ElementTextViewDelegate?
-    
+
     init(timelineContext: TimelineViewModel.Context?,
          presendCallback: Binding<(() -> Void)?>) {
         self.timelineContext = timelineContext
         self.presendCallback = presendCallback
-        
+
         super.init(frame: .zero, textContainer: nil)
-        
+
         // Avoid `Publishing changes from within view update` warnings
         DispatchQueue.main.async {
             presendCallback.wrappedValue = { [weak self] in
@@ -232,41 +236,43 @@ private class ElementTextView: UITextView, PillAttachmentViewProviderDelegate {
             }
         }
     }
-    
+
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError()
     }
-    
+
     override var keyCommands: [UIKeyCommand]? {
-        [UIKeyCommand(input: "\r", modifierFlags: .shift, action: #selector(shiftEnterKeyPressed)),
-         UIKeyCommand(input: "\r", modifierFlags: [], action: #selector(enterKeyPressed))]
+        [
+            UIKeyCommand(input: "\r", modifierFlags: .shift, action: #selector(shiftEnterKeyPressed)),
+            UIKeyCommand(input: "\r", modifierFlags: [], action: #selector(enterKeyPressed))
+        ]
     }
 
     @objc func shiftEnterKeyPressed(sender: UIKeyCommand) {
         elementDelegate?.textViewDidReceiveShiftEnterKeyPress(self)
     }
-    
+
     @objc func enterKeyPressed(sender: UIKeyCommand) {
         elementDelegate?.textViewDidReceiveKeyPress(self, key: .keyboardReturnOrEnter)
     }
-    
+
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         guard let key = presses.first?.key else {
             super.pressesBegan(presses, with: event)
             return
         }
-        
+
         if key.keyCode == .keyboardUpArrow, selectedRange.location == 0 {
             elementDelegate?.textViewDidReceiveKeyPress(self, key: key.keyCode)
             return
         }
-        
+
         if key.keyCode == .keyboardEscape {
             elementDelegate?.textViewDidReceiveKeyPress(self, key: key.keyCode)
             return
         }
-        
+
         super.pressesBegan(presses, with: event)
     }
 
@@ -286,7 +292,8 @@ private class ElementTextView: UITextView, PillAttachmentViewProviderDelegate {
 
     override func paste(_ sender: Any?) {
         guard let provider = UIPasteboard.general.itemProviders.first,
-              provider.isSupportedForPasteOrDrop else {
+              provider.isSupportedForPasteOrDrop
+        else {
             // If the item is not supported for media upload then
             // just try pasting its contents into the textfield
             super.paste(sender)
@@ -295,9 +302,9 @@ private class ElementTextView: UITextView, PillAttachmentViewProviderDelegate {
 
         elementDelegate?.textView(self, didReceivePasteWith: provider)
     }
-    
+
     // MARK: PillAttachmentViewProviderDelegate
-    
+
     func invalidateTextAttachmentsDisplay() {
         attributedText.enumerateAttribute(.attachment,
                                           in: NSRange(location: 0, length: attributedText.length),
@@ -308,7 +315,7 @@ private class ElementTextView: UITextView, PillAttachmentViewProviderDelegate {
             self.layoutManager.invalidateDisplay(forCharacterRange: range)
         }
     }
-    
+
     func registerPillView(_ pillView: UIView) {
         pillViews.add(pillView)
     }
@@ -320,14 +327,14 @@ private class ElementTextView: UITextView, PillAttachmentViewProviderDelegate {
         }
         pillViews.removeAllObjects()
     }
-    
+
     // MARK: - Private
-    
+
     private func acceptCurrentSuggestion() {
         guard isFirstResponder else {
             return
         }
-        
+
         inputDelegate?.selectionWillChange(self)
         inputDelegate?.selectionDidChange(self)
     }
@@ -338,7 +345,10 @@ struct MessageComposerTextField_Previews: PreviewProvider, TestablePreview {
         VStack(spacing: 16) {
             PreviewWrapper(text: "123")
             PreviewWrapper(text: "")
-            PreviewWrapper(text: "A really long message that will wrap to multiple lines on a phone in portrait.")
+            PreviewWrapper(
+                text:
+                "A really long message that will wrap to multiple lines on a phone in portrait."
+            )
         }
     }
 
@@ -346,8 +356,12 @@ struct MessageComposerTextField_Previews: PreviewProvider, TestablePreview {
         @State var text: NSAttributedString
 
         init(text: String) {
-            _text = .init(initialValue: .init(string: text, attributes: [.font: UIFont.preferredFont(forTextStyle: .body),
-                                                                         .foregroundColor: UIColor.compound.textPrimary]))
+            _text = .init(
+                initialValue: .init(string: text,
+                                    attributes: [
+                                        .font: UIFont.preferredFont(forTextStyle: .body),
+                                        .foregroundColor: UIColor.compound.textPrimary
+                                    ]))
         }
 
         var body: some View {

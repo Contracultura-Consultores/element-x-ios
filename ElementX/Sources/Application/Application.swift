@@ -11,7 +11,7 @@ import SwiftUI
 struct Application: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @Environment(\.openURL) private var openURL
-    
+
     private var appCoordinator: AppCoordinatorProtocol!
 
     init() {
@@ -22,7 +22,7 @@ struct Application: App {
         } else {
             appCoordinator = AppCoordinator(appDelegate: appDelegate)
         }
-        
+
         SceneDelegate.windowManager = appCoordinator.windowManager
     }
 
@@ -30,19 +30,21 @@ struct Application: App {
         WindowGroup {
             appCoordinator.toPresentable()
                 .statusBarHidden(shouldHideStatusBar)
-                .environment(\.openURL, OpenURLAction { url in
-                    if appCoordinator.handleDeepLink(url, isExternalURL: false) {
-                        return .handled
-                    }
-                    
-                    if appCoordinator.handlePotentialPhishingAttempt(url: url, openURLAction: { url in
-                        openURL(url, isExternalURL: false)
-                    }) {
-                        return .handled
-                    }
+                .environment(\.openURL,
+                             OpenURLAction { url in
+                                 if appCoordinator.handleDeepLink(url, isExternalURL: false) {
+                                     return .handled
+                                 }
 
-                    return .systemAction
-                })
+                                 if appCoordinator.handlePotentialPhishingAttempt(url: url,
+                                                                                  openURLAction: { url in
+                                                                                      openURL(url, isExternalURL: false)
+                                                                                  }) {
+                                     return .handled
+                                 }
+
+                                 return .systemAction
+                             })
                 .onOpenURL { url in
                     openURL(url, isExternalURL: true)
                 }
@@ -56,9 +58,9 @@ struct Application: App {
                 }
         }
     }
-    
+
     // MARK: - Private
-    
+
     private func openURL(_ url: URL, isExternalURL: Bool) {
         if !appCoordinator.handleDeepLink(url, isExternalURL: isExternalURL) {
             openURLInSystemBrowser(url)
@@ -69,25 +71,26 @@ struct Application: App {
     private var shouldHideStatusBar: Bool {
         ProcessInfo.isRunningUITests
     }
-    
-    /// https://github.com/element-hq/element-x-ios/issues/1824
+
+    /// https://github.com/Contracultura-Consultores/element-x-ios/issues/1824
     /// Avoid opening universal links in other app variants and infinite loops between them
     private func openURLInSystemBrowser(_ originalURL: URL) {
-        guard var urlComponents = URLComponents(url: originalURL, resolvingAgainstBaseURL: true) else {
+        guard var urlComponents = URLComponents(url: originalURL, resolvingAgainstBaseURL: true)
+        else {
             openURL(originalURL)
             return
         }
-        
+
         var queryItems = urlComponents.queryItems ?? []
         queryItems.append(.init(name: "no_universal_links", value: "true"))
-        
+
         urlComponents.queryItems = queryItems
-        
+
         guard let url = urlComponents.url else {
             openURL(originalURL)
             return
         }
-        
+
         openURL(url)
     }
 }

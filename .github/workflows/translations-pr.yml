@@ -2,28 +2,27 @@ name: Open Translations PR
 on:
   schedule:
     # At 03:00 on every Monday UTC
-    - cron: '0 3 * * 1'
+    - cron: "0 3 * * 1"
   workflow_dispatch:
 
 jobs:
   open-translations-pr:
     runs-on: macos-15
     # Skip in forks
-    if: github.repository == 'element-hq/element-x-ios'
+    if: github.repository == 'Contracultura-Consultores/element-x-ios'
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup environment
-        run: 
-          source ci_scripts/ci_common.sh && setup_github_actions_translations_environment
+        run: source ci_scripts/ci_common.sh && setup_github_actions_translations_environment
 
       - name: Download All Translations
         run: swift run tools download-strings --all-languages
 
       - name: Verify Translations
         run: swift run tools locheck
-        
+
       - name: SAS Translations
         run: swift run tools generate-sas
 

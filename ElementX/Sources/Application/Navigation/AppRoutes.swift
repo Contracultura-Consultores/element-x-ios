@@ -47,7 +47,7 @@ enum AppRoute: Equatable, Hashable {
 
 struct AppRouteURLParser {
     let urlParsers: [URLParser]
-    
+
     init(appSettings: AppSettings) {
         urlParsers = [
             AppGroupURLParser(),
@@ -56,14 +56,14 @@ struct AppRouteURLParser {
             ElementCallURLParser()
         ]
     }
-    
+
     func route(from url: URL) -> AppRoute? {
         for parser in urlParsers {
             if let appRoute = parser.route(from: url) {
                 return appRoute
             }
         }
-        
+
         return nil
     }
 }
@@ -80,16 +80,18 @@ struct AppGroupURLParser: URLParser {
     func route(from url: URL) -> AppRoute? {
         guard let scheme = url.scheme,
               scheme == InfoPlistReader.app.appScheme,
-              url.pathComponents.last == ShareExtensionConstants.urlPath else {
+              url.pathComponents.last == ShareExtensionConstants.urlPath
+        else {
             return nil
         }
-        
+
         guard let query = url.query(percentEncoded: false),
-              let queryData = query.data(using: .utf8) else {
+              let queryData = query.data(using: .utf8)
+        else {
             MXLog.error("Failed processing share parameters")
             return nil
         }
-        
+
         do {
             let payload = try JSONDecoder().decode(ShareExtensionPayload.self, from: queryData)
             return .share(payload)
@@ -104,37 +106,40 @@ struct AppGroupURLParser: URLParser {
 struct ElementCallURLParser: URLParser {
     private let knownHosts = ["call.element.io"]
     private let customSchemeURLQueryParameterName = "url"
-    
+
     func route(from url: URL) -> AppRoute? {
         // Element Call not supported, WebRTC not available
-        // https://github.com/element-hq/element-x-ios/issues/1794
+        // https://github.com/Contracultura-Consultores/element-x-ios/issues/1794
         if ProcessInfo.processInfo.isiOSAppOnMac {
             return nil
         }
-        
+
         // First try processing URLs with custom schemes
         if let scheme = url.scheme,
            scheme == InfoPlistReader.app.elementCallScheme {
             guard let components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
                 return nil
             }
-            
-            guard let encodedURLString = components.queryItems?.first(where: { $0.name == customSchemeURLQueryParameterName })?.value,
-                  let callURL = URL(string: encodedURLString),
-                  callURL.scheme == "https" // Don't allow URLs from potentially unsafe domains
+
+            guard
+                let encodedURLString = components.queryItems?.first(where: {
+                    $0.name == customSchemeURLQueryParameterName
+                })?.value,
+                let callURL = URL(string: encodedURLString),
+                callURL.scheme == "https" // Don't allow URLs from potentially unsafe domains
             else {
                 MXLog.error("Invalid custom scheme call parameters: \(url)")
                 return nil
             }
-            
+
             return .genericCallLink(url: callURL)
         }
-        
+
         // Otherwise try to interpret it as an universal link
         guard let host = url.host, knownHosts.contains(host) else {
             return nil
         }
-        
+
         return .genericCallLink(url: url)
     }
 }
@@ -142,7 +147,7 @@ struct ElementCallURLParser: URLParser {
 struct MatrixPermalinkParser: URLParser {
     func route(from url: URL) -> AppRoute? {
         guard let entity = parseMatrixEntityFrom(uri: url.absoluteString) else { return nil }
-        
+
         switch entity.id {
         case .room(let id):
             return .room(roomID: id, via: entity.via)
@@ -161,29 +166,29 @@ struct MatrixPermalinkParser: URLParser {
 struct ElementWebURLParser: URLParser {
     let domains: [String]
     let paths = ["room", "user"]
-    
+
     private let permalinkParser = MatrixPermalinkParser()
-    
+
     func route(from url: URL) -> AppRoute? {
         guard let matrixToURL = buildMatrixToURL(from: url) else { return nil }
         return permalinkParser.route(from: matrixToURL)
     }
-    
+
     private func buildMatrixToURL(from url: URL) -> URL? {
         guard var components = URLComponents(url: url, resolvingAgainstBaseURL: false) else {
             return url
         }
-        
+
         for domain in domains where domain == url.host {
             components.host = "matrix.to"
             for path in paths {
                 components.fragment?.replace("/\(path)", with: "")
             }
-            
+
             guard let matrixToURL = components.url else { continue }
             return matrixToURL
         }
-        
+
         return url
     }
 }

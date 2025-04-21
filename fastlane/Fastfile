@@ -227,7 +227,7 @@ lane :release_to_github do
   release_version = get_version_number(target: "ElementX")
 
   github_release = set_github_release(
-    repository_name: "element-hq/element-x-ios",
+    repository_name: "Contracultura-Consultores/element-x-ios",
     api_token: api_token,
     name: release_version,
     tag_name: "release/#{release_version}",
