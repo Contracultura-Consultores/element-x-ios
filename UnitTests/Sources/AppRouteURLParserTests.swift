@@ -74,7 +74,7 @@ class AppRouteURLParserTests: XCTestCase {
     }
     
     func testMatrixUserURL() {
-        let userID = "@test:matrix.org"
+        let userID = "@test:matrix.pesbc.chat"
         guard let url = URL(string: "https://matrix.to/#/\(userID)") else {
             XCTFail("Invalid url")
             return
@@ -86,7 +86,7 @@ class AppRouteURLParserTests: XCTestCase {
     }
     
     func testMatrixRoomIdentifierURL() {
-        let id = "!abcdefghijklmnopqrstuvwxyz1234567890:matrix.org"
+        let id = "!abcdefghijklmnopqrstuvwxyz1234567890:matrix.pesbc.chat"
         guard let url = URL(string: "https://matrix.to/#/\(id)") else {
             XCTFail("Invalid url")
             return
@@ -98,7 +98,7 @@ class AppRouteURLParserTests: XCTestCase {
     }
     
     func testWebRoomIDURL() {
-        let id = "!abcdefghijklmnopqrstuvwxyz1234567890:matrix.org"
+        let id = "!abcdefghijklmnopqrstuvwxyz1234567890:matrix.pesbc.chat"
         guard let url = URL(string: "https://app.element.io/#/room/\(id)") else {
             XCTFail("URL invalid")
             return
@@ -110,7 +110,7 @@ class AppRouteURLParserTests: XCTestCase {
     }
     
     func testWebUserIDURL() {
-        let id = "@alice:matrix.org"
+        let id = "@alice:matrix.pesbc.chat"
         guard let url = URL(string: "https://develop.element.io/#/user/\(id)") else {
             XCTFail("URL invalid")
             return

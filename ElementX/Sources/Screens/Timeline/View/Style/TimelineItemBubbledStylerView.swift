@@ -416,8 +416,8 @@ struct TimelineItemBubbledStylerView_Previews: PreviewProvider, TestablePreview 
     
     static var threadSummary: some View {
         ScrollView {
-            let threadSummary = TimelineItemThreadSummary.loaded(senderID: "@alice:matrix.org",
-                                                                 sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            let threadSummary = TimelineItemThreadSummary.loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                                 sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                                  latestEventContent: .message(.text(.init(body: "This is a threaded message"))))
             
             MockTimelineContent(threadSummary: threadSummary)

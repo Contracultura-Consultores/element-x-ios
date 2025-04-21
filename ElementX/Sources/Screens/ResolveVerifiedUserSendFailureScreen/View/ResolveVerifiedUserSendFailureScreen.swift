@@ -67,9 +67,9 @@ struct ResolveVerifiedUserSendFailureScreen: View {
 // MARK: - Previews
 
 struct ResolveVerifiedUserSendFailureScreen_Previews: PreviewProvider, TestablePreview {
-    static let unsignedDeviceViewModel = makeViewModel(failure: .hasUnsignedDevice(devices: ["@alice:matrix.org": []]))
+    static let unsignedDeviceViewModel = makeViewModel(failure: .hasUnsignedDevice(devices: ["@alice:matrix.pesbc.chat": []]))
     static let ownUnsignedDeviceViewModel = makeViewModel(failure: .hasUnsignedDevice(devices: [RoomMemberProxyMock.mockMe.userID: []]))
-    static let changedIdentityViewModel = makeViewModel(failure: .changedIdentity(users: ["@alice:matrix.org"]))
+    static let changedIdentityViewModel = makeViewModel(failure: .changedIdentity(users: ["@alice:matrix.pesbc.chat"]))
     
     static var previews: some View {
         ResolveVerifiedUserSendFailureScreen(context: unsignedDeviceViewModel.context)
@@ -91,7 +91,7 @@ struct ResolveVerifiedUserSendFailureScreen_Previews: PreviewProvider, TestableP
 }
 
 struct ResolveVerifiedUserSendFailureScreenSheet_Previews: PreviewProvider {
-    static let viewModel = ResolveVerifiedUserSendFailureScreenViewModel(failure: .changedIdentity(users: ["@alice:matrix.org"]),
+    static let viewModel = ResolveVerifiedUserSendFailureScreenViewModel(failure: .changedIdentity(users: ["@alice:matrix.pesbc.chat"]),
                                                                          sendHandle: .mock,
                                                                          roomProxy: JoinedRoomProxyMock(.init()),
                                                                          userIndicatorController: UserIndicatorControllerMock())

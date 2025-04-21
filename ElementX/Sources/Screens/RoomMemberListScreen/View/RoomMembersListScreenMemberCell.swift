@@ -92,10 +92,10 @@ struct RoomMembersListMemberCell_Previews: PreviewProvider, TestablePreview {
               verificationState: .verified),
         .init(member: .init(withProxy: RoomMemberProxyMock.mockModerator),
               verificationState: .verificationViolation),
-        .init(member: .init(withProxy: RoomMemberProxyMock(with: .init(userID: "@nodisplayname:matrix.org",
+        .init(member: .init(withProxy: RoomMemberProxyMock(with: .init(userID: "@nodisplayname:matrix.pesbc.chat",
                                                                        membership: .join))),
         verificationState: .notVerified),
-        .init(member: .init(withProxy: RoomMemberProxyMock(with: .init(userID: "@avatar:matrix.org",
+        .init(member: .init(withProxy: RoomMemberProxyMock(with: .init(userID: "@avatar:matrix.pesbc.chat",
                                                                        displayName: "Avatar",
                                                                        avatarURL: .mockMXCUserAvatar,
                                                                        membership: .join))),
@@ -103,14 +103,14 @@ struct RoomMembersListMemberCell_Previews: PreviewProvider, TestablePreview {
     ]
     
     static let bannedMembers: [RoomMemberListScreenEntry] = [
-        .init(member: .init(withProxy: RoomMemberProxyMock(with: .init(userID: "@nodisplayname:matrix.org",
+        .init(member: .init(withProxy: RoomMemberProxyMock(with: .init(userID: "@nodisplayname:matrix.pesbc.chat",
                                                                        membership: .ban))),
         verificationState: .notVerified),
-        .init(member: .init(withProxy: RoomMemberProxyMock(with: .init(userID: "@fake:matrix.org",
+        .init(member: .init(withProxy: RoomMemberProxyMock(with: .init(userID: "@fake:matrix.pesbc.chat",
                                                                        displayName: "President",
                                                                        membership: .ban))),
         verificationState: .verified),
-        .init(member: .init(withProxy: RoomMemberProxyMock(with: .init(userID: "@badavatar:matrix.org",
+        .init(member: .init(withProxy: RoomMemberProxyMock(with: .init(userID: "@badavatar:matrix.pesbc.chat",
                                                                        avatarURL: .mockMXCUserAvatar,
                                                                        membership: .ban))),
         verificationState: .verificationViolation)

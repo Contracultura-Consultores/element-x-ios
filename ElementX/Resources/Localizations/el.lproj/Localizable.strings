@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Enter...";
 "screen_start_chat_join_room_by_address_room_found" = "Matching room found";
 "screen_start_chat_join_room_by_address_room_not_found" = "Room not found";
-"screen_start_chat_join_room_by_address_supporting_text" = "e.g. #room-name:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "e.g. #room-name:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "Το μήνυμα δεν στάλθηκε γιατί έγινε επαναφορά της επαληθευμένης ταυτότητας του χρήστη %1$@.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "Το μήνυμα δεν στάλθηκε επειδή ο χρήστης %1$@ δεν έχει επαληθεύσει όλες τις συσκευές.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Το μήνυμα δεν στάλθηκε επειδή δεν έχεις επαληθεύσει τουλάχιστον μία από τις συσκευές σου.";
@@ -603,7 +603,7 @@
 "screen_bug_report_include_screenshot" = "Αποστολή στιγμιοτύπου οθόνης";
 "screen_bug_report_logs_description" = "Τα αρχεία καταγραφής θα συμπεριληφθούν στο μήνυμά σου για να βεβαιωθούμε ότι όλα λειτουργούν σωστά. Για να στείλεις το μήνυμά σου χωρίς αρχεία καταγραφής, απενεργοποίησε αυτήν τη ρύθμιση.";
 "screen_bug_report_view_logs" = "Προβολή αρχείων καταγραφής";
-"screen_change_account_provider_matrix_org_subtitle" = "Το Matrix.org είναι ένας μεγάλος, δωρεάν διακομιστής στο δημόσιο δίκτυο Matrix για ασφαλή, αποκεντρωμένη επικοινωνία, που διευθύνεται από το Ίδρυμα Matrix.org.";
+"screen_change_account_provider_matrix_org_subtitle" = "Το matrix.pesbc.chat είναι ένας μεγάλος, δωρεάν διακομιστής στο δημόσιο δίκτυο Matrix για ασφαλή, αποκεντρωμένη επικοινωνία, που διευθύνεται από το Ίδρυμα matrix.pesbc.chat.";
 "screen_change_account_provider_other" = "Άλλο";
 "screen_change_account_provider_subtitle" = "Χρησιμοποίησε διαφορετικό πάροχο λογαριασμού, όπως τον δικό σου ιδιωτικό διακομιστή ή έναν εργασιακό λογαριασμό.";
 "screen_change_account_provider_title" = "Αλλαγή παρόχου λογαριασμού";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "Προσθήκη emoji";
 "screen_room_timeline_beginning_of_room" = "Αυτή είναι η αρχή του %1$@.";
 "screen_room_timeline_beginning_of_room_no_name" = "Αυτή είναι η αρχή τούτης της συνομιλίας.";
-"screen_room_timeline_legacy_call" = "Μη υποστηριζόμενη κλήση. Ρώτα εάν ο καλών μπορεί να χρησιμοποιήσει τη νέα εφαρμογή Element X.";
+"screen_room_timeline_legacy_call" = "Μη υποστηριζόμενη κλήση. Ρώτα εάν ο καλών μπορεί να χρησιμοποιήσει τη νέα εφαρμογή PESenger.";
 "screen_room_timeline_less_reactions" = "Εμφάνιση λιγότερων";
 "screen_room_timeline_message_copied" = "Το μήνυμα αντιγράφηκε";
 "screen_room_timeline_no_permission_to_post" = "Δεν έχεις άδεια να δημοσιεύσεις σε αυτό το δωμάτιο";

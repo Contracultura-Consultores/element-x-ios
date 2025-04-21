@@ -185,22 +185,22 @@ struct SecurityAndPrivacyScreen_Previews: PreviewProvider, TestablePreview {
                                                                        userIndicatorController: UserIndicatorControllerMock())
     
     static let publicViewModel = SecurityAndPrivacyScreenViewModel(roomProxy: JoinedRoomProxyMock(.init(isEncrypted: false,
-                                                                                                        canonicalAlias: "#room:matrix.org",
+                                                                                                        canonicalAlias: "#room:matrix.pesbc.chat",
                                                                                                         joinRule: .public,
                                                                                                         isVisibleInPublicDirectory: true)),
-                                                                   clientProxy: ClientProxyMock(.init(userIDServerName: "matrix.org")),
+                                                                   clientProxy: ClientProxyMock(.init(userIDServerName: "matrix.pesbc.chat")),
                                                                    userIndicatorController: UserIndicatorControllerMock())
     
     static let publicNoAddressViewModel = SecurityAndPrivacyScreenViewModel(roomProxy: JoinedRoomProxyMock(.init(isEncrypted: false,
                                                                                                                  joinRule: .public)),
-                                                                            clientProxy: ClientProxyMock(.init(userIDServerName: "matrix.org")),
+                                                                            clientProxy: ClientProxyMock(.init(userIDServerName: "matrix.pesbc.chat")),
                                                                             userIndicatorController: UserIndicatorControllerMock())
     
     static let restrictedViewModel = SecurityAndPrivacyScreenViewModel(roomProxy: JoinedRoomProxyMock(.init(isEncrypted: false,
-                                                                                                            canonicalAlias: "#room:matrix.org",
+                                                                                                            canonicalAlias: "#room:matrix.pesbc.chat",
                                                                                                             joinRule: .restricted(rules: []),
                                                                                                             isVisibleInPublicDirectory: true)),
-                                                                       clientProxy: ClientProxyMock(.init(userIDServerName: "matrix.org")),
+                                                                       clientProxy: ClientProxyMock(.init(userIDServerName: "matrix.pesbc.chat")),
                                                                        userIndicatorController: UserIndicatorControllerMock())
     
     static var previews: some View {

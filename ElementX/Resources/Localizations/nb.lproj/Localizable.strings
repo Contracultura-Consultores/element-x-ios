@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Gå inn...";
 "screen_start_chat_join_room_by_address_room_found" = "Matchende rom funnet";
 "screen_start_chat_join_room_by_address_room_not_found" = "Rom ikke funnet";
-"screen_start_chat_join_room_by_address_supporting_text" = "f.eks. #rom-navn:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "f.eks. #rom-navn:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "Meldingen ble ikke sendt fordi %1$@s verifiserte identitet er tilbakestilt.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "Meldingen ble ikke sendt fordi %1$@ ikke har verifisert alle enheter.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Meldingen ble ikke sendt fordi du ikke har verifisert en eller flere av enhetene dine.";
@@ -603,7 +603,7 @@
 "screen_bug_report_include_screenshot" = "Send skjermbilde";
 "screen_bug_report_logs_description" = "Logger vil bli inkludert i meldingen din, for å sikre at alt fungerer som det skal. For å sende meldingen uten logger, slå av denne innstillingen.";
 "screen_bug_report_view_logs" = "Vis logger";
-"screen_change_account_provider_matrix_org_subtitle" = "Matrix.org er en stor, gratis server på det offentlige Matrix-nettverket for sikker, desentralisert kommunikasjon, drevet av Matrix.org Foundation.";
+"screen_change_account_provider_matrix_org_subtitle" = "matrix.pesbc.chat er en stor, gratis server på det offentlige Matrix-nettverket for sikker, desentralisert kommunikasjon, drevet av matrix.pesbc.chat Foundation.";
 "screen_change_account_provider_other" = "Annet";
 "screen_change_account_provider_subtitle" = "Bruk en annen kontotilbyder, for eksempel din egen private server eller en arbeidskonto.";
 "screen_change_account_provider_title" = "Bytt kontotilbyder";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "Legg til emoji";
 "screen_room_timeline_beginning_of_room" = "Dette er begynnelsen på %1$@.";
 "screen_room_timeline_beginning_of_room_no_name" = "Dette er begynnelsen på denne samtalen.";
-"screen_room_timeline_legacy_call" = "Anrop som ikke støttes. Spør om den som ringer kan bruke den nye Element X-appen.";
+"screen_room_timeline_legacy_call" = "Anrop som ikke støttes. Spør om den som ringer kan bruke den nye PESenger-appen.";
 "screen_room_timeline_less_reactions" = "Vis mindre";
 "screen_room_timeline_message_copied" = "Melding kopiert";
 "screen_room_timeline_no_permission_to_post" = "Du har ikke tillatelse til å legge ut innlegg i dette rommet";

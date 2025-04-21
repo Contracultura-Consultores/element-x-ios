@@ -68,7 +68,7 @@ class AttributedStringBuilderTests: XCTestCase {
     }
     
     func testRenderHTMLStringWithLink() {
-        let htmlString = "This text contains a <a href=\"https://www.matrix.org/\">link</a>."
+        let htmlString = "This text contains a <a href=\"https://www.matrix.pesbc.chat/\">link</a>."
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
@@ -81,11 +81,11 @@ class AttributedStringBuilderTests: XCTestCase {
         
         let link = attributedString.runs.first { $0.link != nil }?.link
         
-        XCTAssertEqual(link?.host, "www.matrix.org")
+        XCTAssertEqual(link?.host, "www.matrix.pesbc.chat")
     }
     
     func testRenderPlainStringWithLink() {
-        let plainString = "This text contains a https://www.matrix.org link."
+        let plainString = "This text contains a https://www.matrix.pesbc.chat link."
         
         guard let attributedString = attributedStringBuilder.fromPlain(plainString) else {
             XCTFail("Could not build the attributed string")
@@ -98,11 +98,11 @@ class AttributedStringBuilderTests: XCTestCase {
         
         let link = attributedString.runs.first { $0.link != nil }?.link
         
-        XCTAssertEqual(link?.host, "www.matrix.org")
+        XCTAssertEqual(link?.host, "www.matrix.pesbc.chat")
     }
     
     func testPunctuationAtTheEndOfPlainStringLinks() {
-        let plainString = "This text contains a https://www.matrix.org:;., link."
+        let plainString = "This text contains a https://www.matrix.pesbc.chat:;., link."
         
         guard let attributedString = attributedStringBuilder.fromPlain(plainString) else {
             XCTFail("Could not build the attributed string")
@@ -115,11 +115,11 @@ class AttributedStringBuilderTests: XCTestCase {
         
         let link = attributedString.runs.first { $0.link != nil }?.link
         
-        XCTAssertEqual(link?.host, "www.matrix.org")
+        XCTAssertEqual(link?.host, "www.matrix.pesbc.chat")
     }
     
     func testLinkDefaultScheme() {
-        let plainString = "This text contains a matrix.org link."
+        let plainString = "This text contains a matrix.pesbc.chat link."
         
         guard let attributedString = attributedStringBuilder.fromPlain(plainString) else {
             XCTFail("Could not build the attributed string")
@@ -132,13 +132,13 @@ class AttributedStringBuilderTests: XCTestCase {
         
         let link = attributedString.runs.first { $0.link != nil }?.link
         
-        XCTAssertEqual(link, "https://matrix.org")
+        XCTAssertEqual(link, "https://matrix.pesbc.chat")
     }
     
     func testRenderHTMLStringWithLinkInHeader() {
-        let h1HTMLString = "<h1><a href=\"https://matrix.org/\">Matrix.org</a></h1>"
-        let h2HTMLString = "<h2><a href=\"https://matrix.org/\">Matrix.org</a></h2>"
-        let h3HTMLString = "<h3><a href=\"https://matrix.org/\">Matrix.org</a></h3>"
+        let h1HTMLString = "<h1><a href=\"https://matrix.pesbc.chat/\">matrix.pesbc.chat</a></h1>"
+        let h2HTMLString = "<h2><a href=\"https://matrix.pesbc.chat/\">matrix.pesbc.chat</a></h2>"
+        let h3HTMLString = "<h3><a href=\"https://matrix.pesbc.chat/\">matrix.pesbc.chat</a></h3>"
         
         guard let h1AttributedString = attributedStringBuilder.fromHTML(h1HTMLString),
               let h2AttributedString = attributedStringBuilder.fromHTML(h2HTMLString),
@@ -147,9 +147,9 @@ class AttributedStringBuilderTests: XCTestCase {
             return
         }
         
-        XCTAssertEqual(String(h1AttributedString.characters), "Matrix.org")
-        XCTAssertEqual(String(h2AttributedString.characters), "Matrix.org")
-        XCTAssertEqual(String(h3AttributedString.characters), "Matrix.org")
+        XCTAssertEqual(String(h1AttributedString.characters), "matrix.pesbc.chat")
+        XCTAssertEqual(String(h2AttributedString.characters), "matrix.pesbc.chat")
+        XCTAssertEqual(String(h3AttributedString.characters), "matrix.pesbc.chat")
         
         XCTAssertEqual(h1AttributedString.runs.count, 1)
         XCTAssertEqual(h2AttributedString.runs.count, 1)
@@ -168,13 +168,13 @@ class AttributedStringBuilderTests: XCTestCase {
         XCTAssert(h1Font.pointSize > UIFont.preferredFont(forTextStyle: .body).pointSize)
         XCTAssert(h1Font.pointSize <= maxHeaderPointSize)
         
-        XCTAssertEqual(h1AttributedString.runs.first?.link?.host, "matrix.org")
-        XCTAssertEqual(h2AttributedString.runs.first?.link?.host, "matrix.org")
-        XCTAssertEqual(h3AttributedString.runs.first?.link?.host, "matrix.org")
+        XCTAssertEqual(h1AttributedString.runs.first?.link?.host, "matrix.pesbc.chat")
+        XCTAssertEqual(h2AttributedString.runs.first?.link?.host, "matrix.pesbc.chat")
+        XCTAssertEqual(h3AttributedString.runs.first?.link?.host, "matrix.pesbc.chat")
     }
     
     func testRenderHTMLStringWithIFrame() {
-        let htmlString = "<iframe src=\"https://www.matrix.org/\"></iframe>"
+        let htmlString = "<iframe src=\"https://www.matrix.pesbc.chat/\"></iframe>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
@@ -195,19 +195,19 @@ class AttributedStringBuilderTests: XCTestCase {
     }
     
     func testPermalink() {
-        let string = "https://matrix.to/#/!hello:matrix.org/$world?via=matrix.org"
+        let string = "https://matrix.to/#/!hello:matrix.pesbc.chat/$world?via=matrix.pesbc.chat"
         checkLinkIn(attributedString: attributedStringBuilder.fromHTML(string), expectedLink: string, expectedRuns: 1)
         checkLinkIn(attributedString: attributedStringBuilder.fromPlain(string), expectedLink: string, expectedRuns: 1)
     }
     
     func testMatrixURI() {
-        let string = "matrix:roomid/hello:matrix.org/e/world?via=matrix.org"
+        let string = "matrix:roomid/hello:matrix.pesbc.chat/e/world?via=matrix.pesbc.chat"
         checkLinkIn(attributedString: attributedStringBuilder.fromHTML(string), expectedLink: string, expectedRuns: 1)
         checkLinkIn(attributedString: attributedStringBuilder.fromPlain(string), expectedLink: string, expectedRuns: 1)
     }
     
     func testUserIDLink() {
-        let userID = "@user:matrix.org"
+        let userID = "@user:matrix.pesbc.chat"
         let string = "The user is \(userID)."
         let expectedLink = "https://matrix.to/#/\(userID)"
         checkLinkIn(attributedString: attributedStringBuilder.fromHTML(string), expectedLink: expectedLink, expectedRuns: 3)
@@ -215,7 +215,7 @@ class AttributedStringBuilderTests: XCTestCase {
     }
     
     func testRoomAliasLink() {
-        let roomAlias = "#room:matrix.org"
+        let roomAlias = "#room:matrix.pesbc.chat"
         let string = "The room is \(roomAlias)."
         guard let expectedLink = URL(string: "https://matrix.to/#/\(roomAlias)") else {
             XCTFail("The expected link should be valid.")
@@ -225,7 +225,7 @@ class AttributedStringBuilderTests: XCTestCase {
         checkLinkIn(attributedString: attributedStringBuilder.fromPlain(string), expectedLink: expectedLink.absoluteString, expectedRuns: 3)
     }
     
-    // `Plain link in codeblock: https://www.matrix.org`, Link tag in codeblock: <a href=\"https://www.matrix.org/\">link</a>, plain link: https://www.matrix.org, link tag: <a href=\"https://www.matrix.org/\">link</a>
+    // `Plain link in codeblock: https://www.matrix.pesbc.chat`, Link tag in codeblock: <a href=\"https://www.matrix.pesbc.chat/\">link</a>, plain link: https://www.matrix.pesbc.chat, link tag: <a href=\"https://www.matrix.pesbc.chat/\">link</a>
         
     func testDefaultFont() {
         let htmlString = "<b>Test</b> <i>string</i> "
@@ -243,7 +243,7 @@ class AttributedStringBuilderTests: XCTestCase {
     }
     
     func testDefaultForegroundColor() {
-        let htmlString = "<b>Test</b> <i>string</i> <a href=\"https://www.matrix.org/\">link</a> <code><a href=\"https://www.matrix.org/\">link</a></code>"
+        let htmlString = "<b>Test</b> <i>string</i> <a href=\"https://www.matrix.pesbc.chat/\">link</a> <code><a href=\"https://www.matrix.pesbc.chat/\">link</a></code>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
@@ -273,7 +273,7 @@ class AttributedStringBuilderTests: XCTestCase {
         // letting UI components chose the defaults (e.g. tintColor)
         for run in attributedString.runs {
             if run.link != nil {
-                XCTAssertEqual(run.link?.host, "www.matrix.org")
+                XCTAssertEqual(run.link?.host, "www.matrix.pesbc.chat")
                 XCTAssertNil(run.uiKit.foregroundColor)
                 foundLink = true
             } else {
@@ -330,7 +330,7 @@ class AttributedStringBuilderTests: XCTestCase {
     // swiftlint:enable line_length
     
     func testBlockquoteWithLink() {
-        let htmlString = "<blockquote>Blockquote with a <a href=\"https://www.matrix.org/\">link</a> in it</blockquote>"
+        let htmlString = "<blockquote>Blockquote with a <a href=\"https://www.matrix.pesbc.chat/\">link</a> in it</blockquote>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
@@ -354,7 +354,7 @@ class AttributedStringBuilderTests: XCTestCase {
     }
     
     func testReplyBlockquote() {
-        let htmlString = "<blockquote><a href=\"https://matrix.to/#/someroom/someevent\">In reply to</a> <a href=\"https://matrix.to/#/@user:matrix.org\">@user:matrix.org</a><br>The future is <code>swift run tools</code> 😎</blockquote>"
+        let htmlString = "<blockquote><a href=\"https://matrix.to/#/someroom/someevent\">In reply to</a> <a href=\"https://matrix.to/#/@user:matrix.pesbc.chat\">@user:matrix.pesbc.chat</a><br>The future is <code>swift run tools</code> 😎</blockquote>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
@@ -374,9 +374,9 @@ class AttributedStringBuilderTests: XCTestCase {
     
     func testMultipleGroupedBlockquotes() {
         let htmlString = """
-        <blockquote>First blockquote with a <a href=\"https://www.matrix.org/\">link</a> in it</blockquote>
-        <blockquote>Second blockquote with a <a href=\"https://www.matrix.org/\">link</a> in it</blockquote>
-        <blockquote>Third blockquote with a <a href=\"https://www.matrix.org/\">link</a> in it</blockquote>
+        <blockquote>First blockquote with a <a href=\"https://www.matrix.pesbc.chat/\">link</a> in it</blockquote>
+        <blockquote>Second blockquote with a <a href=\"https://www.matrix.pesbc.chat/\">link</a> in it</blockquote>
+        <blockquote>Third blockquote with a <a href=\"https://www.matrix.pesbc.chat/\">link</a> in it</blockquote>
         """
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
@@ -399,11 +399,11 @@ class AttributedStringBuilderTests: XCTestCase {
     func testMultipleSeparatedBlockquotes() {
         let htmlString = """
         First
-        <blockquote>blockquote with a <a href=\"https://www.matrix.org/\">link</a> in it</blockquote>
+        <blockquote>blockquote with a <a href=\"https://www.matrix.pesbc.chat/\">link</a> in it</blockquote>
         Second
-        <blockquote>blockquote with a <a href=\"https://www.matrix.org/\">link</a> in it</blockquote>
+        <blockquote>blockquote with a <a href=\"https://www.matrix.pesbc.chat/\">link</a> in it</blockquote>
         Third
-        <blockquote>blockquote with a <a href=\"https://www.matrix.org/\">link</a> in it</blockquote>
+        <blockquote>blockquote with a <a href=\"https://www.matrix.pesbc.chat/\">link</a> in it</blockquote>
         """
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
@@ -426,91 +426,91 @@ class AttributedStringBuilderTests: XCTestCase {
     }
     
     func testUserPermalinkMentionAtachment() {
-        let string = "https://matrix.to/#/@test:matrix.org"
+        let string = "https://matrix.to/#/@test:matrix.pesbc.chat"
         let attributedStringFromHTML = attributedStringBuilder.fromHTML(string)
         XCTAssertNotNil(attributedStringFromHTML?.attachment)
-        XCTAssertEqual(attributedStringFromHTML?.userID, "@test:matrix.org")
+        XCTAssertEqual(attributedStringFromHTML?.userID, "@test:matrix.pesbc.chat")
         XCTAssertEqual(attributedStringFromHTML?.link?.absoluteString, string)
         let attributedStringFromPlain = attributedStringBuilder.fromPlain(string)
         XCTAssertNotNil(attributedStringFromPlain?.attachment)
-        XCTAssertEqual(attributedStringFromPlain?.userID, "@test:matrix.org")
+        XCTAssertEqual(attributedStringFromPlain?.userID, "@test:matrix.pesbc.chat")
         XCTAssertEqual(attributedStringFromPlain?.link?.absoluteString, string)
     }
     
     func testUserIDMentionAtachment() {
-        let string = "@test:matrix.org"
+        let string = "@test:matrix.pesbc.chat"
         let attributedStringFromHTML = attributedStringBuilder.fromHTML(string)
         XCTAssertNotNil(attributedStringFromHTML?.attachment)
-        XCTAssertEqual(attributedStringFromHTML?.userID, "@test:matrix.org")
-        XCTAssertEqual(attributedStringFromHTML?.link?.absoluteString, "https://matrix.to/#/@test:matrix.org")
+        XCTAssertEqual(attributedStringFromHTML?.userID, "@test:matrix.pesbc.chat")
+        XCTAssertEqual(attributedStringFromHTML?.link?.absoluteString, "https://matrix.to/#/@test:matrix.pesbc.chat")
         let attributedStringFromPlain = attributedStringBuilder.fromPlain(string)
         XCTAssertNotNil(attributedStringFromPlain?.attachment)
-        XCTAssertEqual(attributedStringFromPlain?.userID, "@test:matrix.org")
-        XCTAssertEqual(attributedStringFromPlain?.link?.absoluteString, "https://matrix.to/#/@test:matrix.org")
+        XCTAssertEqual(attributedStringFromPlain?.userID, "@test:matrix.pesbc.chat")
+        XCTAssertEqual(attributedStringFromPlain?.link?.absoluteString, "https://matrix.to/#/@test:matrix.pesbc.chat")
     }
     
     func testRoomIDPermalinkMentionAttachment() {
-        let string = "https://matrix.to/#/!test:matrix.org"
+        let string = "https://matrix.to/#/!test:matrix.pesbc.chat"
         let attributedStringFromHTML = attributedStringBuilder.fromHTML(string)
         XCTAssertNotNil(attributedStringFromHTML?.attachment)
-        XCTAssertEqual(attributedStringFromHTML?.roomID, "!test:matrix.org")
+        XCTAssertEqual(attributedStringFromHTML?.roomID, "!test:matrix.pesbc.chat")
         XCTAssertEqual(attributedStringFromHTML?.link?.absoluteString, string)
         let attributedStringFromPlain = attributedStringBuilder.fromPlain(string)
         XCTAssertNotNil(attributedStringFromPlain?.attachment)
-        XCTAssertEqual(attributedStringFromHTML?.roomID, "!test:matrix.org")
+        XCTAssertEqual(attributedStringFromHTML?.roomID, "!test:matrix.pesbc.chat")
         XCTAssertEqual(attributedStringFromPlain?.link?.absoluteString, string)
     }
     
     func testRoomAliasPermalinkMentionAttachment() {
-        let string = "https://matrix.to/#/#test:matrix.org"
+        let string = "https://matrix.to/#/#test:matrix.pesbc.chat"
         let attributedStringFromHTML = attributedStringBuilder.fromHTML(string)
         XCTAssertNotNil(attributedStringFromHTML?.attachment)
-        XCTAssertEqual(attributedStringFromHTML?.roomAlias, "#test:matrix.org")
-        XCTAssertEqual(attributedStringFromHTML?.link?.absoluteString, "https://matrix.to/#/%23test:matrix.org")
+        XCTAssertEqual(attributedStringFromHTML?.roomAlias, "#test:matrix.pesbc.chat")
+        XCTAssertEqual(attributedStringFromHTML?.link?.absoluteString, "https://matrix.to/#/%23test:matrix.pesbc.chat")
         let attributedStringFromPlain = attributedStringBuilder.fromPlain(string)
         XCTAssertNotNil(attributedStringFromPlain?.attachment)
-        XCTAssertEqual(attributedStringFromHTML?.roomAlias, "#test:matrix.org")
-        XCTAssertEqual(attributedStringFromPlain?.link?.absoluteString, "https://matrix.to/#/%23test:matrix.org")
+        XCTAssertEqual(attributedStringFromHTML?.roomAlias, "#test:matrix.pesbc.chat")
+        XCTAssertEqual(attributedStringFromPlain?.link?.absoluteString, "https://matrix.to/#/%23test:matrix.pesbc.chat")
     }
     
     func testRoomAliasMentionAttachment() {
-        let string = "#test:matrix.org"
+        let string = "#test:matrix.pesbc.chat"
         let attributedStringFromHTML = attributedStringBuilder.fromHTML(string)
         XCTAssertNotNil(attributedStringFromHTML?.attachment)
-        XCTAssertEqual(attributedStringFromHTML?.roomAlias, "#test:matrix.org")
-        XCTAssertEqual(attributedStringFromHTML?.link?.absoluteString, "https://matrix.to/#/%23test:matrix.org")
+        XCTAssertEqual(attributedStringFromHTML?.roomAlias, "#test:matrix.pesbc.chat")
+        XCTAssertEqual(attributedStringFromHTML?.link?.absoluteString, "https://matrix.to/#/%23test:matrix.pesbc.chat")
         let attributedStringFromPlain = attributedStringBuilder.fromPlain(string)
         XCTAssertNotNil(attributedStringFromPlain?.attachment)
-        XCTAssertEqual(attributedStringFromHTML?.roomAlias, "#test:matrix.org")
-        XCTAssertEqual(attributedStringFromPlain?.link?.absoluteString, "https://matrix.to/#/%23test:matrix.org")
+        XCTAssertEqual(attributedStringFromHTML?.roomAlias, "#test:matrix.pesbc.chat")
+        XCTAssertEqual(attributedStringFromPlain?.link?.absoluteString, "https://matrix.to/#/%23test:matrix.pesbc.chat")
     }
     
     func testEventRoomIDPermalinkMentionAttachment() {
-        let string = "https://matrix.to/#/!test:matrix.org/$test"
+        let string = "https://matrix.to/#/!test:matrix.pesbc.chat/$test"
         let attributedStringFromHTML = attributedStringBuilder.fromHTML(string)
         XCTAssertNotNil(attributedStringFromHTML?.attachment)
-        XCTAssertEqual(attributedStringFromHTML?.eventOnRoomID, .some(.init(roomID: "!test:matrix.org", eventID: "$test")))
+        XCTAssertEqual(attributedStringFromHTML?.eventOnRoomID, .some(.init(roomID: "!test:matrix.pesbc.chat", eventID: "$test")))
         XCTAssertEqual(attributedStringFromHTML?.link?.absoluteString, string)
         let attributedStringFromPlain = attributedStringBuilder.fromPlain(string)
         XCTAssertNotNil(attributedStringFromPlain?.attachment)
-        XCTAssertEqual(attributedStringFromPlain?.eventOnRoomID, .some(.init(roomID: "!test:matrix.org", eventID: "$test")))
+        XCTAssertEqual(attributedStringFromPlain?.eventOnRoomID, .some(.init(roomID: "!test:matrix.pesbc.chat", eventID: "$test")))
         XCTAssertEqual(attributedStringFromPlain?.link?.absoluteString, string)
     }
     
     func testEventRoomAliasPermalinkMentionAttachment() {
-        let string = "https://matrix.to/#/#test:matrix.org/$test"
+        let string = "https://matrix.to/#/#test:matrix.pesbc.chat/$test"
         let attributedStringFromHTML = attributedStringBuilder.fromHTML(string)
         XCTAssertNotNil(attributedStringFromHTML?.attachment)
-        XCTAssertEqual(attributedStringFromHTML?.eventOnRoomAlias, .some(.init(alias: "#test:matrix.org", eventID: "$test")))
-        XCTAssertEqual(attributedStringFromHTML?.link?.absoluteString, "https://matrix.to/#/%23test:matrix.org/$test")
+        XCTAssertEqual(attributedStringFromHTML?.eventOnRoomAlias, .some(.init(alias: "#test:matrix.pesbc.chat", eventID: "$test")))
+        XCTAssertEqual(attributedStringFromHTML?.link?.absoluteString, "https://matrix.to/#/%23test:matrix.pesbc.chat/$test")
         let attributedStringFromPlain = attributedStringBuilder.fromPlain(string)
         XCTAssertNotNil(attributedStringFromPlain?.attachment)
-        XCTAssertEqual(attributedStringFromPlain?.eventOnRoomAlias, .some(.init(alias: "#test:matrix.org", eventID: "$test")))
-        XCTAssertEqual(attributedStringFromPlain?.link?.absoluteString, "https://matrix.to/#/%23test:matrix.org/$test")
+        XCTAssertEqual(attributedStringFromPlain?.eventOnRoomAlias, .some(.init(alias: "#test:matrix.pesbc.chat", eventID: "$test")))
+        XCTAssertEqual(attributedStringFromPlain?.link?.absoluteString, "https://matrix.to/#/%23test:matrix.pesbc.chat/$test")
     }
     
     func testUserMentionAtachmentInBlockQuotes() {
-        let link = "https://matrix.to/#/@test:matrix.org"
+        let link = "https://matrix.to/#/@test:matrix.pesbc.chat"
         let string = "<blockquote>hello \(link) how are you?</blockquote>"
         guard let attributedStringFromHTML = attributedStringBuilder.fromHTML(string) else {
             XCTFail("Attributed string is nil")
@@ -566,7 +566,7 @@ class AttributedStringBuilderTests: XCTestCase {
         let attributedStringFromPlain = attributedStringBuilder.fromPlain(string)
         checkLinkIn(attributedString: attributedStringFromPlain, expectedLink: string, expectedRuns: 1)
         
-        let string2 = "https://matrix.to/#/@roomusername:matrix.org"
+        let string2 = "https://matrix.to/#/@roomusername:matrix.pesbc.chat"
         let attributedStringFromHTML2 = attributedStringBuilder.fromHTML(string2)
         checkLinkIn(attributedString: attributedStringFromHTML2, expectedLink: string2, expectedRuns: 1)
         checkAttachment(attributedString: attributedStringFromHTML2, expectedRuns: 1)
@@ -576,32 +576,32 @@ class AttributedStringBuilderTests: XCTestCase {
     }
     
     func testURLsAreIgnoredInCode() {
-        var htmlString = "<pre><code>test https://matrix.org test</code></pre>"
+        var htmlString = "<pre><code>test https://matrix.pesbc.chat test</code></pre>"
         var attributedStringFromHTML = attributedStringBuilder.fromHTML(htmlString)
         XCTAssert(attributedStringFromHTML?.runs.count == 1)
         XCTAssertNil(attributedStringFromHTML?.link)
         
-        htmlString = "<pre><code>matrix.org</code></pre>"
+        htmlString = "<pre><code>matrix.pesbc.chat</code></pre>"
         attributedStringFromHTML = attributedStringBuilder.fromHTML(htmlString)
         XCTAssert(attributedStringFromHTML?.runs.count == 1)
         XCTAssertNil(attributedStringFromHTML?.link)
     }
     
     func testHyperlinksAreIgnoredInCode() {
-        let htmlString = "<pre><code>test <a href=\"https://matrix.org\">matrix</a> test</code></pre>"
+        let htmlString = "<pre><code>test <a href=\"https://matrix.pesbc.chat\">matrix</a> test</code></pre>"
         let attributedStringFromHTML = attributedStringBuilder.fromHTML(htmlString)
         XCTAssertNil(attributedStringFromHTML?.link)
     }
     
     func testUserMentionIsIgnoredInCode() {
-        let htmlString = "<pre><code>test https://matrix.org/#/@test:matrix.org test</code></pre>"
+        let htmlString = "<pre><code>test https://matrix.pesbc.chat/#/@test:matrix.pesbc.chat test</code></pre>"
         let attributedStringFromHTML = attributedStringBuilder.fromHTML(htmlString)
         XCTAssert(attributedStringFromHTML?.runs.count == 1)
         XCTAssertNil(attributedStringFromHTML?.attachment)
     }
     
     func testPlainTextUserMentionIsIgnoredInCode() {
-        let htmlString = "<pre><code>Hey @some.user.ceriu:matrix.org</code></pre>"
+        let htmlString = "<pre><code>Hey @some.user.ceriu:matrix.pesbc.chat</code></pre>"
         let attributedStringFromHTML = attributedStringBuilder.fromHTML(htmlString)
         XCTAssert(attributedStringFromHTML?.runs.count == 1)
         XCTAssertNil(attributedStringFromHTML?.attachment)
@@ -615,7 +615,7 @@ class AttributedStringBuilderTests: XCTestCase {
     }
     
     func testMultipleMentions() {
-        guard let url = URL(string: "https://matrix.to/#/@test:matrix.org") else {
+        guard let url = URL(string: "https://matrix.to/#/@test:matrix.pesbc.chat") else {
             XCTFail("Invalid url")
             return
         }
@@ -661,7 +661,7 @@ class AttributedStringBuilderTests: XCTestCase {
     }
     
     func testMultipleMentions2() {
-        guard let url = URL(string: "https://matrix.to/#/@test:matrix.org") else {
+        guard let url = URL(string: "https://matrix.to/#/@test:matrix.pesbc.chat") else {
             XCTFail("Invalid url")
             return
         }
@@ -709,7 +709,7 @@ class AttributedStringBuilderTests: XCTestCase {
     // MARK: - Phishing prevention
     
     func testPhishingLink() {
-        let htmlString = "Hey check the following link <a href=\"https://matrix.org\">https://element.io</a>"
+        let htmlString = "Hey check the following link <a href=\"https://matrix.pesbc.chat\">https://element.io</a>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
@@ -725,12 +725,12 @@ class AttributedStringBuilderTests: XCTestCase {
             return
         }
         XCTAssertTrue(link.requiresConfirmation)
-        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.org")
+        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.pesbc.chat")
         XCTAssertEqual(link.confirmationParameters?.displayString, "https://element.io")
     }
     
     func testValidLink() {
-        let htmlString = "Hey check the following <a href=\"https://matrix.org\">link</a>"
+        let htmlString = "Hey check the following <a href=\"https://matrix.pesbc.chat\">link</a>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
@@ -742,11 +742,11 @@ class AttributedStringBuilderTests: XCTestCase {
             return
         }
         XCTAssertFalse(link.requiresConfirmation)
-        XCTAssertEqual(link.absoluteString, "https://matrix.org")
+        XCTAssertEqual(link.absoluteString, "https://matrix.pesbc.chat")
     }
     
     func testValidLinkWithRTLOverride() {
-        let htmlString = "<a href=\"https://matrix.org\">\u{202E}https://matrix.org</a>"
+        let htmlString = "<a href=\"https://matrix.pesbc.chat\">\u{202E}https://matrix.pesbc.chat</a>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
@@ -758,18 +758,18 @@ class AttributedStringBuilderTests: XCTestCase {
             return
         }
         XCTAssertFalse(link.requiresConfirmation)
-        XCTAssertEqual(link.absoluteString, "https://matrix.org")
+        XCTAssertEqual(link.absoluteString, "https://matrix.pesbc.chat")
     }
     
     func testPhishingUserID() {
-        let htmlString = "Hey check the following user <a href=\"https://matrix.org\">@alice:matrix.org</a>"
+        let htmlString = "Hey check the following user <a href=\"https://matrix.pesbc.chat\">@alice:matrix.pesbc.chat</a>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
             return
         }
         
-        XCTAssertEqual(String(attributedString.characters), "Hey check the following user @alice:matrix.org")
+        XCTAssertEqual(String(attributedString.characters), "Hey check the following user @alice:matrix.pesbc.chat")
         
         XCTAssertEqual(attributedString.runs.count, 2)
         
@@ -778,12 +778,12 @@ class AttributedStringBuilderTests: XCTestCase {
             return
         }
         XCTAssertTrue(link.requiresConfirmation)
-        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.org")
-        XCTAssertEqual(link.confirmationParameters?.displayString, "@alice:matrix.org")
+        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.pesbc.chat")
+        XCTAssertEqual(link.confirmationParameters?.displayString, "@alice:matrix.pesbc.chat")
     }
     
     func testValidUserIDLink() {
-        let htmlString = "Hey check the following user <a href=\"https://matrix.to/#/@alice:matrix.org\">@alice:matrix.org</a>"
+        let htmlString = "Hey check the following user <a href=\"https://matrix.to/#/@alice:matrix.pesbc.chat\">@alice:matrix.pesbc.chat</a>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
@@ -797,18 +797,18 @@ class AttributedStringBuilderTests: XCTestCase {
             return
         }
         XCTAssertFalse(link.requiresConfirmation)
-        XCTAssertEqual(link.absoluteString, "https://matrix.to/#/@alice:matrix.org")
+        XCTAssertEqual(link.absoluteString, "https://matrix.to/#/@alice:matrix.pesbc.chat")
     }
     
     func testPhishingUserIDWithAnotherUserIDPermalink() {
-        let htmlString = "Hey check the following user <a href=\"https://matrix.to/#/@bob:matrix.org\">@alice:matrix.org</a>"
+        let htmlString = "Hey check the following user <a href=\"https://matrix.to/#/@bob:matrix.pesbc.chat\">@alice:matrix.pesbc.chat</a>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
             return
         }
         
-        XCTAssertEqual(String(attributedString.characters), "Hey check the following user @alice:matrix.org")
+        XCTAssertEqual(String(attributedString.characters), "Hey check the following user @alice:matrix.pesbc.chat")
         
         XCTAssertEqual(attributedString.runs.count, 2)
         
@@ -817,19 +817,19 @@ class AttributedStringBuilderTests: XCTestCase {
             return
         }
         XCTAssertTrue(link.requiresConfirmation)
-        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.to/#/@bob:matrix.org")
-        XCTAssertEqual(link.confirmationParameters?.displayString, "@alice:matrix.org")
+        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.to/#/@bob:matrix.pesbc.chat")
+        XCTAssertEqual(link.confirmationParameters?.displayString, "@alice:matrix.pesbc.chat")
     }
     
     func testPhishingUserIDWithDistractingCharacters() {
-        let htmlString = "Hey check the following user <a href=\"https://matrix.org\">👉️ @alice:matrix.org</a>"
+        let htmlString = "Hey check the following user <a href=\"https://matrix.pesbc.chat\">👉️ @alice:matrix.pesbc.chat</a>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
             return
         }
         
-        XCTAssertEqual(String(attributedString.characters), "Hey check the following user 👉️ @alice:matrix.org")
+        XCTAssertEqual(String(attributedString.characters), "Hey check the following user 👉️ @alice:matrix.pesbc.chat")
         
         XCTAssertEqual(attributedString.runs.count, 2)
         
@@ -838,12 +838,12 @@ class AttributedStringBuilderTests: XCTestCase {
             return
         }
         XCTAssertTrue(link.requiresConfirmation)
-        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.org")
-        XCTAssertEqual(link.confirmationParameters?.displayString, "👉️ @alice:matrix.org")
+        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.pesbc.chat")
+        XCTAssertEqual(link.confirmationParameters?.displayString, "👉️ @alice:matrix.pesbc.chat")
     }
     
     func testPhishingLinkWithDistractingCharacters() {
-        let htmlString = "Hey check the following link <a href=\"https://matrix.org\">👉️ https://element.io</a>"
+        let htmlString = "Hey check the following link <a href=\"https://matrix.pesbc.chat\">👉️ https://element.io</a>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
@@ -859,7 +859,7 @@ class AttributedStringBuilderTests: XCTestCase {
             return
         }
         XCTAssertTrue(link.requiresConfirmation)
-        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.org")
+        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.pesbc.chat")
         XCTAssertEqual(link.confirmationParameters?.displayString, "👉️ https://element.io")
     }
     
@@ -882,7 +882,7 @@ class AttributedStringBuilderTests: XCTestCase {
     }
     
     func testPhishingLinkWithFakeDotCharacter() {
-        let htmlString = "Hey check the following link <a href=\"https://matrix.org\">https://element﹒io</a>"
+        let htmlString = "Hey check the following link <a href=\"https://matrix.pesbc.chat\">https://element﹒io</a>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
@@ -898,12 +898,12 @@ class AttributedStringBuilderTests: XCTestCase {
             return
         }
         XCTAssertTrue(link.requiresConfirmation)
-        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.org")
+        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.pesbc.chat")
         XCTAssertEqual(link.confirmationParameters?.displayString, "https://element﹒io")
     }
     
     func testPhishingMatrixPermalinks() {
-        let htmlString = "Hey check the following room <a href=\"https://matrix.to/#/#offensive-room:matrix.org\">https://matrix.to/#/#beautiful-room:matrix.org</a>"
+        let htmlString = "Hey check the following room <a href=\"https://matrix.to/#/#offensive-room:matrix.pesbc.chat\">https://matrix.to/#/#beautiful-room:matrix.pesbc.chat</a>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
@@ -918,12 +918,12 @@ class AttributedStringBuilderTests: XCTestCase {
         }
         
         XCTAssertTrue(link.requiresConfirmation)
-        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.to/#/%23offensive-room:matrix.org")
-        XCTAssertEqual(link.confirmationParameters?.displayString, "https://matrix.to/#/#beautiful-room:matrix.org")
+        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.to/#/%23offensive-room:matrix.pesbc.chat")
+        XCTAssertEqual(link.confirmationParameters?.displayString, "https://matrix.to/#/#beautiful-room:matrix.pesbc.chat")
     }
     
     func testValidMatrixPermalinks() {
-        let htmlString = "Hey check the following room <a href=\"https://matrix.to/#/#beautiful-room:matrix.org\">https://matrix.to/#/#beautiful-room:matrix.org</a>"
+        let htmlString = "Hey check the following room <a href=\"https://matrix.to/#/#beautiful-room:matrix.pesbc.chat\">https://matrix.to/#/#beautiful-room:matrix.pesbc.chat</a>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
@@ -937,18 +937,18 @@ class AttributedStringBuilderTests: XCTestCase {
         }
         
         XCTAssertFalse(link.requiresConfirmation)
-        XCTAssertEqual(link.absoluteString, "https://matrix.to/#/%23beautiful-room:matrix.org")
+        XCTAssertEqual(link.absoluteString, "https://matrix.to/#/%23beautiful-room:matrix.pesbc.chat")
     }
     
     func testPhishingRoomAlias() {
-        let htmlString = "Hey check the following room <a href=\"https://matrix.org\">#room:matrix.org</a>"
+        let htmlString = "Hey check the following room <a href=\"https://matrix.pesbc.chat\">#room:matrix.pesbc.chat</a>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
             return
         }
         
-        XCTAssertEqual(String(attributedString.characters), "Hey check the following room #room:matrix.org")
+        XCTAssertEqual(String(attributedString.characters), "Hey check the following room #room:matrix.pesbc.chat")
         
         XCTAssertEqual(attributedString.runs.count, 2)
         
@@ -957,12 +957,12 @@ class AttributedStringBuilderTests: XCTestCase {
             return
         }
         XCTAssertTrue(link.requiresConfirmation)
-        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.org")
-        XCTAssertEqual(link.confirmationParameters?.displayString, "#room:matrix.org")
+        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.pesbc.chat")
+        XCTAssertEqual(link.confirmationParameters?.displayString, "#room:matrix.pesbc.chat")
     }
     
     func testValidRoomAliasLink() {
-        let htmlString = "Hey check the following user <a href=\"https://matrix.to/#/#room:matrix.org\">#room:matrix.org</a>"
+        let htmlString = "Hey check the following user <a href=\"https://matrix.to/#/#room:matrix.pesbc.chat\">#room:matrix.pesbc.chat</a>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
@@ -976,18 +976,18 @@ class AttributedStringBuilderTests: XCTestCase {
             return
         }
         XCTAssertFalse(link.requiresConfirmation)
-        XCTAssertEqual(link.absoluteString, "https://matrix.to/#/%23room:matrix.org")
+        XCTAssertEqual(link.absoluteString, "https://matrix.to/#/%23room:matrix.pesbc.chat")
     }
     
     func testPhishingRoomAliasWithAnotherRoomAliasPermalink() {
-        let htmlString = "Hey check the following room <a href=\"https://matrix.to/#/#another-room:matrix.org\">#room:matrix.org</a>"
+        let htmlString = "Hey check the following room <a href=\"https://matrix.to/#/#another-room:matrix.pesbc.chat\">#room:matrix.pesbc.chat</a>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
             return
         }
         
-        XCTAssertEqual(String(attributedString.characters), "Hey check the following room #room:matrix.org")
+        XCTAssertEqual(String(attributedString.characters), "Hey check the following room #room:matrix.pesbc.chat")
         
         XCTAssertEqual(attributedString.runs.count, 2)
         
@@ -996,19 +996,19 @@ class AttributedStringBuilderTests: XCTestCase {
             return
         }
         XCTAssertTrue(link.requiresConfirmation)
-        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.to/#/%23another-room:matrix.org")
-        XCTAssertEqual(link.confirmationParameters?.displayString, "#room:matrix.org")
+        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.to/#/%23another-room:matrix.pesbc.chat")
+        XCTAssertEqual(link.confirmationParameters?.displayString, "#room:matrix.pesbc.chat")
     }
     
     func testRoomAliasWithDistractingCharacters() {
-        let htmlString = "Hey check the following user <a href=\"https://matrix.org\">👉️ #room:matrix.org</a>"
+        let htmlString = "Hey check the following user <a href=\"https://matrix.pesbc.chat\">👉️ #room:matrix.pesbc.chat</a>"
         
         guard let attributedString = attributedStringBuilder.fromHTML(htmlString) else {
             XCTFail("Could not build the attributed string")
             return
         }
         
-        XCTAssertEqual(String(attributedString.characters), "Hey check the following user 👉️ #room:matrix.org")
+        XCTAssertEqual(String(attributedString.characters), "Hey check the following user 👉️ #room:matrix.pesbc.chat")
         
         XCTAssertEqual(attributedString.runs.count, 2)
         
@@ -1017,8 +1017,8 @@ class AttributedStringBuilderTests: XCTestCase {
             return
         }
         XCTAssertTrue(link.requiresConfirmation)
-        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.org")
-        XCTAssertEqual(link.confirmationParameters?.displayString, "👉️ #room:matrix.org")
+        XCTAssertEqual(link.confirmationParameters?.internalURL.absoluteString, "https://matrix.pesbc.chat")
+        XCTAssertEqual(link.confirmationParameters?.displayString, "👉️ #room:matrix.pesbc.chat")
     }
     
     // MARK: - Private

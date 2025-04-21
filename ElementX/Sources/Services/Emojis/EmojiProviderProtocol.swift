@@ -19,8 +19,8 @@ struct EmojiItem: Equatable, Identifiable {
 }
 
 struct EmojiCategory: Equatable, Identifiable {
-    static let frequentlyUsedCategoryIdentifier = "io.element.elementx.frequently_used"
-    
+    static let frequentlyUsedCategoryIdentifier = "io.pesbc.pesenger.frequently_used"
+
     let id: String
     let emojis: [EmojiItem]
 }
@@ -34,7 +34,7 @@ enum EmojiProviderState {
 struct FrequentlyUsedEmoji: Codable, Hashable {
     let count: UInt
     let key: String
-    
+
     static func == (lhs: FrequentlyUsedEmoji, rhs: FrequentlyUsedEmoji) -> Bool {
         lhs.key == rhs.key
     }
@@ -43,9 +43,9 @@ struct FrequentlyUsedEmoji: Codable, Hashable {
 @MainActor
 protocol EmojiProviderProtocol {
     var state: EmojiProviderState { get }
-    
+
     func categories(searchString: String?) async -> [EmojiCategory]
-    
+
     func frequentlyUsedSystemEmojis() -> [String]
     func markEmojiAsFrequentlyUsed(_ emoji: String)
 }

@@ -134,7 +134,7 @@ class LoginScreenViewModelTests: XCTestCase {
     }
 
     func testOIDCServer() async throws {
-        // Given the screen configured for matrix.org
+        // Given the screen configured for matrix.pesbc.chat
         await setupViewModel()
         
         // When entering a username for a user on a homeserver with OIDC.
@@ -148,7 +148,7 @@ class LoginScreenViewModelTests: XCTestCase {
     }
     
     func testUnsupportedServer() async throws {
-        // Given the screen configured for matrix.org
+        // Given the screen configured for matrix.pesbc.chat
         await setupViewModel()
         XCTAssertNil(context.alertInfo, "There shouldn't be an alert when the screen loads.")
         

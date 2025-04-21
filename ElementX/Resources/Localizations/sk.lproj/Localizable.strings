@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Zadajte...";
 "screen_start_chat_join_room_by_address_room_found" = "Nájdená zodpovedajúca miestnosť";
 "screen_start_chat_join_room_by_address_room_not_found" = "Miestnosť sa nenašla";
-"screen_start_chat_join_room_by_address_supporting_text" = "napr. #nazov-miestnosti:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "napr. #nazov-miestnosti:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "Správa nebola odoslaná, pretože sa zmenila overená totožnosť používateľa %1$@.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "Správa nebola odoslaná, pretože %1$@ neoveril/a všetky zariadenia.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Správa nebola odoslaná, pretože ste neoverili jedno alebo viac svojich zariadení.";
@@ -603,7 +603,7 @@
 "screen_bug_report_include_screenshot" = "Odoslať snímku obrazovky";
 "screen_bug_report_logs_description" = "K vašej správe budú priložené záznamy o chybe, aby sme sa uistili, že všetko funguje správne. Ak chcete odoslať správu bez záznamov o chybe, vypnite toto nastavenie.";
 "screen_bug_report_view_logs" = "Zobraziť záznamy";
-"screen_change_account_provider_matrix_org_subtitle" = "Matrix.org je veľký bezplatný server vo verejnej sieti Matrix na bezpečnú, decentralizovanú komunikáciu, ktorý prevádzkuje nadácia Matrix.org.";
+"screen_change_account_provider_matrix_org_subtitle" = "matrix.pesbc.chat je veľký bezplatný server vo verejnej sieti Matrix na bezpečnú, decentralizovanú komunikáciu, ktorý prevádzkuje nadácia matrix.pesbc.chat.";
 "screen_change_account_provider_other" = "Iný";
 "screen_change_account_provider_subtitle" = "Použite iného poskytovateľa účtu, ako napríklad vlastný súkromný server alebo pracovný účet.";
 "screen_change_account_provider_title" = "Zmeniť poskytovateľa účtu";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "Pridať emoji";
 "screen_room_timeline_beginning_of_room" = "Toto je začiatok %1$@.";
 "screen_room_timeline_beginning_of_room_no_name" = "Toto je začiatok tejto konverzácie.";
-"screen_room_timeline_legacy_call" = "Nepodporovaný hovor. Opýtajte sa, či volajúci môže použiť novú aplikáciu Element X.";
+"screen_room_timeline_legacy_call" = "Nepodporovaný hovor. Opýtajte sa, či volajúci môže použiť novú aplikáciu PESenger.";
 "screen_room_timeline_less_reactions" = "Zobraziť menej";
 "screen_room_timeline_message_copied" = "Správa skopírovaná";
 "screen_room_timeline_no_permission_to_post" = "Nemáte povolenie uverejňovať príspevky v tejto miestnosti";

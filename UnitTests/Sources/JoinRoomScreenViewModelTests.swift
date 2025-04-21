@@ -116,13 +116,13 @@ class JoinRoomScreenViewModelTests: XCTestCase {
         let expectation = expectation(description: "Wait for the user to be ignored")
         clientProxy.ignoreUserClosure = { userID in
             defer { expectation.fulfill() }
-            XCTAssertEqual(userID, "@test:matrix.org")
+            XCTAssertEqual(userID, "@test:matrix.pesbc.chat")
             return .success(())
         }
         
         try await deferFulfillment(viewModel.context.$viewState) { $0.roomDetails != nil }.fulfill()
         
-        context.send(viewAction: .declineInviteAndBlock(userID: "@test:matrix.org"))
+        context.send(viewAction: .declineInviteAndBlock(userID: "@test:matrix.pesbc.chat"))
         
         XCTAssertEqual(viewModel.context.alertInfo?.id, .declineInviteAndBlock)
         

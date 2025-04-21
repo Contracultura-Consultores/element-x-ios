@@ -13,7 +13,7 @@ import XCTest
 @MainActor
 class PillContextTests: XCTestCase {
     func testUser() async {
-        let id = "@test:matrix.org"
+        let id = "@test:matrix.pesbc.chat"
         let proxyMock = JoinedRoomProxyMock(.init(name: "Test"))
         let subject = CurrentValueSubject<[RoomMemberProxyProtocol], Never>([])
         proxyMock.membersPublisher = subject.asCurrentValuePublisher()
@@ -44,7 +44,7 @@ class PillContextTests: XCTestCase {
     }
     
     func testOwnUser() {
-        let id = "@test:matrix.org"
+        let id = "@test:matrix.pesbc.chat"
         let proxyMock = JoinedRoomProxyMock(.init(name: "Test", ownUserID: id))
         let subject = CurrentValueSubject<[RoomMemberProxyProtocol], Never>([])
         proxyMock.membersPublisher = subject.asCurrentValuePublisher()
@@ -145,7 +145,7 @@ class PillContextTests: XCTestCase {
         let clientMock = ClientProxyMock(.init())
         clientMock.roomSummaryForAliasReturnValue = .mock(id: "2",
                                                           name: "Foundation and Empire",
-                                                          canonicalAlias: "#foundation-and-empire:matrix.org")
+                                                          canonicalAlias: "#foundation-and-empire:matrix.pesbc.chat")
         let mock = TimelineViewModel(roomProxy: proxyMock,
                                      timelineController: mockController,
                                      mediaProvider: MediaProviderMock(configuration: .init()),
@@ -158,7 +158,7 @@ class PillContextTests: XCTestCase {
                                      emojiProvider: EmojiProvider(appSettings: ServiceLocator.shared.settings),
                                      timelineControllerFactory: TimelineControllerFactoryMock(.init()),
                                      clientProxy: clientMock)
-        let context = PillContext(timelineContext: mock.context, data: PillTextAttachmentData(type: .roomAlias("#foundation-and-empire:matrix.org"), font: .preferredFont(forTextStyle: .body)))
+        let context = PillContext(timelineContext: mock.context, data: PillTextAttachmentData(type: .roomAlias("#foundation-and-empire:matrix.pesbc.chat"), font: .preferredFont(forTextStyle: .body)))
         
         XCTAssertFalse(context.viewState.isOwnMention)
         XCTAssertFalse(context.viewState.isUndefined)
@@ -181,11 +181,11 @@ class PillContextTests: XCTestCase {
                                      emojiProvider: EmojiProvider(appSettings: ServiceLocator.shared.settings),
                                      timelineControllerFactory: TimelineControllerFactoryMock(.init()),
                                      clientProxy: ClientProxyMock(.init()))
-        let context = PillContext(timelineContext: mock.context, data: PillTextAttachmentData(type: .roomAlias("#foundation-and-empire:matrix.org"), font: .preferredFont(forTextStyle: .body)))
+        let context = PillContext(timelineContext: mock.context, data: PillTextAttachmentData(type: .roomAlias("#foundation-and-empire:matrix.pesbc.chat"), font: .preferredFont(forTextStyle: .body)))
         
         XCTAssertFalse(context.viewState.isOwnMention)
         XCTAssertFalse(context.viewState.isUndefined)
-        XCTAssertEqual(context.viewState.displayText, "#foundation-and-empire:matrix.org")
+        XCTAssertEqual(context.viewState.displayText, "#foundation-and-empire:matrix.pesbc.chat")
     }
     
     func testEventOnRoomIDMention() {
@@ -243,7 +243,7 @@ class PillContextTests: XCTestCase {
         let clientMock = ClientProxyMock(.init())
         clientMock.roomSummaryForAliasReturnValue = .mock(id: "2",
                                                           name: "Foundation and Empire",
-                                                          canonicalAlias: "#foundation-and-empire:matrix.org")
+                                                          canonicalAlias: "#foundation-and-empire:matrix.pesbc.chat")
         let mock = TimelineViewModel(roomProxy: proxyMock,
                                      timelineController: mockController,
                                      mediaProvider: MediaProviderMock(configuration: .init()),
@@ -256,7 +256,7 @@ class PillContextTests: XCTestCase {
                                      emojiProvider: EmojiProvider(appSettings: ServiceLocator.shared.settings),
                                      timelineControllerFactory: TimelineControllerFactoryMock(.init()),
                                      clientProxy: clientMock)
-        let context = PillContext(timelineContext: mock.context, data: PillTextAttachmentData(type: .event(room: .roomAlias("#foundation-and-empire:matrix.org")), font: .preferredFont(forTextStyle: .body)))
+        let context = PillContext(timelineContext: mock.context, data: PillTextAttachmentData(type: .event(room: .roomAlias("#foundation-and-empire:matrix.pesbc.chat")), font: .preferredFont(forTextStyle: .body)))
         
         XCTAssertFalse(context.viewState.isOwnMention)
         XCTAssertFalse(context.viewState.isUndefined)
@@ -279,10 +279,10 @@ class PillContextTests: XCTestCase {
                                      emojiProvider: EmojiProvider(appSettings: ServiceLocator.shared.settings),
                                      timelineControllerFactory: TimelineControllerFactoryMock(.init()),
                                      clientProxy: ClientProxyMock(.init()))
-        let context = PillContext(timelineContext: mock.context, data: PillTextAttachmentData(type: .event(room: .roomAlias("#foundation-and-empire:matrix.org")), font: .preferredFont(forTextStyle: .body)))
+        let context = PillContext(timelineContext: mock.context, data: PillTextAttachmentData(type: .event(room: .roomAlias("#foundation-and-empire:matrix.pesbc.chat")), font: .preferredFont(forTextStyle: .body)))
         
         XCTAssertFalse(context.viewState.isOwnMention)
         XCTAssertFalse(context.viewState.isUndefined)
-        XCTAssertEqual(context.viewState.displayText, "💬 > #foundation-and-empire:matrix.org")
+        XCTAssertEqual(context.viewState.displayText, "💬 > #foundation-and-empire:matrix.pesbc.chat")
     }
 }

@@ -74,8 +74,8 @@ struct DeclineAndBlockScreen: View {
 // MARK: - Previews
 
 struct DeclineAndBlockScreen_Previews: PreviewProvider, TestablePreview {
-    static let viewModel = DeclineAndBlockScreenViewModel(userID: "@alice:matrix.org",
-                                                          roomID: "!room:matrix.org",
+    static let viewModel = DeclineAndBlockScreenViewModel(userID: "@alice:matrix.pesbc.chat",
+                                                          roomID: "!room:matrix.pesbc.chat",
                                                           clientProxy: ClientProxyMock(.init()),
                                                           userIndicatorController: UserIndicatorControllerMock())
     

@@ -1024,8 +1024,8 @@ extension TimelineViewModel {
     
     static func mock(timelineKind: TimelineKind = .live, timelineController: MockTimelineController? = nil) -> TimelineViewModel {
         let clientProxyMock = ClientProxyMock(.init())
-        clientProxyMock.roomSummaryForAliasReturnValue = .mock(id: "!room:matrix.org", name: "Room")
-        clientProxyMock.roomSummaryForIdentifierReturnValue = .mock(id: "!room:matrix.org", name: "Room", canonicalAlias: "#room:matrix.org")
+        clientProxyMock.roomSummaryForAliasReturnValue = .mock(id: "!room:matrix.pesbc.chat", name: "Room")
+        clientProxyMock.roomSummaryForIdentifierReturnValue = .mock(id: "!room:matrix.pesbc.chat", name: "Room", canonicalAlias: "#room:matrix.pesbc.chat")
         return TimelineViewModel(roomProxy: JoinedRoomProxyMock(.init(name: "Preview room")),
                                  focussedEventID: nil,
                                  timelineController: timelineController ?? MockTimelineController(timelineKind: timelineKind),

@@ -318,8 +318,8 @@ class TimelineViewModelTests: XCTestCase {
     }
     
     func testShowReadReceipts() async throws {
-        let receipts: [ReadReceipt] = [.init(userID: "@alice:matrix.org", formattedTimestamp: "12:00"),
-                                       .init(userID: "@charlie:matrix.org", formattedTimestamp: "11:00")]
+        let receipts: [ReadReceipt] = [.init(userID: "@alice:matrix.pesbc.chat", formattedTimestamp: "12:00"),
+                                       .init(userID: "@charlie:matrix.pesbc.chat", formattedTimestamp: "11:00")]
         // Given 3 messages from Bob where the middle message has a reaction.
         let message = TextRoomTimelineItem(text: "Test",
                                            sender: "bob",

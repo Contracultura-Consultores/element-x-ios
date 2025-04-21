@@ -89,13 +89,13 @@ struct AuthenticationStartScreen: View {
     /// The main action buttons.
     var buttons: some View {
         VStack(spacing: 16) {
-            if context.viewState.isQRCodeLoginEnabled {
-                Button { context.send(viewAction: .loginWithQR) } label: {
-                    Label(L10n.screenOnboardingSignInWithQrCode, icon: \.qrCode)
-                }
-                .buttonStyle(.compound(.primary))
-                .accessibilityIdentifier(A11yIdentifiers.authenticationStartScreen.signInWithQr)
-            }
+            /* if context.viewState.isQRCodeLoginEnabled {
+                 Button { context.send(viewAction: .loginWithQR) } label: {
+                     Label(L10n.screenOnboardingSignInWithQrCode, icon: \.qrCode)
+                 }
+                 .buttonStyle(.compound(.primary))
+                 .accessibilityIdentifier(A11yIdentifiers.authenticationStartScreen.signInWithQr)
+             } */
             
             Button { context.send(viewAction: .loginManually) } label: {
                 Text(context.viewState.isQRCodeLoginEnabled ? L10n.screenOnboardingSignInManually : L10n.actionContinue)
@@ -103,12 +103,12 @@ struct AuthenticationStartScreen: View {
             .buttonStyle(.compound(.primary))
             .accessibilityIdentifier(A11yIdentifiers.authenticationStartScreen.signIn)
             
-            if context.viewState.showCreateAccountButton {
-                Button { context.send(viewAction: .register) } label: {
-                    Text(L10n.screenCreateAccountTitle)
-                }
-                .buttonStyle(.compound(.tertiary))
-            }
+            /* if context.viewState.showCreateAccountButton {
+                 Button { context.send(viewAction: .register) } label: {
+                     Text(L10n.screenCreateAccountTitle)
+                 }
+                 .buttonStyle(.compound(.tertiary))
+             } */
         }
         .padding(.horizontal, verticalSizeClass == .compact ? 128 : 24)
         .readableFrame()

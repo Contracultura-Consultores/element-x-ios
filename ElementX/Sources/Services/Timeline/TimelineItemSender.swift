@@ -8,7 +8,7 @@
 import UIKit
 
 struct TimelineItemSender: Identifiable, Hashable {
-    static let test = TimelineItemSender(id: "@test.matrix.org")
+    static let test = TimelineItemSender(id: "@test.matrix.pesbc.chat")
     
     let id: String
     let displayName: String?

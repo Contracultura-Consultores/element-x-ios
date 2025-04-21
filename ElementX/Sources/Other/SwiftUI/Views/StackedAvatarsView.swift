@@ -42,10 +42,10 @@ struct StackedAvatarsView: View {
 
 struct StackedAvatarsView_Previews: PreviewProvider, TestablePreview {
     static let avatars: [StackedAvatarInfo] = [
-        .init(url: nil, name: "Alice", contentID: "@alice:matrix.org"),
-        .init(url: nil, name: "Bob", contentID: "@bob:matrix.org"),
-        .init(url: nil, name: "Charlie", contentID: "@charlie:matrix.org"),
-        .init(url: nil, name: "Dan", contentID: "@charlie:matrix.org")
+        .init(url: nil, name: "Alice", contentID: "@alice:matrix.pesbc.chat"),
+        .init(url: nil, name: "Bob", contentID: "@bob:matrix.pesbc.chat"),
+        .init(url: nil, name: "Charlie", contentID: "@charlie:matrix.pesbc.chat"),
+        .init(url: nil, name: "Dan", contentID: "@charlie:matrix.pesbc.chat")
     ]
 
     static var previews: some View {

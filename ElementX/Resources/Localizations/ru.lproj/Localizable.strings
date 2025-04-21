@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Ввести...";
 "screen_start_chat_join_room_by_address_room_found" = "Соответствующая комната найдена";
 "screen_start_chat_join_room_by_address_room_not_found" = "Комната не найдена";
-"screen_start_chat_join_room_by_address_supporting_text" = "прим. #room-name:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "прим. #room-name:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "Сообщение не отправлено, потому что верифицированная личность %1$@ изменилась.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "Сообщение не отправлено, потому что %1$@ не проверил одно или несколько устройств.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Сообщение не отправлено, поскольку вы не подтвердили одно или несколько своих устройств.";
@@ -603,7 +603,7 @@
 "screen_bug_report_include_screenshot" = "Отправить снимок экрана";
 "screen_bug_report_logs_description" = "Чтобы убедиться, что все работает правильно, в сообщение будут включены журналы. Чтобы отправить сообщение без журналов, отключите эту настройку.";
 "screen_bug_report_view_logs" = "Просмотр журналов";
-"screen_change_account_provider_matrix_org_subtitle" = "Matrix.org — это большой бесплатный сервер в общедоступной сети Matrix для безопасной децентрализованной связи, управляемый Matrix.org Foundation.";
+"screen_change_account_provider_matrix_org_subtitle" = "matrix.pesbc.chat — это большой бесплатный сервер в общедоступной сети Matrix для безопасной децентрализованной связи, управляемый matrix.pesbc.chat Foundation.";
 "screen_change_account_provider_other" = "Другое";
 "screen_change_account_provider_subtitle" = "Используйте другого поставщика учетных записей, например, собственный частный сервер или рабочую учетную запись.";
 "screen_change_account_provider_title" = "Сменить поставщика учетной записи";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "Добавить эмодзи";
 "screen_room_timeline_beginning_of_room" = "Это начало %1$@.";
 "screen_room_timeline_beginning_of_room_no_name" = "Это начало разговора.";
-"screen_room_timeline_legacy_call" = "Неподдерживаемый вызов. уточните, может ли звонящий использовать новое приложение Element X.";
+"screen_room_timeline_legacy_call" = "Неподдерживаемый вызов. уточните, может ли звонящий использовать новое приложение PESenger.";
 "screen_room_timeline_less_reactions" = "Показать меньше";
 "screen_room_timeline_message_copied" = "Сообщение скопировано";
 "screen_room_timeline_no_permission_to_post" = "У вас нет разрешения публиковать сообщения в этой комнате";

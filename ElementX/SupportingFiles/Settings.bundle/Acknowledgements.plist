@@ -242,14 +242,6 @@
 			<key>Type</key>
 			<string>PSChildPaneSpecifier</string>
 		</dict>
-		<dict>
-			<key>File</key>
-			<string>Packages/xctest-dynamic-overlay</string>
-			<key>Title</key>
-			<string>xctest-dynamic-overlay</string>
-			<key>Type</key>
-			<string>PSChildPaneSpecifier</string>
-		</dict>
 	</array>
 	<key>StringsTable</key>
 	<string>Acknowledgements</string>

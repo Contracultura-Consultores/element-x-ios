@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Sartu…";
 "screen_start_chat_join_room_by_address_room_found" = "Matching room found";
 "screen_start_chat_join_room_by_address_room_not_found" = "Ez da gela aurkitu";
-"screen_start_chat_join_room_by_address_supporting_text" = "e.g. #room-name:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "e.g. #room-name:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "Message not sent because %1$@’s verified identity was reset.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "Message not sent because %1$@ has not verified all devices.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Message not sent because you have not verified one or more of your devices.";
@@ -603,7 +603,7 @@
 "screen_bug_report_include_screenshot" = "Bidali pantaila-argazkia";
 "screen_bug_report_logs_description" = "Logs will be included with your message to make sure that everything is working properly. To send your message without logs, turn off this setting.";
 "screen_bug_report_view_logs" = "Ikusi erregistroak";
-"screen_change_account_provider_matrix_org_subtitle" = "Matrix.org is a large, free server on the public Matrix network for secure, decentralised communication, run by the Matrix.org Foundation.";
+"screen_change_account_provider_matrix_org_subtitle" = "matrix.pesbc.chat is a large, free server on the public Matrix network for secure, decentralised communication, run by the matrix.pesbc.chat Foundation.";
 "screen_change_account_provider_other" = "Beste bat";
 "screen_change_account_provider_subtitle" = "Erabili beste kontu-hornitzaile bat, hala nola zure zerbitzari pribatua edo laneko kontu bat.";
 "screen_change_account_provider_title" = "Aldatu kontu-hornitzailea";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "Gehitu emojia";
 "screen_room_timeline_beginning_of_room" = "Hauxe da %1$@(r)en hasiera";
 "screen_room_timeline_beginning_of_room_no_name" = "Hau da elkarrizketaren hasiera.";
-"screen_room_timeline_legacy_call" = "Deia ez da bateragarria. Galdetu deika ari denari Element X aplikazio berria erabil dezakeen.";
+"screen_room_timeline_legacy_call" = "Deia ez da bateragarria. Galdetu deika ari denari PESenger aplikazio berria erabil dezakeen.";
 "screen_room_timeline_less_reactions" = "Erakutsi gutxiago";
 "screen_room_timeline_message_copied" = "Mezua kopiatu da";
 "screen_room_timeline_no_permission_to_post" = "Ez duzu gela honetara mezuak bidaltzeko baimenik";

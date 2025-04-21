@@ -1,6 +1,6 @@
 settings:
-  APP_GROUP_IDENTIFIER: group.io.element.pr
-  BASE_BUNDLE_IDENTIFIER: io.element.elementx.pr
+  APP_GROUP_IDENTIFIER: group.io.pesenger.pr
+  BASE_BUNDLE_IDENTIFIER: io.pesbc.pesenger.pr
 
 targets:
   ElementX:
@@ -8,4 +8,4 @@ targets:
       base:
         ASSETCATALOG_COMPILER_APPICON_NAME: AlphaAppIcon
     sources:
-    - path: Resources
+      - path: Resources

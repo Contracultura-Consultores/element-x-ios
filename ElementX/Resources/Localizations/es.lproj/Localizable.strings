@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Introducir…";
 "screen_start_chat_join_room_by_address_room_found" = "Matching room found";
 "screen_start_chat_join_room_by_address_room_not_found" = "Room not found";
-"screen_start_chat_join_room_by_address_supporting_text" = "p. ej., #nombre-de-la-sala:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "p. ej., #nombre-de-la-sala:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "Mensaje no enviado porque la identidad verificada de %1$@ ha cambiado.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "Mensaje no enviado porque %1$@ no ha verificado todos los dispositivos.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Mensaje no enviado porque no has verificado uno o más de tus dispositivos.";
@@ -603,7 +603,7 @@
 "screen_bug_report_include_screenshot" = "Enviar captura de pantalla";
 "screen_bug_report_logs_description" = "Los registros se incluirán con su mensaje para asegurarse de que todo funciona correctamente. Para enviar tu mensaje sin registros, desactiva esta configuración.";
 "screen_bug_report_view_logs" = "Ver los registros";
-"screen_change_account_provider_matrix_org_subtitle" = "Matrix.org es un servidor grande y gratuito en la red pública Matrix para una comunicación segura y descentralizada, administrado por la Fundación Matrix.org.";
+"screen_change_account_provider_matrix_org_subtitle" = "matrix.pesbc.chat es un servidor grande y gratuito en la red pública Matrix para una comunicación segura y descentralizada, administrado por la Fundación matrix.pesbc.chat.";
 "screen_change_account_provider_other" = "Otro";
 "screen_change_account_provider_subtitle" = "Usa un proveedor de cuenta diferente, como tu propio servidor privado o una cuenta de trabajo.";
 "screen_change_account_provider_title" = "Cambiar el proveedor de la cuenta";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "Añadir emoji";
 "screen_room_timeline_beginning_of_room" = "Este es el principio de %1$@.";
 "screen_room_timeline_beginning_of_room_no_name" = "Este es el principio de esta conversación.";
-"screen_room_timeline_legacy_call" = "Llamada no compatible. Pregunta a la persona que llama si puede utilizar la nueva aplicación Element X.";
+"screen_room_timeline_legacy_call" = "Llamada no compatible. Pregunta a la persona que llama si puede utilizar la nueva aplicación PESenger.";
 "screen_room_timeline_less_reactions" = "Mostrar menos";
 "screen_room_timeline_message_copied" = "Mensaje copiado";
 "screen_room_timeline_no_permission_to_post" = "No tienes permiso para publicar en esta sala";

@@ -41,14 +41,14 @@ extension RoomMemberProxyMock {
 
     // Mocks
     static var mockMe: RoomMemberProxyMock {
-        RoomMemberProxyMock(with: .init(userID: "@me:matrix.org",
+        RoomMemberProxyMock(with: .init(userID: "@me:matrix.pesbc.chat",
                                         displayName: "Me",
                                         avatarURL: .mockMXCUserAvatar,
                                         membership: .join))
     }
     
     static var mockMeAdmin: RoomMemberProxyMock {
-        RoomMemberProxyMock(with: .init(userID: "@me:matrix.org",
+        RoomMemberProxyMock(with: .init(userID: "@me:matrix.pesbc.chat",
                                         displayName: "Me",
                                         avatarURL: .mockMXCUserAvatar,
                                         membership: .join,
@@ -57,63 +57,63 @@ extension RoomMemberProxyMock {
     }
     
     static var mockAlice: RoomMemberProxyMock {
-        RoomMemberProxyMock(with: .init(userID: "@alice:matrix.org",
+        RoomMemberProxyMock(with: .init(userID: "@alice:matrix.pesbc.chat",
                                         displayName: "Alice",
                                         membership: .join))
     }
     
     static var mockInvitedAlice: RoomMemberProxyMock {
-        RoomMemberProxyMock(with: .init(userID: "@alice:matrix.org",
+        RoomMemberProxyMock(with: .init(userID: "@alice:matrix.pesbc.chat",
                                         displayName: "Alice",
                                         membership: .invite))
     }
 
     static var mockBob: RoomMemberProxyMock {
-        RoomMemberProxyMock(with: .init(userID: "@bob:matrix.org",
+        RoomMemberProxyMock(with: .init(userID: "@bob:matrix.pesbc.chat",
                                         displayName: "Bob",
                                         membership: .join))
     }
 
     static var mockCharlie: RoomMemberProxyMock {
-        RoomMemberProxyMock(with: .init(userID: "@charlie:matrix.org",
+        RoomMemberProxyMock(with: .init(userID: "@charlie:matrix.pesbc.chat",
                                         displayName: "Charlie",
                                         membership: .join))
     }
 
     static var mockDan: RoomMemberProxyMock {
-        RoomMemberProxyMock(with: .init(userID: "@dan:matrix.org",
+        RoomMemberProxyMock(with: .init(userID: "@dan:matrix.pesbc.chat",
                                         displayName: "Dan",
                                         avatarURL: .mockMXCUserAvatar,
                                         membership: .join))
     }
     
     static var mockVerbose: RoomMemberProxyMock {
-        RoomMemberProxyMock(with: .init(userID: "@charliev:matrix.org",
+        RoomMemberProxyMock(with: .init(userID: "@charliev:matrix.pesbc.chat",
                                         displayName: "Charlie is the best display name",
                                         membership: .join))
     }
     
     static var mockNoName: RoomMemberProxyMock {
-        RoomMemberProxyMock(with: .init(userID: "@anonymous:matrix.org",
+        RoomMemberProxyMock(with: .init(userID: "@anonymous:matrix.pesbc.chat",
                                         membership: .join))
     }
     
     static var mockInvited: RoomMemberProxyMock {
-        RoomMemberProxyMock(with: .init(userID: "@invited:matrix.org",
+        RoomMemberProxyMock(with: .init(userID: "@invited:matrix.pesbc.chat",
                                         displayName: "Invited",
                                         membership: .invite,
                                         isIgnored: true))
     }
 
     static var mockIgnored: RoomMemberProxyMock {
-        RoomMemberProxyMock(with: .init(userID: "@ignored:matrix.org",
+        RoomMemberProxyMock(with: .init(userID: "@ignored:matrix.pesbc.chat",
                                         displayName: "Ignored",
                                         membership: .join,
                                         isIgnored: true))
     }
     
     static var mockAdmin: RoomMemberProxyMock {
-        RoomMemberProxyMock(with: .init(userID: "@admin:matrix.org",
+        RoomMemberProxyMock(with: .init(userID: "@admin:matrix.pesbc.chat",
                                         displayName: "Arthur",
                                         membership: .join,
                                         powerLevel: 100,
@@ -121,7 +121,7 @@ extension RoomMemberProxyMock {
     }
     
     static var mockModerator: RoomMemberProxyMock {
-        RoomMemberProxyMock(with: .init(userID: "@mod:matrix.org",
+        RoomMemberProxyMock(with: .init(userID: "@mod:matrix.pesbc.chat",
                                         displayName: "Merlin",
                                         membership: .join,
                                         powerLevel: 50,
@@ -130,13 +130,13 @@ extension RoomMemberProxyMock {
     
     static var mockBanned: [RoomMemberProxyMock] {
         [
-            RoomMemberProxyMock(with: .init(userID: "@mischief:matrix.org",
+            RoomMemberProxyMock(with: .init(userID: "@mischief:matrix.pesbc.chat",
                                             membership: .ban)),
-            RoomMemberProxyMock(with: .init(userID: "@spam:matrix.org",
+            RoomMemberProxyMock(with: .init(userID: "@spam:matrix.pesbc.chat",
                                             membership: .ban)),
-            RoomMemberProxyMock(with: .init(userID: "@angry:matrix.org",
+            RoomMemberProxyMock(with: .init(userID: "@angry:matrix.pesbc.chat",
                                             membership: .ban)),
-            RoomMemberProxyMock(with: .init(userID: "@fake:matrix.org",
+            RoomMemberProxyMock(with: .init(userID: "@fake:matrix.pesbc.chat",
                                             displayName: "The President",
                                             membership: .ban))
         ]

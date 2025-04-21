@@ -414,7 +414,7 @@ class UserSessionFlowCoordinator: FlowCoordinatorProtocol {
                                      timeToDecryptMillis: timeToDecryptMs,
                                      eventLocalAgeMillis: Int(truncatingIfNeeded: info.eventLocalAgeMillis),
                                      isFederated: info.ownHomeserver != info.senderHomeserver,
-                                     isMatrixDotOrg: info.ownHomeserver == "matrix.org",
+                                     isMatrixDotOrg: info.ownHomeserver == "matrix.pesbc.chat",
                                      userTrustsOwnIdentity: info.userTrustsOwnIdentity,
                                      wasVisibleToUser: nil)
             }

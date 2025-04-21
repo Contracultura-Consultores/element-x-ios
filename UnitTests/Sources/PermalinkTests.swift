@@ -15,37 +15,37 @@ class PermalinkTests: XCTestCase {
         let invalidUserId = "This1sN0tV4lid!@#$%^&*()"
         XCTAssertNil(try? matrixToUserPermalink(userId: invalidUserId))
         
-        let validUserId = "@abcdefghijklmnopqrstuvwxyz1234567890._-=/:matrix.org"
-        XCTAssertEqual(try? matrixToUserPermalink(userId: validUserId), .some("https://matrix.to/#/@abcdefghijklmnopqrstuvwxyz1234567890._-=%2F:matrix.org"))
+        let validUserId = "@abcdefghijklmnopqrstuvwxyz1234567890._-=/:matrix.pesbc.chat"
+        XCTAssertEqual(try? matrixToUserPermalink(userId: validUserId), .some("https://matrix.to/#/@abcdefghijklmnopqrstuvwxyz1234567890._-=%2F:matrix.pesbc.chat"))
     }
     
     func testPermalinkDetection() {
-        var url: URL = "https://www.matrix.org"
+        var url: URL = "https://www.matrix.pesbc.chat"
         XCTAssertNil(parseMatrixEntityFrom(uri: url.absoluteString))
         
-        url = "https://matrix.to/#/@bob:matrix.org?via=matrix.org"
+        url = "https://matrix.to/#/@bob:matrix.pesbc.chat?via=matrix.pesbc.chat"
         XCTAssertEqual(parseMatrixEntityFrom(uri: url.absoluteString),
-                       MatrixEntity(id: .user(id: "@bob:matrix.org"),
-                                    via: ["matrix.org"]))
+                       MatrixEntity(id: .user(id: "@bob:matrix.pesbc.chat"),
+                                    via: ["matrix.pesbc.chat"]))
         
-        url = "https://matrix.to/#/!roomidentifier:matrix.org?via=matrix.org"
+        url = "https://matrix.to/#/!roomidentifier:matrix.pesbc.chat?via=matrix.pesbc.chat"
         XCTAssertEqual(parseMatrixEntityFrom(uri: url.absoluteString),
-                       MatrixEntity(id: .room(id: "!roomidentifier:matrix.org"),
-                                    via: ["matrix.org"]))
+                       MatrixEntity(id: .room(id: "!roomidentifier:matrix.pesbc.chat"),
+                                    via: ["matrix.pesbc.chat"]))
         
-        url = "https://matrix.to/#/%23roomalias:matrix.org?via=matrix.org"
+        url = "https://matrix.to/#/%23roomalias:matrix.pesbc.chat?via=matrix.pesbc.chat"
         XCTAssertEqual(parseMatrixEntityFrom(uri: url.absoluteString),
-                       MatrixEntity(id: .roomAlias(alias: "#roomalias:matrix.org"),
-                                    via: ["matrix.org"]))
+                       MatrixEntity(id: .roomAlias(alias: "#roomalias:matrix.pesbc.chat"),
+                                    via: ["matrix.pesbc.chat"]))
         
-        url = "https://matrix.to/#/!roomidentifier:matrix.org/$eventidentifier?via=matrix.org"
+        url = "https://matrix.to/#/!roomidentifier:matrix.pesbc.chat/$eventidentifier?via=matrix.pesbc.chat"
         XCTAssertEqual(parseMatrixEntityFrom(uri: url.absoluteString),
-                       MatrixEntity(id: .eventOnRoomId(roomId: "!roomidentifier:matrix.org", eventId: "$eventidentifier"),
-                                    via: ["matrix.org"]))
+                       MatrixEntity(id: .eventOnRoomId(roomId: "!roomidentifier:matrix.pesbc.chat", eventId: "$eventidentifier"),
+                                    via: ["matrix.pesbc.chat"]))
         
-        url = "https://matrix.to/#/#roomalias:matrix.org/$eventidentifier?via=matrix.org"
+        url = "https://matrix.to/#/#roomalias:matrix.pesbc.chat/$eventidentifier?via=matrix.pesbc.chat"
         XCTAssertEqual(parseMatrixEntityFrom(uri: url.absoluteString),
-                       MatrixEntity(id: .eventOnRoomAlias(alias: "#roomalias:matrix.org", eventId: "$eventidentifier"),
-                                    via: ["matrix.org"]))
+                       MatrixEntity(id: .eventOnRoomAlias(alias: "#roomalias:matrix.pesbc.chat", eventId: "$eventidentifier"),
+                                    via: ["matrix.pesbc.chat"]))
     }
 }

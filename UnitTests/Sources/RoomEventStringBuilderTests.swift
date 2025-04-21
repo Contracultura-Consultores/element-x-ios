@@ -14,7 +14,7 @@ class RoomEventStringBuilderTests: XCTestCase {
     var stringBuilder: RoomEventStringBuilder!
     
     override func setUp() {
-        ownUserID = "@alice:matrix.org"
+        ownUserID = "@alice:matrix.pesbc.chat"
         let stateEventStringBuilder = RoomStateEventStringBuilder(userID: ownUserID)
         let attributedStringBuilder = AttributedStringBuilder(mentionBuilder: MentionBuilder())
         
@@ -29,13 +29,13 @@ class RoomEventStringBuilderTests: XCTestCase {
         let ownMessageString = stringBuilder.buildAttributedString(for: makeMessageItem(senderID: ownUserID, senderDisplayName: "Alice"))
         XCTAssertEqual(ownMessageString?.string, "You: Hello, World!", "Your own messages should be prefixed with 'You'")
         
-        let otherMessageString = stringBuilder.buildAttributedString(for: makeMessageItem(senderID: "@bob:matrix.org", senderDisplayName: "Bob"))
+        let otherMessageString = stringBuilder.buildAttributedString(for: makeMessageItem(senderID: "@bob:matrix.pesbc.chat", senderDisplayName: "Bob"))
         XCTAssertEqual(otherMessageString?.string, "Bob: Hello, World!", "Everyone else's messages should be prefixed with their display name.")
         
-        let ambiguousMessageString = stringBuilder.buildAttributedString(for: makeMessageItem(senderID: "@charlie:matrix.org",
+        let ambiguousMessageString = stringBuilder.buildAttributedString(for: makeMessageItem(senderID: "@charlie:matrix.pesbc.chat",
                                                                                               senderDisplayName: "Charlie",
                                                                                               senderDisplayNameAmbiguous: true))
-        XCTAssertEqual(ambiguousMessageString?.string, "Charlie (@charlie:matrix.org): Hello, World!",
+        XCTAssertEqual(ambiguousMessageString?.string, "Charlie (@charlie:matrix.pesbc.chat): Hello, World!",
                        "Messages from senders with ambiguous display names should include their user ID in the prefix.")
         
         let ownEmoteString = stringBuilder.buildAttributedString(for: makeMessageItem(senderID: ownUserID,
@@ -44,7 +44,7 @@ class RoomEventStringBuilderTests: XCTestCase {
                                                                                       message: "laughs"))
         XCTAssertEqual(ownEmoteString?.string, "* Alice laughs", "Your own emotes shouldn't contain 'You'")
         
-        let otherEmoteString = stringBuilder.buildAttributedString(for: makeMessageItem(senderID: "@bob:matrix.org",
+        let otherEmoteString = stringBuilder.buildAttributedString(for: makeMessageItem(senderID: "@bob:matrix.pesbc.chat",
                                                                                         senderDisplayName: "Bob",
                                                                                         type: .emote,
                                                                                         message: "sighs"))
@@ -53,7 +53,7 @@ class RoomEventStringBuilderTests: XCTestCase {
         let ownPollString = stringBuilder.buildAttributedString(for: makePollItem(senderID: ownUserID, senderDisplayName: "Alice"))
         XCTAssertEqual(ownPollString?.string, "You: Poll: Which is better?", "Your own polls should be prefixed with 'You'")
         
-        let otherPollString = stringBuilder.buildAttributedString(for: makePollItem(senderID: "@bob:matrix.org", senderDisplayName: "Bob"))
+        let otherPollString = stringBuilder.buildAttributedString(for: makePollItem(senderID: "@bob:matrix.pesbc.chat", senderDisplayName: "Bob"))
         XCTAssertEqual(otherPollString?.string, "Bob: Poll: Which is better?", "Everyone else's polls should be prefixed with their display name.")
     }
     

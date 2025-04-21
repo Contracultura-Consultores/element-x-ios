@@ -1162,7 +1162,7 @@ internal enum L10n {
   }
   /// View logs
   internal static var screenBugReportViewLogs: String { return L10n.tr("Localizable", "screen_bug_report_view_logs") }
-  /// Matrix.org is a large, free server on the public Matrix network for secure, decentralised communication, run by the Matrix.org Foundation.
+  /// matrix.pesbc.chat is a large, free server on the public Matrix network for secure, decentralised communication, run by the matrix.pesbc.chat Foundation.
   internal static var screenChangeAccountProviderMatrixOrgSubtitle: String { return L10n.tr("Localizable", "screen_change_account_provider_matrix_org_subtitle") }
   /// Other
   internal static var screenChangeAccountProviderOther: String { return L10n.tr("Localizable", "screen_change_account_provider_other") }
@@ -2244,7 +2244,7 @@ internal enum L10n {
   }
   /// This is the beginning of this conversation.
   internal static var screenRoomTimelineBeginningOfRoomNoName: String { return L10n.tr("Localizable", "screen_room_timeline_beginning_of_room_no_name") }
-  /// Unsupported call. Ask if the caller can use the new Element X app.
+  /// Unsupported call. Ask if the caller can use the new PESenger app.
   internal static var screenRoomTimelineLegacyCall: String { return L10n.tr("Localizable", "screen_room_timeline_legacy_call") }
   /// Show less
   internal static var screenRoomTimelineLessReactions: String { return L10n.tr("Localizable", "screen_room_timeline_less_reactions") }
@@ -2560,7 +2560,7 @@ internal enum L10n {
   internal static var screenStartChatJoinRoomByAddressRoomFound: String { return L10n.tr("Localizable", "screen_start_chat_join_room_by_address_room_found") }
   /// Room not found
   internal static var screenStartChatJoinRoomByAddressRoomNotFound: String { return L10n.tr("Localizable", "screen_start_chat_join_room_by_address_room_not_found") }
-  /// e.g. #room-name:matrix.org
+  /// e.g. #room-name:matrix.pesbc.chat
   internal static var screenStartChatJoinRoomByAddressSupportingText: String { return L10n.tr("Localizable", "screen_start_chat_join_room_by_address_supporting_text") }
   /// Message not sent because %1$@’s verified identity was reset.
   internal static func screenTimelineItemMenuSendFailureChangedIdentity(_ p1: Any) -> String {

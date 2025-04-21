@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Saisir…";
 "screen_start_chat_join_room_by_address_room_found" = "Ce salon existe";
 "screen_start_chat_join_room_by_address_room_not_found" = "Salon non trouvé";
-"screen_start_chat_join_room_by_address_supporting_text" = "ex: #nom-du-salon:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "ex: #nom-du-salon:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "Le message n'a pas été envoyé car l'identité vérifiée de %1$@ a été réinitialisée.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "Le message n'a pas été envoyé car %1$@ n'a pas vérifié tous ses appareils.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Message non envoyé car vous n'avez pas vérifié tous vos appareils.";
@@ -603,7 +603,7 @@
 "screen_bug_report_include_screenshot" = "Envoyer une capture d’écran";
 "screen_bug_report_logs_description" = "Pour vérifier que les choses fonctionnent comme prévu, des journaux techniques seront envoyés avec votre message. Pour ne pas envoyer ces journaux, désactivez ce paramètre.";
 "screen_bug_report_view_logs" = "Afficher les journaux";
-"screen_change_account_provider_matrix_org_subtitle" = "Matrix.org est un grand serveur gratuit sur le réseau public Matrix pour une communication sécurisée et décentralisée, géré par la Fondation Matrix.org.";
+"screen_change_account_provider_matrix_org_subtitle" = "matrix.pesbc.chat est un grand serveur gratuit sur le réseau public Matrix pour une communication sécurisée et décentralisée, géré par la Fondation matrix.pesbc.chat.";
 "screen_change_account_provider_other" = "Autres";
 "screen_change_account_provider_subtitle" = "Utilisez un autre fournisseur de compte, tel que votre propre serveur privé ou un serveur professionnel.";
 "screen_change_account_provider_title" = "Changer de fournisseur de compte";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "Ajouter un émoji";
 "screen_room_timeline_beginning_of_room" = "Ceci est le début de %1$@.";
 "screen_room_timeline_beginning_of_room_no_name" = "Ceci est le début de cette conversation.";
-"screen_room_timeline_legacy_call" = "Appel non pris en charge. Demandez à l'appelant s'il peut utiliser la nouvelle application Element X pour vous appeler.";
+"screen_room_timeline_legacy_call" = "Appel non pris en charge. Demandez à l'appelant s'il peut utiliser la nouvelle application PESenger pour vous appeler.";
 "screen_room_timeline_less_reactions" = "Afficher moins";
 "screen_room_timeline_message_copied" = "Message copié";
 "screen_room_timeline_no_permission_to_post" = "Vous n’êtes pas autorisé à publier dans ce salon";

@@ -25,6 +25,8 @@ class GlobalSearchScreenViewModel: GlobalSearchScreenViewModelType, GlobalSearch
         super.init(initialViewState: GlobalSearchScreenViewState(bindings: .init(searchQuery: "")),
                    mediaProvider: mediaProvider)
         
+        roomSummaryProvider.setFilter(.search(query: "@"))
+
         roomSummaryProvider.roomListPublisher
             .receive(on: DispatchQueue.main)
             .sink { [weak self] summaries in

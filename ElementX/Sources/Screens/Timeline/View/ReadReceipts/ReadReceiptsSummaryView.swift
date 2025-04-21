@@ -59,11 +59,11 @@ struct ReadReceiptsSummaryView_Previews: PreviewProvider, TestablePreview {
     }()
     
     static let orderedReadReceipts: [ReadReceipt] = [
-        .init(userID: "@alice:matrix.org", formattedTimestamp: "10:00"),
-        .init(userID: "@bob:matrix.org", formattedTimestamp: "9:30"),
-        .init(userID: "@charlie:matrix.org", formattedTimestamp: "9:00"),
-        .init(userID: "@dan:matrix.org", formattedTimestamp: "8:30"),
-        .init(userID: "@loading:matrix.org", formattedTimestamp: "Long time ago")
+        .init(userID: "@alice:matrix.pesbc.chat", formattedTimestamp: "10:00"),
+        .init(userID: "@bob:matrix.pesbc.chat", formattedTimestamp: "9:30"),
+        .init(userID: "@charlie:matrix.pesbc.chat", formattedTimestamp: "9:00"),
+        .init(userID: "@dan:matrix.pesbc.chat", formattedTimestamp: "8:30"),
+        .init(userID: "@loading:matrix.pesbc.chat", formattedTimestamp: "Long time ago")
     ]
     
     static var previews: some View {

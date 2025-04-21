@@ -107,12 +107,12 @@ struct SessionVerificationRequestDetailsView: View {
 }
 
 struct SessionVerificationRequestDetailsView_Previews: PreviewProvider, TestablePreview {
-    static let details = SessionVerificationRequestDetails(senderProfile: UserProfileProxy(userID: "@bob:matrix.org",
+    static let details = SessionVerificationRequestDetails(senderProfile: UserProfileProxy(userID: "@bob:matrix.pesbc.chat",
                                                                                            displayName: "Billy bob",
                                                                                            avatarURL: .mockMXCUserAvatar),
                                                            flowID: "123",
                                                            deviceID: "CODEMISTAKE",
-                                                           deviceDisplayName: "Bob's Element X iOS",
+                                                           deviceDisplayName: "Bob's PESenger iOS",
                                                            firstSeenDate: .init(timeIntervalSince1970: 0))
     
     static var previews: some View {

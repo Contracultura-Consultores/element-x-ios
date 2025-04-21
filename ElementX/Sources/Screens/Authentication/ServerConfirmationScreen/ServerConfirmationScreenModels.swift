@@ -40,7 +40,7 @@ struct ServerConfirmationScreenViewState: BindableState {
     var message: String {
         switch authenticationFlow {
         case .login:
-            if homeserverAddress == "matrix.org" {
+            if homeserverAddress == "matrix.pesbc.chat" {
                 L10n.screenServerConfirmationMessageLoginMatrixDotOrg
             } else if homeserverAddress == "element.io" {
                 L10n.screenServerConfirmationMessageLoginElementDotIo

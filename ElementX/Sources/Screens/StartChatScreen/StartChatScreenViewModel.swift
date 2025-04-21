@@ -43,6 +43,14 @@ class StartChatScreenViewModel: StartChatScreenViewModelType, StartChatScreenVie
         Task {
             suggestedUsers = await userSession.clientProxy.recentConversationCounterparts()
             
+            /* let result = await userDiscoveryService.searchProfiles(with: "")
+             switch result {
+             case .success(let users):
+                 suggestedUsers = users
+             case .failure:
+                 suggestedUsers = []
+             } */
+            
             if state.usersSection.type == .suggestions {
                 state.usersSection = .init(type: .suggestions, users: suggestedUsers)
             }

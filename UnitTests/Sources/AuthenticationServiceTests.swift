@@ -43,7 +43,7 @@ class AuthenticationServiceTests: XCTestCase {
     func testConfigureLoginWithOIDC() async {
         setupMocks()
         
-        switch await service.configure(for: "matrix.org", flow: .login) {
+        switch await service.configure(for: "matrix.pesbc.chat", flow: .login) {
         case .success:
             break
         case .failure(let error):
@@ -57,7 +57,7 @@ class AuthenticationServiceTests: XCTestCase {
     func testConfigureRegisterWithOIDC() async {
         setupMocks()
         
-        switch await service.configure(for: "matrix.org", flow: .register) {
+        switch await service.configure(for: "matrix.pesbc.chat", flow: .register) {
         case .success:
             break
         case .failure(let error):
@@ -80,12 +80,12 @@ class AuthenticationServiceTests: XCTestCase {
         }
         
         XCTAssertEqual(service.flow, .login)
-        XCTAssertEqual(service.homeserver.value, .init(address: "matrix.org", loginMode: .unknown))
+        XCTAssertEqual(service.homeserver.value, .init(address: "matrix.pesbc.chat", loginMode: .unknown))
     }
     
     // MARK: - Helpers
     
-    private func setupMocks(serverAddress: String = "matrix.org") {
+    private func setupMocks(serverAddress: String = "matrix.pesbc.chat") {
         let configuration: AuthenticationClientBuilderMock.Configuration = .init()
         let clientBuilderFactory = AuthenticationClientBuilderFactoryMock(configuration: .init(builderConfiguration: configuration))
         

@@ -198,15 +198,15 @@ struct SessionVerification_Previews: PreviewProvider, TestablePreview {
         sessionVerificationScreen(state: .initial, flow: .deviceInitiator)
             .previewDisplayName("Initial - Device Initiator")
         
-        sessionVerificationScreen(state: .initial, flow: .userIntiator(userID: "@bob:matrix.org"))
+        sessionVerificationScreen(state: .initial, flow: .userIntiator(userID: "@bob:matrix.pesbc.chat"))
             .previewDisplayName("Initial - User Initiator")
         
-        let details = SessionVerificationRequestDetails(senderProfile: UserProfileProxy(userID: "@bob:matrix.org",
+        let details = SessionVerificationRequestDetails(senderProfile: UserProfileProxy(userID: "@bob:matrix.pesbc.chat",
                                                                                         displayName: "Billy Bob",
                                                                                         avatarURL: .mockMXCUserAvatar),
                                                         flowID: "123",
                                                         deviceID: "CODEMISTAKE",
-                                                        deviceDisplayName: "Bob's Element X iOS",
+                                                        deviceDisplayName: "Bob's PESenger iOS",
                                                         firstSeenDate: .init(timeIntervalSince1970: 0))
         
         sessionVerificationScreen(state: .initial, flow: .deviceResponder(requestDetails: details))

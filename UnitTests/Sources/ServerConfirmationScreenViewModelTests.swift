@@ -180,10 +180,10 @@ class ServerConfirmationScreenViewModelTests: XCTestCase {
     
     private func setupViewModel(authenticationFlow: AuthenticationFlow, supportsOIDC: Bool = true, supportsOIDCCreatePrompt: Bool = true, supportsPasswordLogin: Bool = true) {
         // Manually create a configuration as the default homeserver address setting is immutable.
-        client = ClientSDKMock(configuration: .init(oidcLoginURL: supportsOIDC ? "https://account.matrix.org/authorize" : nil,
+        client = ClientSDKMock(configuration: .init(oidcLoginURL: supportsOIDC ? "https://account.matrix.pesbc.chat/authorize" : nil,
                                                     supportsOIDCCreatePrompt: supportsOIDCCreatePrompt,
                                                     supportsPasswordLogin: supportsPasswordLogin))
-        let configuration = AuthenticationClientBuilderMock.Configuration(homeserverClients: ["matrix.org": client],
+        let configuration = AuthenticationClientBuilderMock.Configuration(homeserverClients: ["matrix.pesbc.chat": client],
                                                                           qrCodeClient: client)
         
         clientBuilderFactory = AuthenticationClientBuilderFactoryMock(configuration: .init(builderConfiguration: configuration))

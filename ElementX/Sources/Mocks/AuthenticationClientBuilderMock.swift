@@ -11,7 +11,7 @@ import MatrixRustSDK
 extension AuthenticationClientBuilderMock {
     struct Configuration {
         var homeserverClients = [
-            "matrix.org": ClientSDKMock(configuration: .init()),
+            "matrix.pesbc.chat": ClientSDKMock(configuration: .init()),
             "example.com": ClientSDKMock(configuration: .init(serverAddress: "example.com",
                                                               homeserverURL: "https://matrix.example.com",
                                                               slidingSyncVersion: .native,

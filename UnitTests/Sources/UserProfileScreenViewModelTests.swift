@@ -15,7 +15,7 @@ class UserProfileScreenViewModelTests: XCTestCase {
     var context: UserProfileScreenViewModelType.Context { viewModel.context }
 
     func testInitialState() async throws {
-        let profile = UserProfileProxy(userID: "@alice:matrix.org", displayName: "Alice", avatarURL: .mockMXCAvatar)
+        let profile = UserProfileProxy(userID: "@alice:matrix.pesbc.chat", displayName: "Alice", avatarURL: .mockMXCAvatar)
         let clientProxy = ClientProxyMock(.init())
         clientProxy.profileForReturnValue = .success(profile)
         

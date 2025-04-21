@@ -25,7 +25,7 @@ class CreateRoomScreenViewModelTests: XCTestCase {
     
     override func setUpWithError() throws {
         cancellables.removeAll()
-        clientProxy = ClientProxyMock(.init(userIDServerName: "matrix.org", userID: "@a:b.com"))
+        clientProxy = ClientProxyMock(.init(userIDServerName: "matrix.pesbc.chat", userID: "@a:b.com"))
         userSession = UserSessionMock(.init(clientProxy: clientProxy))
         let parameters = CreateRoomFlowParameters()
         usersSubject.send([.mockAlice, .mockBob, .mockCharlie])

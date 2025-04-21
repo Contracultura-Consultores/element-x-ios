@@ -132,7 +132,7 @@ struct TimelineMediaPreviewRedactConfirmationView_Previews: PreviewProvider, Tes
                                          isOutgoing: false,
                                          isEditable: true,
                                          canBeRepliedTo: true,
-                                         sender: .init(id: "@alice:matrix.org",
+                                         sender: .init(id: "@alice:matrix.pesbc.chat",
                                                        displayName: "Alice",
                                                        avatarURL: .mockMXCUserAvatar),
                                          content: .init(filename: "Amazing Image.jpeg",

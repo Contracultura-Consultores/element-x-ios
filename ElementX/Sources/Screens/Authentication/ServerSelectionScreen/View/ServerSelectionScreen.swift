@@ -91,7 +91,7 @@ struct ServerSelectionScreen: View {
 // MARK: - Previews
 
 struct ServerSelection_Previews: PreviewProvider, TestablePreview {
-    static let matrixViewModel = makeViewModel(for: "https://matrix.org")
+    static let matrixViewModel = makeViewModel(for: "https://matrix.pesbc.chat")
     static let emptyViewModel = makeViewModel(for: "")
     static let invalidViewModel = makeViewModel(for: "thisisbad")
     

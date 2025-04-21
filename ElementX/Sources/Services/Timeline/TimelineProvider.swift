@@ -12,7 +12,7 @@ import MatrixRustSDK
 class TimelineProvider: TimelineProviderProtocol {
     private var cancellables = Set<AnyCancellable>()
     private let serialDispatchQueue: DispatchQueue
-    
+
     private var roomTimelineObservationToken: TaskHandle?
 
     private let paginationStateSubject = CurrentValueSubject<PaginationState, Never>(.initial)
@@ -32,39 +32,41 @@ class TimelineProvider: TimelineProviderProtocol {
             .combineLatest(paginationStateSubject)
             .eraseToAnyPublisher()
     }
-    
+
     let kind: TimelineKind
-    
+
     private let membershipChangeSubject = PassthroughSubject<Void, Never>()
     var membershipChangePublisher: AnyPublisher<Void, Never> {
         membershipChangeSubject
             .eraseToAnyPublisher()
     }
-    
+
     deinit {
         roomTimelineObservationToken?.cancel()
     }
 
-    init(timeline: Timeline, kind: TimelineKind, paginationStatePublisher: AnyPublisher<PaginationState, Never>) {
-        serialDispatchQueue = DispatchQueue(label: "io.element.elementx.timelineprovider", qos: .utility)
+    init(timeline: Timeline, kind: TimelineKind,
+         paginationStatePublisher: AnyPublisher<PaginationState, Never>) {
+        serialDispatchQueue = DispatchQueue(label: "io.pesbc.pesenger.timelineprovider", qos: .utility)
         itemProxiesSubject = CurrentValueSubject<[TimelineItemProxy], Never>([])
         self.kind = kind
-        
+
         paginationStatePublisher
             .sink { [weak self] in
                 self?.paginationStateSubject.send($0)
             }
             .store(in: &cancellables)
-        
+
         Task {
-            roomTimelineObservationToken = await timeline.addListener(listener: SDKListener { [weak self] timelineDiffs in
-                self?.serialDispatchQueue.sync {
-                    self?.updateItemsWithDiffs(timelineDiffs)
-                }
-            })
+            roomTimelineObservationToken = await timeline.addListener(
+                listener: SDKListener { [weak self] timelineDiffs in
+                    self?.serialDispatchQueue.sync {
+                        self?.updateItemsWithDiffs(timelineDiffs)
+                    }
+                })
         }
     }
-    
+
     /// A continuation to signal whether the initial timeline items have been loaded and processed.
     private var hasLoadedInitialItemsContinuation: CheckedContinuation<Void, Never>?
     /// A method that allows `await`ing the first update of timeline items from the listener, as the items
@@ -75,54 +77,57 @@ class TimelineProvider: TimelineProviderProtocol {
             hasLoadedInitialItemsContinuation = continuation
         }
     }
-    
+
     // MARK: - Private
-    
+
     private func updateItemsWithDiffs(_ diffs: [TimelineDiff]) {
         let span = MXLog.createSpan("process_timeline_list_diffs:\(kind)")
         span.enter()
         defer {
             span.exit()
         }
-        
+
         MXLog.verbose("Received diffs: \(diffs)")
-        
+
         itemProxies = diffs.reduce(itemProxies) { currentItems, diff in
             guard let collectionDiff = buildDiff(from: diff, on: currentItems) else {
                 MXLog.error("Failed building CollectionDifference from \(diff)")
                 return currentItems
             }
-            
+
             guard let updatedItems = currentItems.applying(collectionDiff) else {
                 MXLog.error("Failed applying diff: \(collectionDiff)")
                 return currentItems
             }
-            
+
             return updatedItems
         }
-        
+
         if let hasLoadedInitialItemsContinuation {
             hasLoadedInitialItemsContinuation.resume()
             self.hasLoadedInitialItemsContinuation = nil
         }
     }
-    
+
     // swiftlint:disable:next cyclomatic_complexity
-    private func buildDiff(from diff: TimelineDiff, on itemProxies: [TimelineItemProxy]) -> CollectionDifference<TimelineItemProxy>? {
+    private func buildDiff(from diff: TimelineDiff, on itemProxies: [TimelineItemProxy])
+        -> CollectionDifference<TimelineItemProxy>? {
         var changes = [CollectionDifference<TimelineItemProxy>.Change]()
-        
+
         switch diff.change() {
         case .append:
             guard let items = diff.append() else { fatalError() }
 
             for (index, item) in items.enumerated() {
                 let itemProxy = TimelineItemProxy(item: item)
-                
+
                 if itemProxy.isMembershipChange {
                     membershipChangeSubject.send(())
                 }
-                
-                changes.append(.insert(offset: Int(itemProxies.count) + index, element: itemProxy, associatedWith: nil))
+
+                changes.append(
+                    .insert(offset: Int(itemProxies.count) + index, element: itemProxy,
+                            associatedWith: nil))
             }
         case .clear:
             for (index, itemProxy) in itemProxies.enumerated() {
@@ -132,25 +137,28 @@ class TimelineProvider: TimelineProviderProtocol {
             guard let update = diff.insert() else { fatalError() }
 
             let itemProxy = TimelineItemProxy(item: update.item)
-            changes.append(.insert(offset: Int(update.index), element: itemProxy, associatedWith: nil))
+            changes.append(
+                .insert(offset: Int(update.index), element: itemProxy, associatedWith: nil))
         case .popBack:
             guard let itemProxy = itemProxies.last else { fatalError() }
 
-            changes.append(.remove(offset: itemProxies.count - 1, element: itemProxy, associatedWith: nil))
+            changes.append(
+                .remove(offset: itemProxies.count - 1, element: itemProxy, associatedWith: nil))
         case .popFront:
             guard let itemProxy = itemProxies.first else { fatalError() }
 
             changes.append(.remove(offset: 0, element: itemProxy, associatedWith: nil))
         case .pushBack:
             guard let item = diff.pushBack() else { fatalError() }
-            
+
             let itemProxy = TimelineItemProxy(item: item)
-            
+
             if itemProxy.isMembershipChange {
                 membershipChangeSubject.send(())
             }
-            
-            changes.append(.insert(offset: Int(itemProxies.count), element: itemProxy, associatedWith: nil))
+
+            changes.append(
+                .insert(offset: Int(itemProxies.count), element: itemProxy, associatedWith: nil))
         case .pushFront:
             guard let item = diff.pushFront() else { fatalError() }
 
@@ -170,18 +178,22 @@ class TimelineProvider: TimelineProviderProtocol {
             }
 
             for (index, timelineItem) in items.enumerated() {
-                changes.append(.insert(offset: index, element: TimelineItemProxy(item: timelineItem), associatedWith: nil))
+                changes.append(
+                    .insert(offset: index, element: TimelineItemProxy(item: timelineItem),
+                            associatedWith: nil))
             }
         case .set:
             guard let update = diff.set() else { fatalError() }
 
             let itemProxy = TimelineItemProxy(item: update.item)
-            changes.append(.remove(offset: Int(update.index), element: itemProxy, associatedWith: nil))
-            changes.append(.insert(offset: Int(update.index), element: itemProxy, associatedWith: nil))
+            changes.append(
+                .remove(offset: Int(update.index), element: itemProxy, associatedWith: nil))
+            changes.append(
+                .insert(offset: Int(update.index), element: itemProxy, associatedWith: nil))
         case .truncate:
             break
         }
-        
+
         return CollectionDifference(changes)
     }
 }

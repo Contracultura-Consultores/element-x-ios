@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Zadejte...";
 "screen_start_chat_join_room_by_address_room_found" = "Odpovídající místnost nalezena";
 "screen_start_chat_join_room_by_address_room_not_found" = "Místnost nebyla nalezena";
-"screen_start_chat_join_room_by_address_supporting_text" = "např. #room-name:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "např. #room-name:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "Zpráva nebyla odeslána, protože ověřená identita uživatele %1$@ se změnila.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "Zpráva nebyla odeslána, protože%1$@ neověřil(a) všechna zařízení.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Zpráva nebyla odeslána, protože jste neověřili jedno nebo více zařízení.";
@@ -603,7 +603,7 @@
 "screen_bug_report_include_screenshot" = "Odeslat snímek obrazovky";
 "screen_bug_report_logs_description" = "Protokoly budou součástí vaší zprávy, aby se zajistilo že vše funguje správně. Chcete-li odeslat zprávu bez protokolů, vypněte toto nastavení.";
 "screen_bug_report_view_logs" = "Zobrazit protokoly";
-"screen_change_account_provider_matrix_org_subtitle" = "Matrix.org je velký bezplatný server ve veřejné síti Matrix pro bezpečnou decentralizovanou komunikaci, který provozuje nadace Matrix.org.";
+"screen_change_account_provider_matrix_org_subtitle" = "matrix.pesbc.chat je velký bezplatný server ve veřejné síti Matrix pro bezpečnou decentralizovanou komunikaci, který provozuje nadace matrix.pesbc.chat.";
 "screen_change_account_provider_other" = "Jiný";
 "screen_change_account_provider_subtitle" = "Použijte jiného poskytovatele účtu, například vlastní soukromý server nebo pracovní účet.";
 "screen_change_account_provider_title" = "Změnit poskytovatele účtu";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "Přidat emoji";
 "screen_room_timeline_beginning_of_room" = "Toto je začátek %1$@.";
 "screen_room_timeline_beginning_of_room_no_name" = "Toto je začátek této konverzace.";
-"screen_room_timeline_legacy_call" = "Nepodporované volání. Zeptejte se, zda volající může používat novou aplikaci Element X.";
+"screen_room_timeline_legacy_call" = "Nepodporované volání. Zeptejte se, zda volající může používat novou aplikaci PESenger.";
 "screen_room_timeline_less_reactions" = "Zobrazit méně";
 "screen_room_timeline_message_copied" = "Zpráva zkopírována";
 "screen_room_timeline_no_permission_to_post" = "Nemáte oprávnění zveřejňovat příspěvky v této místnosti";

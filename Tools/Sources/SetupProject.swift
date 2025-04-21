@@ -3,7 +3,7 @@ import CommandLineTools
 import Foundation
 
 struct SetupProject: ParsableCommand {
-    static var configuration = CommandConfiguration(abstract: "A tool to setup the required components to efficiently run and contribute to Element X iOS")
+    static var configuration = CommandConfiguration(abstract: "A tool to setup the required components to efficiently run and contribute to PESenger iOS")
 
     func run() throws {
         try setupGitHooks()

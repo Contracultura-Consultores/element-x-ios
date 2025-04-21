@@ -14,7 +14,7 @@ class RoomStateEventStringBuilderTests: XCTestCase {
     var stringBuilder: RoomStateEventStringBuilder!
     
     override func setUp() {
-        userID = "@alice:matrix.org"
+        userID = "@alice:matrix.pesbc.chat"
         stringBuilder = RoomStateEventStringBuilder(userID: userID)
     }
     
@@ -28,7 +28,7 @@ class RoomStateEventStringBuilderTests: XCTestCase {
                                   expectedString: L10n.stateEventDisplayNameSetByYou("Alice"))
         
         // Changes by someone else.
-        let senderID = "@bob:matrix.org"
+        let senderID = "@bob:matrix.pesbc.chat"
         validateDisplayNameChange(senderID: senderID, oldName: "Bob", newName: "Alice",
                                   expectedString: L10n.stateEventDisplayNameChangedFrom(senderID, "Bob", "Alice"))
         validateDisplayNameChange(senderID: senderID, oldName: "Bob", newName: nil,
@@ -58,7 +58,7 @@ class RoomStateEventStringBuilderTests: XCTestCase {
                              expectedString: L10n.stateEventAvatarUrlChangedByYou)
         
         // Changes by someone else.
-        let senderID = "@bob:matrix.org"
+        let senderID = "@bob:matrix.pesbc.chat"
         let senderName = "Bob"
         validateAvatarChange(senderID: senderID, senderName: senderName, oldAvatarURL: "mxc://1", newAvatarURL: "mxc://2",
                              expectedString: L10n.stateEventAvatarUrlChanged(senderName))
@@ -83,7 +83,7 @@ class RoomStateEventStringBuilderTests: XCTestCase {
     
     func testTopicChanges() {
         let you = TimelineItemSender(id: userID, displayName: "Alice")
-        let other = TimelineItemSender(id: "@bob:matrix.org", displayName: "Bob")
+        let other = TimelineItemSender(id: "@bob:matrix.pesbc.chat", displayName: "Bob")
         
         let newTopic = "New topic"
         var string = stringBuilder.buildString(for: .roomTopic(topic: newTopic), sender: you, isOutgoing: true)

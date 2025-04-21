@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Enter...";
 "screen_start_chat_join_room_by_address_room_found" = "Matching room found";
 "screen_start_chat_join_room_by_address_room_not_found" = "Room not found";
-"screen_start_chat_join_room_by_address_supporting_text" = "e.g. #room-name:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "e.g. #room-name:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "%1$@ kullanıcısının doğrulanmış kimliği değiştiği için ileti gönderilmedi.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "%1$@ tüm cihazları doğrulamadığı için mesaj gönderilmedi.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Bir veya daha fazla cihazınızı doğrulamadığınız için mesaj gönderilmedi.";
@@ -603,7 +603,7 @@
 "screen_bug_report_include_screenshot" = "Ekran görüntüsü gönder";
 "screen_bug_report_logs_description" = "Her şeyin düzgün çalıştığından emin olmak için günlükler mesajınıza dahil edilecektir. Mesajınızı kayıt tutmadan göndermek için bu ayarı kapatın.";
 "screen_bug_report_view_logs" = "Günlükleri görüntüle";
-"screen_change_account_provider_matrix_org_subtitle" = "Matrix.org, Matrix.org Vakfı tarafından yönetilen, güvenli, merkezi olmayan iletişim için halka açık Matrix ağında büyük, ücretsiz bir sunucudur.";
+"screen_change_account_provider_matrix_org_subtitle" = "matrix.pesbc.chat, matrix.pesbc.chat Vakfı tarafından yönetilen, güvenli, merkezi olmayan iletişim için halka açık Matrix ağında büyük, ücretsiz bir sunucudur.";
 "screen_change_account_provider_other" = "Diğer";
 "screen_change_account_provider_subtitle" = "Kendi özel sunucunuz veya iş hesabınız gibi farklı bir hesap sağlayıcı kullanın.";
 "screen_change_account_provider_title" = "Hesap sağlayıcısını değiştir";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "Emoji ekle";
 "screen_room_timeline_beginning_of_room" = "Bu, %1$@ odasının başlangıcıdır.";
 "screen_room_timeline_beginning_of_room_no_name" = "Bu konuşmanın başlangıcıdır.";
-"screen_room_timeline_legacy_call" = "Desteklenmeyen çağrı. Arayanın yeni Element X uygulamasını kullanıp kullanamayacağını sorun.";
+"screen_room_timeline_legacy_call" = "Desteklenmeyen çağrı. Arayanın yeni PESenger uygulamasını kullanıp kullanamayacağını sorun.";
 "screen_room_timeline_less_reactions" = "Daha az göster";
 "screen_room_timeline_message_copied" = "Mesaj kopyalandı";
 "screen_room_timeline_no_permission_to_post" = "Bu odada gönderi yapma izniniz yok";

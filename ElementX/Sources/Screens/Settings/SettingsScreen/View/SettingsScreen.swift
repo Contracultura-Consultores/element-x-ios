@@ -133,45 +133,48 @@ struct SettingsScreen: View {
     
     private var generalSection: some View {
         Section {
-            ListRow(label: .default(title: L10n.commonAbout,
-                                    icon: \.info),
-                    kind: .navigationLink {
-                        context.send(viewAction: .about)
-                    })
-                    .accessibilityIdentifier(A11yIdentifiers.settingsScreen.about)
-            
-            if context.viewState.isBugReportServiceEnabled {
-                ListRow(label: .default(title: L10n.commonReportAProblem,
-                                        icon: \.chatProblem),
+            var generalSectionEnabled = false
+            if generalSectionEnabled {
+                ListRow(label: .default(title: L10n.commonAbout,
+                                        icon: \.info),
                         kind: .navigationLink {
-                            context.send(viewAction: .reportBug)
+                            context.send(viewAction: .about)
                         })
-                        .accessibilityIdentifier(A11yIdentifiers.settingsScreen.reportBug)
-            }
-            
-            if context.viewState.showAnalyticsSettings {
-                ListRow(label: .default(title: L10n.commonAnalytics,
-                                        icon: \.chart),
+                        .accessibilityIdentifier(A11yIdentifiers.settingsScreen.about)
+                
+                if context.viewState.isBugReportServiceEnabled {
+                    ListRow(label: .default(title: L10n.commonReportAProblem,
+                                            icon: \.chatProblem),
+                            kind: .navigationLink {
+                                context.send(viewAction: .reportBug)
+                            })
+                            .accessibilityIdentifier(A11yIdentifiers.settingsScreen.reportBug)
+                }
+                
+                if context.viewState.showAnalyticsSettings {
+                    ListRow(label: .default(title: L10n.commonAnalytics,
+                                            icon: \.chart),
+                            kind: .navigationLink {
+                                context.send(viewAction: .analytics)
+                            })
+                            .accessibilityIdentifier(A11yIdentifiers.settingsScreen.analytics)
+                }
+                
+                ListRow(label: .default(title: L10n.commonAdvancedSettings,
+                                        icon: \.settings),
                         kind: .navigationLink {
-                            context.send(viewAction: .analytics)
+                            context.send(viewAction: .advancedSettings)
                         })
-                        .accessibilityIdentifier(A11yIdentifiers.settingsScreen.analytics)
-            }
-            
-            ListRow(label: .default(title: L10n.commonAdvancedSettings,
-                                    icon: \.settings),
-                    kind: .navigationLink {
-                        context.send(viewAction: .advancedSettings)
-                    })
-                    .accessibilityIdentifier(A11yIdentifiers.settingsScreen.advancedSettings)
-            
-            if context.viewState.showDeveloperOptions {
-                ListRow(label: .default(title: L10n.commonDeveloperOptions,
-                                        icon: \.code),
-                        kind: .navigationLink {
-                            context.send(viewAction: .developerOptions)
-                        })
-                        .accessibilityIdentifier(A11yIdentifiers.settingsScreen.developerOptions)
+                        .accessibilityIdentifier(A11yIdentifiers.settingsScreen.advancedSettings)
+                
+                if context.viewState.showDeveloperOptions {
+                    ListRow(label: .default(title: L10n.commonDeveloperOptions,
+                                            icon: \.code),
+                            kind: .navigationLink {
+                                context.send(viewAction: .developerOptions)
+                            })
+                            .accessibilityIdentifier(A11yIdentifiers.settingsScreen.developerOptions)
+                }
             }
         }
     }

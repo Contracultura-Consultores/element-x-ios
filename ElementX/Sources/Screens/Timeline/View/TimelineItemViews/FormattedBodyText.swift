@@ -142,10 +142,10 @@ struct FormattedBodyText_Previews: PreviewProvider, TestablePreview {
         let htmlStrings = [
             """
             Plain text\n
-            !room:matrix.org\n
-            https://www.matrix.org\n
-            www.matrix.org\n
-            matrix.org
+            !room:matrix.pesbc.chat\n
+            https://www.matrix.pesbc.chat\n
+            www.matrix.pesbc.chat\n
+            matrix.pesbc.chat
             """,
             """
             Text before blockquote
@@ -154,9 +154,9 @@ struct FormattedBodyText_Previews: PreviewProvider, TestablePreview {
             </blockquote>Text after blockquote
             """,
             """
-            <blockquote>First blockquote with a <a href=\"https://www.matrix.org/\">link</a> in it</blockquote>
-            <blockquote>Second blockquote with a <a href=\"https://www.matrix.org/\">link</a> in it</blockquote>
-            <blockquote>Third blockquote with a <a href=\"https://www.matrix.org/\">link</a> in it</blockquote>
+            <blockquote>First blockquote with a <a href=\"https://www.matrix.pesbc.chat/\">link</a> in it</blockquote>
+            <blockquote>Second blockquote with a <a href=\"https://www.matrix.pesbc.chat/\">link</a> in it</blockquote>
+            <blockquote>Third blockquote with a <a href=\"https://www.matrix.pesbc.chat/\">link</a> in it</blockquote>
             """,
             """
             <blockquote>A blockquote that is long and goes onto multiple lines as the first item in the message</blockquote>
@@ -171,7 +171,7 @@ struct FormattedBodyText_Previews: PreviewProvider, TestablePreview {
             <p>Text</p>
             <code>Hello world</code>
             <p>Text</p>
-            <code><a href="https://www.matrix.org">matrix.org</a> https://www.matrix.org</code>
+            <code><a href="https://www.matrix.pesbc.chat">matrix.pesbc.chat</a> https://www.matrix.pesbc.chat</code>
             """,
             "<p>This is a list</p>\n<ul>\n<li>One</li>\n<li>Two</li>\n<li>And number 3</li>\n</ul>\n",
             "<ul><li>First item</li><li>Second item</li><li>Third item</li></ul>",

@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Введіть...";
 "screen_start_chat_join_room_by_address_room_found" = "Знайдено відповідну кімнату";
 "screen_start_chat_join_room_by_address_room_not_found" = "Кімната не знайдена";
-"screen_start_chat_join_room_by_address_supporting_text" = "наприклад, #room-name:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "наприклад, #room-name:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "Повідомлення не надіслано, оскільки підтверджену особистість %1$@ скинуто.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "Повідомлення не надіслано, оскільки %1$@ перевірив не всі пристрої.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Повідомлення не надіслано, оскільки ви не підтвердили один або кілька своїх пристроїв.";
@@ -603,7 +603,7 @@
 "screen_bug_report_include_screenshot" = "Надіслати знімок екрана";
 "screen_bug_report_logs_description" = "Журнали будуть додані до вашого повідомлення, щоб переконатися, що все працює належним чином. Щоб надіслати повідомлення без журналів, вимкніть це налаштування.";
 "screen_bug_report_view_logs" = "Переглянути журнали";
-"screen_change_account_provider_matrix_org_subtitle" = "Matrix.org — це великий безплатний сервер у загальнодоступній мережі Matrix для безпечного децентралізованого спілкування, яким керує Matrix.org Foundation.";
+"screen_change_account_provider_matrix_org_subtitle" = "matrix.pesbc.chat — це великий безплатний сервер у загальнодоступній мережі Matrix для безпечного децентралізованого спілкування, яким керує matrix.pesbc.chat Foundation.";
 "screen_change_account_provider_other" = "Інше";
 "screen_change_account_provider_subtitle" = "Використати іншого провайдера облікових записів, наприклад, власний приватний сервер або робочий обліковий запис.";
 "screen_change_account_provider_title" = "Змінити провайдера облікового запису";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "Додати смайлики";
 "screen_room_timeline_beginning_of_room" = "Це початок %1$@";
 "screen_room_timeline_beginning_of_room_no_name" = "Це початок цієї розмови.";
-"screen_room_timeline_legacy_call" = "Непідтримуваний виклик. Запитайте, чи може абонент використовувати новий застосунок Element X.";
+"screen_room_timeline_legacy_call" = "Непідтримуваний виклик. Запитайте, чи може абонент використовувати новий застосунок PESenger.";
 "screen_room_timeline_less_reactions" = "Показувати менше";
 "screen_room_timeline_message_copied" = "Повідомлення скопійовано";
 "screen_room_timeline_no_permission_to_post" = "У вас немає дозволу на публікацію в цій кімнаті";

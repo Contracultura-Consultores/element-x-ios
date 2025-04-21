@@ -14,14 +14,14 @@ class SessionDirectoriesTests: XCTestCase {
     
     func testInitWithUserID() {
         // Given only a user ID.
-        let userID = "@user:matrix.org"
+        let userID = "@user:matrix.pesbc.chat"
         
         // When creating the session directories using this.
         let sessionDirectories = SessionDirectories(userID: userID)
         
         // Then the directories should be generated in the correct location, using an escaped version of the user ID
-        XCTAssertEqual(sessionDirectories.dataDirectory, .sessionsBaseDirectory.appending(component: "@user_matrix.org"))
-        XCTAssertEqual(sessionDirectories.cacheDirectory, .sessionCachesBaseDirectory.appending(component: "@user_matrix.org"))
+        XCTAssertEqual(sessionDirectories.dataDirectory, .sessionsBaseDirectory.appending(component: "@user_matrix.pesbc.chat"))
+        XCTAssertEqual(sessionDirectories.cacheDirectory, .sessionCachesBaseDirectory.appending(component: "@user_matrix.pesbc.chat"))
     }
     
     func testInitWithDataDirectory() {

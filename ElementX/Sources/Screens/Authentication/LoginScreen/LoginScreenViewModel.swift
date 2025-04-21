@@ -141,7 +141,7 @@ class LoginScreenViewModel: LoginScreenViewModelType, LoginScreenViewModelProtoc
                                                  primaryButton: .init(title: L10n.actionLearnMore, role: .cancel, action: openURL),
                                                  secondaryButton: .init(title: L10n.actionCancel, action: nil))
             
-            // Clear out the invalid username to avoid an attempted login to matrix.org
+            // Clear out the invalid username to avoid an attempted login to matrix.pesbc.chat
             state.bindings.username = ""
         case .sessionTokenRefreshNotSupported:
             state.bindings.alertInfo = AlertInfo(id: .refreshTokenAlert,

@@ -47,21 +47,21 @@ struct RoomDirectorySearchCell: View {
 struct RoomDirectorySearchCell_Previews: PreviewProvider, TestablePreview {
     static var previews: some View {
         List {
-            RoomDirectorySearchCell(result: .init(id: "!test_id_1:matrix.org",
+            RoomDirectorySearchCell(result: .init(id: "!test_id_1:matrix.pesbc.chat",
                                                   alias: "#test:example.com",
                                                   name: "Test title",
                                                   topic: "test description",
-                                                  avatar: .room(id: "!test_id_1:matrix.org",
+                                                  avatar: .room(id: "!test_id_1:matrix.pesbc.chat",
                                                                 name: "Test title",
                                                                 avatarURL: nil),
                                                   canBeJoined: true),
                                     mediaProvider: MediaProviderMock(configuration: .init())) { }
             
-            RoomDirectorySearchCell(result: .init(id: "!test_id_2:matrix.org",
+            RoomDirectorySearchCell(result: .init(id: "!test_id_2:matrix.pesbc.chat",
                                                   alias: "#test:example.com",
                                                   name: nil,
                                                   topic: "test description",
-                                                  avatar: .room(id: "!test_id_2:matrix.org",
+                                                  avatar: .room(id: "!test_id_2:matrix.pesbc.chat",
                                                                 name: nil,
                                                                 avatarURL: nil),
                                                   canBeJoined: true),

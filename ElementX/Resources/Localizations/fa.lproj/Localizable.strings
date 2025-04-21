@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Enter...";
 "screen_start_chat_join_room_by_address_room_found" = "Matching room found";
 "screen_start_chat_join_room_by_address_room_not_found" = "Room not found";
-"screen_start_chat_join_room_by_address_supporting_text" = "e.g. #room-name:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "e.g. #room-name:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "Message not sent because %1$@’s verified identity was reset.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "Message not sent because %1$@ has not verified all devices.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Message not sent because you have not verified one or more of your devices.";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "افزودن شکلک";
 "screen_room_timeline_beginning_of_room" = "آغاز %1$@ است.";
 "screen_room_timeline_beginning_of_room_no_name" = "این، آغاز گفت‌وگوست.";
-"screen_room_timeline_legacy_call" = "Unsupported call. Ask if the caller can use the new Element X app.";
+"screen_room_timeline_legacy_call" = "Unsupported call. Ask if the caller can use the new PESenger app.";
 "screen_room_timeline_less_reactions" = "نمایش کم‌تر";
 "screen_room_timeline_message_copied" = "پیام رونوشت شد";
 "screen_room_timeline_no_permission_to_post" = "اجازهٔ فرستادن به این اتاق را ندارید";

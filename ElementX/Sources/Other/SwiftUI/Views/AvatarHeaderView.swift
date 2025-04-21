@@ -195,12 +195,12 @@ struct AvatarHeaderView<Footer: View>: View {
 struct AvatarHeaderView_Previews: PreviewProvider, TestablePreview {
     static var previews: some View {
         Form {
-            AvatarHeaderView(room: .init(id: "@test:matrix.org",
+            AvatarHeaderView(room: .init(id: "@test:matrix.pesbc.chat",
                                          name: "Test Room",
-                                         avatar: .room(id: "@test:matrix.org",
+                                         avatar: .room(id: "@test:matrix.pesbc.chat",
                                                        name: "Test Room",
                                                        avatarURL: .mockMXCAvatar),
-                                         canonicalAlias: "#test:matrix.org",
+                                         canonicalAlias: "#test:matrix.pesbc.chat",
                                          isEncrypted: true,
                                          isPublic: true,
                                          isDirect: false),

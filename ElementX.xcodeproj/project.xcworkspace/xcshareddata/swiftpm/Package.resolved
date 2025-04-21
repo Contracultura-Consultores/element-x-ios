@@ -299,7 +299,7 @@
     {
       "identity" : "xctest-dynamic-overlay",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/pointfreeco/xctest-dynamic-overlay",
+      "location" : "https://github.com/Contracultura-Consultores/swift-issue-reporting",
       "state" : {
         "branch" : "test-traits",
         "revision" : "ccc75ae935e2fee1b2c7d8040c21538def4310d8"

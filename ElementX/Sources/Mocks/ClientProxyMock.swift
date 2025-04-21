@@ -52,7 +52,7 @@ extension ClientProxyMock {
         notificationSettings = NotificationSettingsProxyMock(with: .init())
         
         isOnlyDeviceLeftReturnValue = .success(false)
-        accountURLActionReturnValue = "https://matrix.org/account"
+        accountURLActionReturnValue = "https://matrix.pesbc.chat/account"
         canDeactivateAccount = false
         directRoomForUserIDReturnValue = .failure(.sdkError(ClientProxyMockError.generic))
         createDirectRoomWithExpectedRoomNameReturnValue = .failure(.sdkError(ClientProxyMockError.generic))

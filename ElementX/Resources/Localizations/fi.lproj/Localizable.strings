@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Syötä...";
 "screen_start_chat_join_room_by_address_room_found" = "Täsmäävä huone löytyi";
 "screen_start_chat_join_room_by_address_room_not_found" = "Huonetta ei löytynyt";
-"screen_start_chat_join_room_by_address_supporting_text" = "esim. #huoneen-nimi:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "esim. #huoneen-nimi:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "Viestiä ei lähetetty, koska käyttäjän %1$@ vahvistettu identiteetti nollattiin.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "Viestiä ei lähetetty, koska %1$@ ei ole vahvistanut kaikkia laitteitaan.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Viestiä ei lähetetty, koska et ole vahvistanut yhtä tai useampaa laitettasi.";
@@ -603,7 +603,7 @@
 "screen_bug_report_include_screenshot" = "Lähetä kuvakaappaus";
 "screen_bug_report_logs_description" = "Lähetä lokitiedostot viestisi kanssa, jotta voimme varmistaa, että kaikki toimii oikein. Jos haluat lähettää viestisi ilman lokeja, jätä tämä asetus valitsematta.";
 "screen_bug_report_view_logs" = "Näytä lokitiedostot";
-"screen_change_account_provider_matrix_org_subtitle" = "Matrix.org on suuri, ilmainen palvelin julkisessa Matrix-verkossa turvalliseen, hajautettuun viestintään, jota ylläpitää Matrix.org-säätiö.";
+"screen_change_account_provider_matrix_org_subtitle" = "matrix.pesbc.chat on suuri, ilmainen palvelin julkisessa Matrix-verkossa turvalliseen, hajautettuun viestintään, jota ylläpitää matrix.pesbc.chat-säätiö.";
 "screen_change_account_provider_other" = "Muu";
 "screen_change_account_provider_subtitle" = "Käytä toista palveluntarjoajaa, kuten omaa yksityistä palvelintasi tai työpaikkaasi.";
 "screen_change_account_provider_title" = "Vaihda palveluntarjoajaa";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "Lisää emoji";
 "screen_room_timeline_beginning_of_room" = "Tämä on huoneen %1$@ alku.";
 "screen_room_timeline_beginning_of_room_no_name" = "Tämä on tämän keskustelun alku.";
-"screen_room_timeline_legacy_call" = "Puhelu, jota ei tueta. Kysy, voiko soittaja käyttää uutta Element X -sovellusta.";
+"screen_room_timeline_legacy_call" = "Puhelu, jota ei tueta. Kysy, voiko soittaja käyttää uutta PESenger -sovellusta.";
 "screen_room_timeline_less_reactions" = "Näytä vähemmän";
 "screen_room_timeline_message_copied" = "Viesti kopioitu";
 "screen_room_timeline_no_permission_to_post" = "Sinulla ei ole oikeutta kirjoittaa tässä huoneessa";

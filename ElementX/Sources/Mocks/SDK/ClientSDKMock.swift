@@ -12,10 +12,10 @@ extension ClientSDKMock {
     struct Configuration {
         // MARK: Authentication
         
-        var serverAddress = "matrix.org"
-        var homeserverURL = "https://matrix-client.matrix.org"
+        var serverAddress = "matrix.pesbc.chat"
+        var homeserverURL = "https://matrix-client.matrix.pesbc.chat"
         var slidingSyncVersion = SlidingSyncVersion.native
-        var oidcLoginURL: String? = "https://account.matrix.org/authorize"
+        var oidcLoginURL: String? = "https://account.matrix.pesbc.chat/authorize"
         var supportsOIDCCreatePrompt = true
         var supportsPasswordLogin = true
         var validCredentials = (username: "alice", password: "12345678")
@@ -25,9 +25,9 @@ extension ClientSDKMock {
         var userID: String?
         var session = Session(accessToken: UUID().uuidString,
                               refreshToken: nil,
-                              userId: "@alice:matrix.org",
+                              userId: "@alice:matrix.pesbc.chat",
                               deviceId: UUID().uuidString,
-                              homeserverUrl: "https://matrix-client.matrix.org",
+                              homeserverUrl: "https://matrix-client.matrix.pesbc.chat",
                               oidcData: nil,
                               slidingSyncVersion: .native)
     }

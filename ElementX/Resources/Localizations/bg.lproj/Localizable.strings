@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Enter...";
 "screen_start_chat_join_room_by_address_room_found" = "Matching room found";
 "screen_start_chat_join_room_by_address_room_not_found" = "Room not found";
-"screen_start_chat_join_room_by_address_supporting_text" = "e.g. #room-name:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "e.g. #room-name:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "Message not sent because %1$@’s verified identity was reset.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "Message not sent because %1$@ has not verified all devices.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Message not sent because you have not verified one or more of your devices.";
@@ -603,7 +603,7 @@
 "screen_bug_report_include_screenshot" = "Изпращане на екранна снимка";
 "screen_bug_report_logs_description" = "Logs will be included with your message to make sure that everything is working properly. To send your message without logs, turn off this setting.";
 "screen_bug_report_view_logs" = "Преглед на дневниците";
-"screen_change_account_provider_matrix_org_subtitle" = "Matrix.org is a large, free server on the public Matrix network for secure, decentralised communication, run by the Matrix.org Foundation.";
+"screen_change_account_provider_matrix_org_subtitle" = "matrix.pesbc.chat is a large, free server on the public Matrix network for secure, decentralised communication, run by the matrix.pesbc.chat Foundation.";
 "screen_change_account_provider_other" = "Друг";
 "screen_change_account_provider_subtitle" = "Използвайте друг доставчик на акаунт, като например собствен частен сървър или работен акаунт.";
 "screen_change_account_provider_title" = "Промяна на доставчика на акаунт";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "Добавяне на емоджи";
 "screen_room_timeline_beginning_of_room" = "Това е началото на %1$@.";
 "screen_room_timeline_beginning_of_room_no_name" = "Това е началото на този разговор.";
-"screen_room_timeline_legacy_call" = "Unsupported call. Ask if the caller can use the new Element X app.";
+"screen_room_timeline_legacy_call" = "Unsupported call. Ask if the caller can use the new PESenger app.";
 "screen_room_timeline_less_reactions" = "Показване на по-малко";
 "screen_room_timeline_message_copied" = "Съобщението е копирано";
 "screen_room_timeline_no_permission_to_post" = "You do not have permission to post to this room";

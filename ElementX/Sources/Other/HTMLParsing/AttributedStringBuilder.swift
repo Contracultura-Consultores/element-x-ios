@@ -16,26 +16,27 @@ struct AttributedStringBuilder: AttributedStringBuilderProtocol {
     private let temporaryBlockquoteMarkingColor = UIColor.magenta
     private let temporaryCodeBlockMarkingColor = UIColor.cyan
     private let mentionBuilder: MentionBuilderProtocol
-    
+
     private static let defaultKey = "default"
-    
-    private static let cacheDispatchQueue = DispatchQueue(label: "io.element.elementx.attributed_string_builder_cache")
+
+    private static let cacheDispatchQueue = DispatchQueue(
+        label: "io.pesbc.pesenger.attributed_string_builder_cache")
     private static var caches: [String: LRUCache<String, AttributedString>] = [:]
 
     static func invalidateCaches() {
         caches.removeAll()
     }
-    
+
     init(cacheKey: String = defaultKey, mentionBuilder: MentionBuilderProtocol) {
         self.cacheKey = cacheKey
         self.mentionBuilder = mentionBuilder
     }
-        
+
     func fromPlain(_ string: String?) -> AttributedString? {
         guard let string else {
             return nil
         }
-        
+
         if let cached = Self.cachedValue(forKey: string, cacheKey: cacheKey) {
             return cached
         }
@@ -44,13 +45,13 @@ struct AttributedStringBuilder: AttributedStringBuilderProtocol {
         removeDefaultForegroundColors(mutableAttributedString)
         addLinksAndMentions(mutableAttributedString)
         detectPermalinks(mutableAttributedString)
-        
+
         let result = try? AttributedString(mutableAttributedString, including: \.elementX)
         Self.cacheValue(result, forKey: string, cacheKey: cacheKey)
-        
+
         return result
     }
-        
+
     // Do not use the default HTML renderer of NSAttributedString because this method
     // runs on the UI thread which we want to avoid because renderHTMLString is called
     // most of the time from a background thread.
@@ -62,19 +63,19 @@ struct AttributedStringBuilder: AttributedStringBuilderProtocol {
         guard let originalHTMLString = htmlString else {
             return nil
         }
-        
+
         if let cached = Self.cachedValue(forKey: originalHTMLString, cacheKey: cacheKey) {
             return cached
         }
-                
+
         let htmlString = originalHTMLString.replacingHtmlBreaksOccurrences()
-        
+
         guard let data = htmlString.data(using: .utf8) else {
             return nil
         }
-        
+
         let defaultFont = UIFont.preferredFont(forTextStyle: .body)
-        
+
         let parsingOptions: [String: Any] = [
             DTUseiOS6Attributes: true,
             DTDefaultFontFamily: defaultFont.familyName,
@@ -83,19 +84,21 @@ struct AttributedStringBuilder: AttributedStringBuilderProtocol {
             DTDefaultStyleSheet: DTCSSStylesheet(styleBlock: defaultCSS) as Any,
             DTDefaultLinkDecoration: false
         ]
-        
-        guard let builder = DTHTMLAttributedStringBuilder(html: data, options: parsingOptions, documentAttributes: nil) else {
+
+        guard
+            let builder = DTHTMLAttributedStringBuilder(html: data, options: parsingOptions, documentAttributes: nil)
+        else {
             return nil
         }
-        
+
         builder.willFlushCallback = { element in
             element?.sanitize(font: defaultFont)
         }
-            
+
         guard let attributedString = builder.generatedAttributedString() else {
             return nil
         }
-        
+
         let mutableAttributedString = NSMutableAttributedString(attributedString: attributedString)
         removeDefaultForegroundColors(mutableAttributedString)
         detectPhishingAttempts(mutableAttributedString)
@@ -104,111 +107,119 @@ struct AttributedStringBuilder: AttributedStringBuilderProtocol {
         replaceMarkedCodeBlocks(mutableAttributedString)
         detectPermalinks(mutableAttributedString)
         removeDTCoreTextArtifacts(mutableAttributedString)
-        
+
         let result = try? AttributedString(mutableAttributedString, including: \.elementX)
         Self.cacheValue(result, forKey: htmlString, cacheKey: cacheKey)
-        
+
         return result
     }
-    
+
     // MARK: - Private
-    
+
     private static func cacheValue(_ value: AttributedString?, forKey key: String, cacheKey: String) {
         cacheDispatchQueue.sync {
             if caches[cacheKey] == nil {
                 caches[cacheKey] = LRUCache<String, AttributedString>(countLimit: 1000)
             }
-            
+
             caches[cacheKey]?.setValue(value, forKey: key)
         }
     }
-    
+
     private static func cachedValue(forKey key: String, cacheKey: String) -> AttributedString? {
         var result: AttributedString?
         cacheDispatchQueue.sync {
             result = caches[cacheKey]?.value(forKey: key)
         }
-        
+
         return result
     }
-    
+
     private func removeDefaultForegroundColors(_ attributedString: NSMutableAttributedString) {
         attributedString.removeAttribute(.foregroundColor, range: .init(location: 0, length: attributedString.length))
     }
-    
+
     // swiftlint:disable:next cyclomatic_complexity
     private func addLinksAndMentions(_ attributedString: NSMutableAttributedString) {
         let string = attributedString.string
-        
+
         // Event identifiers and room aliases and identifiers detected in plain text are techincally incomplete
         // without via parameters and we won't bother detecting them
-        
-        var matches: [TextParsingMatch] = MatrixEntityRegex.userIdentifierRegex.matches(in: string).compactMap { match in
-            guard let matchRange = Range(match.range, in: string) else {
-                return nil
-            }
-            
-            let identifier = String(string[matchRange])
 
-            return TextParsingMatch(type: .userID(identifier: identifier), range: match.range)
-        }
-        
-        matches.append(contentsOf: MatrixEntityRegex.roomAliasRegex.matches(in: string).compactMap { match in
-            guard let matchRange = Range(match.range, in: string) else {
-                return nil
+        var matches: [TextParsingMatch] = MatrixEntityRegex.userIdentifierRegex.matches(in: string)
+            .compactMap { match in
+                guard let matchRange = Range(match.range, in: string) else {
+                    return nil
+                }
+
+                let identifier = String(string[matchRange])
+
+                return TextParsingMatch(type: .userID(identifier: identifier), range: match.range)
             }
-            
-            let alias = String(string[matchRange])
-            
-            return TextParsingMatch(type: .roomAlias(alias: alias), range: match.range)
-        })
-        
-        matches.append(contentsOf: MatrixEntityRegex.uriRegex.matches(in: string).compactMap { match in
-            guard let matchRange = Range(match.range, in: string) else {
-                return nil
-            }
-            
-            let uri = String(string[matchRange])
-            
-            return TextParsingMatch(type: .matrixURI(uri: uri), range: match.range)
-        })
-        
-        matches.append(contentsOf: MatrixEntityRegex.linkRegex.matches(in: string).compactMap { match in
-            guard let matchRange = Range(match.range, in: string) else {
-                return nil
-            }
-            
-            let link = String(string[matchRange]).asSanitizedLink
-            return TextParsingMatch(type: .link(urlString: link), range: match.range)
-        })
-        
-        matches.append(contentsOf: MatrixEntityRegex.allUsersRegex.matches(in: attributedString.string).map { match in
-            TextParsingMatch(type: .atRoom, range: match.range)
-        })
-        
+
+        matches.append(
+            contentsOf: MatrixEntityRegex.roomAliasRegex.matches(in: string).compactMap { match in
+                guard let matchRange = Range(match.range, in: string) else {
+                    return nil
+                }
+
+                let alias = String(string[matchRange])
+
+                return TextParsingMatch(type: .roomAlias(alias: alias), range: match.range)
+            })
+
+        matches.append(
+            contentsOf: MatrixEntityRegex.uriRegex.matches(in: string).compactMap { match in
+                guard let matchRange = Range(match.range, in: string) else {
+                    return nil
+                }
+
+                let uri = String(string[matchRange])
+
+                return TextParsingMatch(type: .matrixURI(uri: uri), range: match.range)
+            })
+
+        matches.append(
+            contentsOf: MatrixEntityRegex.linkRegex.matches(in: string).compactMap { match in
+                guard let matchRange = Range(match.range, in: string) else {
+                    return nil
+                }
+
+                let link = String(string[matchRange]).asSanitizedLink
+                return TextParsingMatch(type: .link(urlString: link), range: match.range)
+            })
+
+        matches.append(
+            contentsOf: MatrixEntityRegex.allUsersRegex.matches(in: attributedString.string).map {
+                match in
+                TextParsingMatch(type: .atRoom, range: match.range)
+            })
+
         guard matches.count > 0 else {
             return
         }
-        
+
         // Sort the links by length so the longest one always takes priority
         matches.sorted { $0.range.length > $1.range.length }.forEach { [attributedString] match in
             var hasLink = false
-            attributedString.enumerateAttribute(.link, in: match.range, options: []) { value, _, stop in
+            attributedString.enumerateAttribute(.link, in: match.range, options: []) {
+                value, _, stop in
                 if value != nil {
                     hasLink = true
                     stop.pointee = true
                 }
             }
-            
+
             if hasLink {
                 return
             }
-            
+
             // Don't add any extra attributes within codeblocks
-            if attributedString.attribute(.backgroundColor, at: match.range.location, effectiveRange: nil) as? UIColor == temporaryCodeBlockMarkingColor {
+            if attributedString.attribute(.backgroundColor, at: match.range.location, effectiveRange: nil) as? UIColor
+                == temporaryCodeBlockMarkingColor {
                 return
             }
-            
+
             switch match.type {
             case .atRoom:
                 attributedString.addAttribute(.MatrixAllUsersMention, value: true, range: match.range)
@@ -228,7 +239,7 @@ struct AttributedStringBuilder: AttributedStringBuilderProtocol {
             }
         }
     }
-    
+
     private func replaceMarkedBlockquotes(_ attributedString: NSMutableAttributedString) {
         // According to blockquotes in the string, DTCoreText can apply 2 policies:
         //     - define a `DTTextBlocksAttribute` attribute on a <blockquote> block
@@ -236,24 +247,26 @@ struct AttributedStringBuilder: AttributedStringBuilderProtocol {
         attributedString.enumerateAttribute(.DTTextBlocks, in: .init(location: 0, length: attributedString.length), options: []) { value, range, _ in
             guard let value = value as? NSArray,
                   let dtTextBlock = value.firstObject as? DTTextBlock,
-                  dtTextBlock.backgroundColor == temporaryBlockquoteMarkingColor else {
+                  dtTextBlock.backgroundColor == temporaryBlockquoteMarkingColor
+            else {
                 return
             }
-            
+
             attributedString.addAttribute(.MatrixBlockquote, value: true, range: range)
         }
-        
+
         attributedString.enumerateAttribute(.backgroundColor, in: .init(location: 0, length: attributedString.length), options: []) { value, range, _ in
             guard let value = value as? UIColor,
-                  value == temporaryBlockquoteMarkingColor else {
+                  value == temporaryBlockquoteMarkingColor
+            else {
                 return
             }
-            
+
             attributedString.removeAttribute(.backgroundColor, range: range)
             attributedString.addAttribute(.MatrixBlockquote, value: true, range: range)
         }
     }
-    
+
     private func replaceMarkedCodeBlocks(_ attributedString: NSMutableAttributedString) {
         attributedString.enumerateAttribute(.backgroundColor, in: .init(location: 0, length: attributedString.length), options: []) { value, range, _ in
             if let value = value as? UIColor,
@@ -263,7 +276,7 @@ struct AttributedStringBuilder: AttributedStringBuilderProtocol {
             }
         }
     }
-    
+
     func detectPermalinks(_ attributedString: NSMutableAttributedString) {
         attributedString.enumerateAttribute(.link, in: .init(location: 0, length: attributedString.length), options: []) { value, range, _ in
             if value != nil {
@@ -271,75 +284,85 @@ struct AttributedStringBuilder: AttributedStringBuilderProtocol {
                    let matrixEntity = parseMatrixEntityFrom(uri: url.absoluteString) {
                     switch matrixEntity.id {
                     case .user(let userID):
-                        mentionBuilder.handleUserMention(for: attributedString, in: range, url: url, userID: userID, userDisplayName: nil)
+                        mentionBuilder.handleUserMention(for: attributedString, in: range, url: url, userID: userID,
+                                                         userDisplayName: nil)
                     case .room(let roomID):
                         mentionBuilder.handleRoomIDMention(for: attributedString, in: range, url: url, roomID: roomID)
                     case .roomAlias(let alias):
-                        mentionBuilder.handleRoomAliasMention(for: attributedString, in: range, url: url, roomAlias: alias, roomDisplayName: nil)
+                        mentionBuilder.handleRoomAliasMention(for: attributedString, in: range, url: url, roomAlias: alias,
+                                                              roomDisplayName: nil)
                     case .eventOnRoomId(let roomID, let eventID):
-                        mentionBuilder.handleEventOnRoomIDMention(for: attributedString, in: range, url: url, eventID: eventID, roomID: roomID)
+                        mentionBuilder.handleEventOnRoomIDMention(for: attributedString, in: range, url: url, eventID: eventID,
+                                                                  roomID: roomID)
                     case .eventOnRoomAlias(let alias, let eventID):
-                        mentionBuilder.handleEventOnRoomAliasMention(for: attributedString, in: range, url: url, eventID: eventID, roomAlias: alias)
+                        mentionBuilder.handleEventOnRoomAliasMention(for: attributedString, in: range, url: url, eventID: eventID,
+                                                                     roomAlias: alias)
                     }
                 }
             }
         }
-        
-        attributedString.enumerateAttribute(.MatrixAllUsersMention, in: .init(location: 0, length: attributedString.length), options: []) { value, range, _ in
+
+        attributedString.enumerateAttribute(.MatrixAllUsersMention, in: .init(location: 0, length: attributedString.length),
+                                            options: []) { value, range, _ in
             if let value = value as? Bool,
                value {
                 mentionBuilder.handleAllUsersMention(for: attributedString, in: range)
             }
         }
     }
-        
+
     private func detectPhishingAttempts(_ attributedString: NSMutableAttributedString) {
         attributedString.enumerateAttribute(.link, in: .init(location: 0, length: attributedString.length), options: []) { value, range, _ in
             guard value != nil, let internalURL = value as? URL else {
                 return
             }
             let displayString = attributedString.attributedSubstring(from: range).string
-            
-            guard PhishingDetector.isPhishingAttempt(displayString: displayString, internalURL: internalURL) else {
+
+            guard
+                PhishingDetector.isPhishingAttempt(displayString: displayString, internalURL: internalURL)
+            else {
                 return
             }
-            handlePhishingAttempt(for: attributedString, in: range, internalURL: internalURL, displayString: displayString)
+            handlePhishingAttempt(for: attributedString, in: range, internalURL: internalURL,
+                                  displayString: displayString)
         }
     }
-    
+
     private func handlePhishingAttempt(for attributedString: NSMutableAttributedString,
                                        in range: NSRange,
                                        internalURL: URL,
                                        displayString: String) {
         // Let's remove the existing link attribute
         attributedString.removeAttribute(.link, range: range)
-        
+
         var urlComponents = URLComponents()
         urlComponents.scheme = URL.confirmationScheme
         urlComponents.host = ""
         let parameters = ConfirmURLParameters(internalURL: internalURL, displayString: displayString)
         urlComponents.queryItems = parameters.urlQueryItems
-        
+
         guard let finalURL = urlComponents.url else {
             return
         }
-        
+
         attributedString.addAttribute(.link, value: finalURL, range: range)
     }
-        
+
     private func removeDTCoreTextArtifacts(_ attributedString: NSMutableAttributedString) {
         guard attributedString.length > 0 else {
             return
         }
-        
+
         // DTCoreText adds a newline at the end of plain text ( https://github.com/Cocoanetics/DTCoreText/issues/779 )
         // or after a blockquote section.
         // Trim trailing whitespace and newlines in the string content
-        while (attributedString.string as NSString).hasSuffixCharacter(from: .whitespacesAndNewlines) {
-            attributedString.deleteCharacters(in: .init(location: attributedString.length - 1, length: 1))
+        while (attributedString.string as NSString).hasSuffixCharacter(
+            from: .whitespacesAndNewlines) {
+            attributedString.deleteCharacters(
+                in: .init(location: attributedString.length - 1, length: 1))
         }
     }
-    
+
     private var defaultCSS: String {
         """
                 blockquote {
@@ -366,11 +389,11 @@ extension UIColor {
         var green: CGFloat = 0.0
         var blue: CGFloat = 0.0
         var alpha: CGFloat = 0.0
-        
+
         getRed(&red, green: &green, blue: &blue, alpha: &alpha)
-        
+
         let rgb = Int(red * 255) << 16 | Int(green * 255) << 8 | Int(blue * 255) << 0
-        
+
         return NSString(format: "#%06x", rgb) as String
     }
 }
@@ -379,21 +402,30 @@ extension NSAttributedString.Key {
     static let DTTextBlocks: NSAttributedString.Key = .init(rawValue: DTTextBlocksAttribute)
     static let MatrixBlockquote: NSAttributedString.Key = .init(rawValue: BlockquoteAttribute.name)
     static let MatrixUserID: NSAttributedString.Key = .init(rawValue: UserIDAttribute.name)
-    static let MatrixUserDisplayName: NSAttributedString.Key = .init(rawValue: UserDisplayNameAttribute.name)
-    static let MatrixRoomDisplayName: NSAttributedString.Key = .init(rawValue: RoomDisplayNameAttribute.name)
+    static let MatrixUserDisplayName: NSAttributedString.Key = .init(
+        rawValue: UserDisplayNameAttribute.name)
+    static let MatrixRoomDisplayName: NSAttributedString.Key = .init(
+        rawValue: RoomDisplayNameAttribute.name)
     static let MatrixRoomID: NSAttributedString.Key = .init(rawValue: RoomIDAttribute.name)
     static let MatrixRoomAlias: NSAttributedString.Key = .init(rawValue: RoomAliasAttribute.name)
-    static let MatrixEventOnRoomID: NSAttributedString.Key = .init(rawValue: EventOnRoomIDAttribute.name)
-    static let MatrixEventOnRoomAlias: NSAttributedString.Key = .init(rawValue: EventOnRoomAliasAttribute.name)
-    static let MatrixAllUsersMention: NSAttributedString.Key = .init(rawValue: AllUsersMentionAttribute.name)
+    static let MatrixEventOnRoomID: NSAttributedString.Key = .init(
+        rawValue: EventOnRoomIDAttribute.name)
+    static let MatrixEventOnRoomAlias: NSAttributedString.Key = .init(
+        rawValue: EventOnRoomAliasAttribute.name)
+    static let MatrixAllUsersMention: NSAttributedString.Key = .init(
+        rawValue: AllUsersMentionAttribute.name)
 }
 
 protocol MentionBuilderProtocol {
-    func handleUserMention(for attributedString: NSMutableAttributedString, in range: NSRange, url: URL, userID: String, userDisplayName: String?)
+    func handleUserMention(for attributedString: NSMutableAttributedString, in range: NSRange, url: URL,
+                           userID: String, userDisplayName: String?)
     func handleRoomIDMention(for attributedString: NSMutableAttributedString, in range: NSRange, url: URL, roomID: String)
-    func handleRoomAliasMention(for attributedString: NSMutableAttributedString, in range: NSRange, url: URL, roomAlias: String, roomDisplayName: String?)
-    func handleEventOnRoomAliasMention(for attributedString: NSMutableAttributedString, in range: NSRange, url: URL, eventID: String, roomAlias: String)
-    func handleEventOnRoomIDMention(for attributedString: NSMutableAttributedString, in range: NSRange, url: URL, eventID: String, roomID: String)
+    func handleRoomAliasMention(for attributedString: NSMutableAttributedString, in range: NSRange, url: URL,
+                                roomAlias: String, roomDisplayName: String?)
+    func handleEventOnRoomAliasMention(for attributedString: NSMutableAttributedString, in range: NSRange, url: URL,
+                                       eventID: String, roomAlias: String)
+    func handleEventOnRoomIDMention(for attributedString: NSMutableAttributedString, in range: NSRange, url: URL,
+                                    eventID: String, roomID: String)
     func handleAllUsersMention(for attributedString: NSMutableAttributedString, in range: NSRange)
 }
 
@@ -405,10 +437,10 @@ private struct TextParsingMatch {
         case link(urlString: String)
         case atRoom
     }
-    
+
     let type: MatchType
     let range: NSRange
-    
+
     var link: URL? {
         switch type {
         case .userID(let identifier):

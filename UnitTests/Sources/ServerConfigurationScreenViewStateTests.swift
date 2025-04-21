@@ -14,7 +14,7 @@ class ServerConfirmationScreenViewStateTests: XCTestCase {
     func testLoginMessageString() {
         let matrixDotOrgLogin = ServerConfirmationScreenViewState(homeserverAddress: LoginHomeserver.mockMatrixDotOrg.address,
                                                                   authenticationFlow: .login)
-        XCTAssertEqual(matrixDotOrgLogin.message, L10n.screenServerConfirmationMessageLoginMatrixDotOrg, "matrix.org should have a custom message.")
+        XCTAssertEqual(matrixDotOrgLogin.message, L10n.screenServerConfirmationMessageLoginMatrixDotOrg, "matrix.pesbc.chat should have a custom message.")
         
         let elementDotIoLogin = ServerConfirmationScreenViewState(homeserverAddress: "element.io",
                                                                   authenticationFlow: .login)

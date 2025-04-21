@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Enter...";
 "screen_start_chat_join_room_by_address_room_found" = "Matching room found";
 "screen_start_chat_join_room_by_address_room_not_found" = "Room not found";
-"screen_start_chat_join_room_by_address_supporting_text" = "e.g. #room-name:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "e.g. #room-name:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "Message not sent because %1$@’s verified identity was reset.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "Message not sent because %1$@ has not verified all devices.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Message not sent because you have not verified one or more of your devices.";
@@ -603,7 +603,7 @@
 "screen_bug_report_include_screenshot" = "Адправіць здымак экрана";
 "screen_bug_report_logs_description" = "Каб пераканацца, што ўсё працуе правільна, у паведамленне будуць уключаны часопісы. Каб адправіць паведамленне без часопісаў, адключыце гэтую наладу.";
 "screen_bug_report_view_logs" = "Прагляд журналаў";
-"screen_change_account_provider_matrix_org_subtitle" = "Matrix.org - гэта вялікі бясплатны сервер у агульнадаступнай сетцы Matrix для бяспечнай дэцэнтралізаванай сувязі, якім кіруе фонд Matrix.org.";
+"screen_change_account_provider_matrix_org_subtitle" = "matrix.pesbc.chat - гэта вялікі бясплатны сервер у агульнадаступнай сетцы Matrix для бяспечнай дэцэнтралізаванай сувязі, якім кіруе фонд matrix.pesbc.chat.";
 "screen_change_account_provider_other" = "Іншае";
 "screen_change_account_provider_subtitle" = "Выкарыстоўвайце іншага правайдара ўліковых запісаў, напрыклад, уласны прыватны сервер або працоўны ўліковы запіс.";
 "screen_change_account_provider_title" = "Змяніць правайдара ўліковага запісу";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "Дадаць эмодзі";
 "screen_room_timeline_beginning_of_room" = "Гэта пачатак %1$@.";
 "screen_room_timeline_beginning_of_room_no_name" = "Гэта пачатак гэтай размовы.";
-"screen_room_timeline_legacy_call" = "Unsupported call. Ask if the caller can use the new Element X app.";
+"screen_room_timeline_legacy_call" = "Unsupported call. Ask if the caller can use the new PESenger app.";
 "screen_room_timeline_less_reactions" = "Паказаць менш";
 "screen_room_timeline_message_copied" = "Паведамленне скапіравана";
 "screen_room_timeline_no_permission_to_post" = "У Вас няма дазволу на публікацыю ў гэтым пакоі";

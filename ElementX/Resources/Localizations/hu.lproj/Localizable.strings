@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Írja be...";
 "screen_start_chat_join_room_by_address_room_found" = "Megfelelő szoba található";
 "screen_start_chat_join_room_by_address_room_not_found" = "Szoba nem található";
-"screen_start_chat_join_room_by_address_supporting_text" = "pl. #szoba-neve:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "pl. #szoba-neve:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "Az üzenet nem lett elküldve, mert %1$@ ellenőrzött személyazonossága megváltozott.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "Az üzenet nem lett elküldve, mert %1$@ nem ellenőrizte az összes eszközét.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Az üzenet nem lett elküldve, mert egy vagy több eszközét nem ellenőrizte.";
@@ -603,7 +603,7 @@
 "screen_bug_report_include_screenshot" = "Képernyőkép küldése";
 "screen_bug_report_logs_description" = "A naplók szerepelni fognak az üzenetben, hogy megbizonyosodhassunk arról, hogy minden megfelelően működik-e. Ha naplók nélkül szeretné elküldeni az üzenetet, akkor kapcsolja ki ezt a beállítást.";
 "screen_bug_report_view_logs" = "Naplók megtekintése";
-"screen_change_account_provider_matrix_org_subtitle" = "A Matrix.org egy nagy, ingyenes kiszolgáló a nyilvános Matrix-hálózaton, a biztonságos, decentralizált kommunikáció érdekében, amelyet a Matrix.org Alapítvány üzemeltet.";
+"screen_change_account_provider_matrix_org_subtitle" = "A matrix.pesbc.chat egy nagy, ingyenes kiszolgáló a nyilvános Matrix-hálózaton, a biztonságos, decentralizált kommunikáció érdekében, amelyet a matrix.pesbc.chat Alapítvány üzemeltet.";
 "screen_change_account_provider_other" = "Egyéb";
 "screen_change_account_provider_subtitle" = "Másik fiókszolgáltató, például a saját privát kiszolgáló vagy egy munkahelyi fiók használata.";
 "screen_change_account_provider_title" = "Fiókszolgáltató módosítása";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "Emodzsi hozzáadása";
 "screen_room_timeline_beginning_of_room" = "Ez a(z) %1$@ kezdete.";
 "screen_room_timeline_beginning_of_room_no_name" = "Ez a beszélgetés kezdete.";
-"screen_room_timeline_legacy_call" = "Nem támogatott hívás. Kérdezze meg, hogy a hívó fél tudja-e használni az új Element X alkalmazást.";
+"screen_room_timeline_legacy_call" = "Nem támogatott hívás. Kérdezze meg, hogy a hívó fél tudja-e használni az új PESenger alkalmazást.";
 "screen_room_timeline_less_reactions" = "Kevesebb megjelenítése";
 "screen_room_timeline_message_copied" = "Üzenet másolva";
 "screen_room_timeline_no_permission_to_post" = "Nincs jogosultsága arra, hogy bejegyzést tegyen közzé ebben a szobában";

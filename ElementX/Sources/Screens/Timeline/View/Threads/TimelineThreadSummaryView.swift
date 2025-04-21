@@ -91,7 +91,7 @@ struct TimelineThreadSummaryView: View {
     
     private struct LoadingThreadView: View {
         var body: some View {
-            ThreadView(senderID: "@alice:matrix.org", sender: nil, plainBody: "Hello world", formattedBody: nil)
+            ThreadView(senderID: "@alice:matrix.pesbc.chat", sender: nil, plainBody: "Hello world", formattedBody: nil)
                 .redacted(reason: .placeholder)
         }
     }
@@ -139,7 +139,7 @@ struct TimelineThreadSummaryView_Previews: PreviewProvider, TestablePreview {
     
     static let attributedStringWithMention = {
         var attributedString = AttributedString("To be replaced")
-        attributedString.userID = "@alice:matrix.org"
+        attributedString.userID = "@alice:matrix.pesbc.chat"
         return attributedString
     }()
     
@@ -151,25 +151,25 @@ struct TimelineThreadSummaryView_Previews: PreviewProvider, TestablePreview {
     
     static let attributedStringWithRoomAliasMention = {
         var attributedString = AttributedString("to be replaced")
-        attributedString.roomAlias = "#room:matrix.org"
+        attributedString.roomAlias = "#room:matrix.pesbc.chat"
         return attributedString
     }()
     
     static let attributedStringWithRoomIDMention = {
         var attributedString = AttributedString("to be replaced")
-        attributedString.roomID = "!room:matrix.org"
+        attributedString.roomID = "!room:matrix.pesbc.chat"
         return attributedString
     }()
     
     static let attributedStringWithEventOnRoomIDMention = {
         var attributedString = AttributedString("to be replaced")
-        attributedString.eventOnRoomID = .init(roomID: "!room:matrix.org", eventID: "$event")
+        attributedString.eventOnRoomID = .init(roomID: "!room:matrix.pesbc.chat", eventID: "$event")
         return attributedString
     }()
     
     static let attributedStringWithEventOnRoomAliasMention = {
         var attributedString = AttributedString("to be replaced")
-        attributedString.eventOnRoomAlias = .init(alias: "#room:matrix.org", eventID: "$event")
+        attributedString.eventOnRoomAlias = .init(alias: "#room:matrix.pesbc.chat", eventID: "$event")
         return attributedString
     }()
     
@@ -181,16 +181,16 @@ struct TimelineThreadSummaryView_Previews: PreviewProvider, TestablePreview {
             
             TimelineThreadSummaryView(threadSummary: .error(message: "Error")),
             
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .message(.text(.init(body: "This is a threaded message"))))),
             
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .message(.notice(.init(body: "Hello world"))))),
             
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .message(.audio(.init(filename: "audio.m4a",
                                                                                                        caption: "Some audio",
                                                                                                        duration: 0,
@@ -199,8 +199,8 @@ struct TimelineThreadSummaryView_Previews: PreviewProvider, TestablePreview {
                                                                                                        fileSize: nil,
                                                                                                        contentType: nil))))),
             
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .message(.file(.init(filename: "file.txt",
                                                                                                       caption: "Some file",
                                                                                                       source: nil,
@@ -208,25 +208,25 @@ struct TimelineThreadSummaryView_Previews: PreviewProvider, TestablePreview {
                                                                                                       thumbnailSource: nil,
                                                                                                       contentType: nil))))),
             
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .message(.image(.init(filename: "image.jpg",
                                                                                                        caption: "Some image",
                                                                                                        imageInfo: .mockImage,
                                                                                                        thumbnailInfo: .mockThumbnail))))),
             
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .message(.video(.init(filename: "video.mp4",
                                                                                                        caption: "Some video",
                                                                                                        videoInfo: .mockVideo,
                                                                                                        thumbnailInfo: .mockVideoThumbnail))))),
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .message(.location(.init(body: ""))))),
             
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .message(.voice(.init(filename: "voice-message.ogg",
                                                                                                        caption: "Some voice message",
                                                                                                        duration: 0,
@@ -235,31 +235,31 @@ struct TimelineThreadSummaryView_Previews: PreviewProvider, TestablePreview {
                                                                                                        fileSize: nil,
                                                                                                        contentType: nil))))),
             
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .poll(question: "Do you like polls?"))),
             
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .redacted)),
             
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .message(.notice(.init(body: "", formattedBody: attributedStringWithMention))))),
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .message(.notice(.init(body: "", formattedBody: attributedStringWithAtRoomMention))))),
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .message(.notice(.init(body: "", formattedBody: attributedStringWithRoomAliasMention))))),
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .message(.notice(.init(body: "", formattedBody: attributedStringWithRoomIDMention))))),
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .message(.notice(.init(body: "", formattedBody: attributedStringWithEventOnRoomIDMention))))),
-            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.org",
-                                                             sender: .init(id: "@alice:matrix.org", displayName: "Alice"),
+            TimelineThreadSummaryView(threadSummary: .loaded(senderID: "@alice:matrix.pesbc.chat",
+                                                             sender: .init(id: "@alice:matrix.pesbc.chat", displayName: "Alice"),
                                                              latestEventContent: .message(.notice(.init(body: "", formattedBody: attributedStringWithEventOnRoomAliasMention)))))
         ]
     }

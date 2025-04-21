@@ -536,7 +536,7 @@
 "screen_start_chat_join_room_by_address_placeholder" = "Enter...";
 "screen_start_chat_join_room_by_address_room_found" = "Matching room found";
 "screen_start_chat_join_room_by_address_room_not_found" = "Room not found";
-"screen_start_chat_join_room_by_address_supporting_text" = "e.g. #room-name:matrix.org";
+"screen_start_chat_join_room_by_address_supporting_text" = "e.g. #room-name:matrix.pesbc.chat";
 "screen_timeline_item_menu_send_failure_changed_identity" = "Bericht niet verzonden omdat %1$@'s geverifieerde identiteit is gewijzigd.";
 "screen_timeline_item_menu_send_failure_unsigned_device" = "Bericht niet verzonden omdat %1$@ niet alle apparaten heeft geverifieerd.";
 "screen_timeline_item_menu_send_failure_you_unsigned_device" = "Bericht is niet verzonden omdat je een of meerdere apparaten niet geverifieerd hebt";
@@ -603,7 +603,7 @@
 "screen_bug_report_include_screenshot" = "Schermafbeelding verzenden";
 "screen_bug_report_logs_description" = "Er worden logbestanden bij uw bericht gevoegd om er zeker van te zijn dat alles goed werkt. Als u uw bericht zonder logbestanden wilt verzenden, schakelt u deze instelling uit.";
 "screen_bug_report_view_logs" = "Logboeken weergeven";
-"screen_change_account_provider_matrix_org_subtitle" = "Matrix.org is een grote, gratis server op het openbare Matrix-netwerk voor veilige, gedecentraliseerde communicatie, beheerd door de Matrix.org Foundation.";
+"screen_change_account_provider_matrix_org_subtitle" = "matrix.pesbc.chat is een grote, gratis server op het openbare Matrix-netwerk voor veilige, gedecentraliseerde communicatie, beheerd door de matrix.pesbc.chat Foundation.";
 "screen_change_account_provider_other" = "Anders";
 "screen_change_account_provider_subtitle" = "Gebruik een andere accountprovider, zoals je eigen privéserver of een zakelijke account.";
 "screen_change_account_provider_title" = "Wijzig accountprovider";
@@ -948,7 +948,7 @@
 "screen_room_timeline_add_reaction" = "Emoji toevoegen";
 "screen_room_timeline_beginning_of_room" = "Dit is het begin van %1$@.";
 "screen_room_timeline_beginning_of_room_no_name" = "Dit is het begin van dit gesprek.";
-"screen_room_timeline_legacy_call" = "Unsupported call. Ask if the caller can use the new Element X app.";
+"screen_room_timeline_legacy_call" = "Unsupported call. Ask if the caller can use the new PESenger app.";
 "screen_room_timeline_less_reactions" = "Toon minder";
 "screen_room_timeline_message_copied" = "Bericht gekopieerd";
 "screen_room_timeline_no_permission_to_post" = "Je hebt geen toestemming om berichten in deze kamer te plaatsen";

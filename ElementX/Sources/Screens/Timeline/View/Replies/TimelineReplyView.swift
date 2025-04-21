@@ -95,7 +95,7 @@ struct TimelineReplyView: View {
     
     private struct LoadingReplyView: View {
         var body: some View {
-            ReplyView(sender: .init(id: "@alice:matrix.org"), plainBody: "Hello world", formattedBody: nil)
+            ReplyView(sender: .init(id: "@alice:matrix.pesbc.chat"), plainBody: "Hello world", formattedBody: nil)
                 .redacted(reason: .placeholder)
         }
     }
@@ -183,7 +183,7 @@ struct TimelineReplyView_Previews: PreviewProvider, TestablePreview {
     
     static let attributedStringWithMention = {
         var attributedString = AttributedString("To be replaced")
-        attributedString.userID = "@alice:matrix.org"
+        attributedString.userID = "@alice:matrix.pesbc.chat"
         return attributedString
     }()
     
@@ -195,25 +195,25 @@ struct TimelineReplyView_Previews: PreviewProvider, TestablePreview {
     
     static let attributedStringWithRoomAliasMention = {
         var attributedString = AttributedString("to be replaced")
-        attributedString.roomAlias = "#room:matrix.org"
+        attributedString.roomAlias = "#room:matrix.pesbc.chat"
         return attributedString
     }()
     
     static let attributedStringWithRoomIDMention = {
         var attributedString = AttributedString("to be replaced")
-        attributedString.roomID = "!room:matrix.org"
+        attributedString.roomID = "!room:matrix.pesbc.chat"
         return attributedString
     }()
     
     static let attributedStringWithEventOnRoomIDMention = {
         var attributedString = AttributedString("to be replaced")
-        attributedString.eventOnRoomID = .init(roomID: "!room:matrix.org", eventID: "$event")
+        attributedString.eventOnRoomID = .init(roomID: "!room:matrix.pesbc.chat", eventID: "$event")
         return attributedString
     }()
     
     static let attributedStringWithEventOnRoomAliasMention = {
         var attributedString = AttributedString("to be replaced")
-        attributedString.eventOnRoomAlias = .init(alias: "#room:matrix.org", eventID: "$event")
+        attributedString.eventOnRoomAlias = .init(alias: "#room:matrix.pesbc.chat", eventID: "$event")
         return attributedString
     }()
     
